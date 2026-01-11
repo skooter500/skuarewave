@@ -35,28 +35,28 @@ instrument = 9
 midi_channel = 2
 
 [node name="controls" type="Marker3D" parent="."]
-transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, -0.1, 0, 0)
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.013537087, -0.30006298, 3.3836685e-09)
 
 [node name="up_semi" parent="controls" instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48228875, 0.8422569, -0.09116878)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49900213, 0.8422569, -0.04448858)
 
 [node name="down_semi" parent="controls" instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38957015, 0.8440504, -0.18233755)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3857132, 0.8440504, -0.045494214)
 
 [node name="stop_start" parent="controls" instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4492158, 1.19381, -0.045584388)
 
 [node name="up" parent="controls" instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48365042, 0.9519278, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5003638, 0.9519278, -0.045584388)
 
 [node name="down" parent="controls" instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39943776, 0.9550468, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3840101, 0.9511898, -0.045584388)
 
 [node name="scale_up" parent="controls" instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48287788, 1.041952, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49959126, 1.041952, -0.045584388)
 
 [node name="scale_down" parent="controls" instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39292866, 1.0448534, -0.091168776)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38778615, 1.0409966, -0.043849096)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
