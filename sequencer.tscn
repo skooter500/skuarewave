@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7dvkr5ss01as"]
+
+[ext_resource type="Script" uid="uid://crm1vgeaih5wn" path="res://examples/xr_sequencer/sequencer2.gd" id="1_twh6a"]
+[ext_resource type="PackedScene" uid="uid://dm1qa5btl0821" path="res://examples/xr_sequencer/pad_a.tscn" id="2_1yhx7"]
+[ext_resource type="PackedScene" uid="uid://2i1nqhynnlm0" path="res://button.tscn" id="3_qjhr7"]
+[ext_resource type="Material" uid="uid://bwy778jyvpj15" path="res://examples/tank_game_3d/seq_mat.tres" id="4_g1h6b"]
+
+[sub_resource type="Resource" id="Resource_byv7j"]
+metadata/__load_path__ = "res://fonts/Hyperspace.otf"
+
+[sub_resource type="SphereMesh" id="SphereMesh_00tvn"]
+radius = 0.02
+height = 0.04
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byv7j"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_byv7j"]
+material = SubResource("StandardMaterial3D_byv7j")
+
+[sub_resource type="MultiMesh" id="MultiMesh_s2ckv"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_byv7j")
+
+[node name="sequencer" type="Marker3D"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+script = ExtResource("1_twh6a")
+font = SubResource("Resource_byv7j")
+path_str = "res://drumset"
+pad_scene = ExtResource("2_1yhx7")
+steps = 16
+out_color = Color(0.029999971, 1, 0.11083323, 0.3882353)
+in_color = Color(0.33901316, 0.6156455, 0.6028598, 0.52156866)
+instrument = 9
+midi_channel = 2
+
+[node name="controls" type="Marker3D" parent="."]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, -0.1, 0, 0)
+
+[node name="up_semi" parent="controls" instance=ExtResource("3_qjhr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38833192, 0.22768164, -0.09116878)
+
+[node name="down_semi" parent="controls" instance=ExtResource("3_qjhr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38957015, 0.09743416, -0.18233755)
+
+[node name="stop_start" parent="controls" instance=ExtResource("3_qjhr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037737757, -0.13521773, -0.045584388)
+
+[node name="up" parent="controls" instance=ExtResource("3_qjhr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037737757, 0.20531154, -0.045584388)
+
+[node name="down" parent="controls" instance=ExtResource("3_qjhr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037737757, 0.10212934, -0.045584388)
+
+[node name="scale_up" parent="controls" instance=ExtResource("3_qjhr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20677093, 0.47066367, -0.045584388)
+
+[node name="scale_down" parent="controls" instance=ExtResource("3_qjhr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20793706, 0.37140548, -0.091168776)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="timer_ball" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("SphereMesh_00tvn")
+surface_material_override/0 = ExtResource("4_g1h6b")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
+multimesh = SubResource("MultiMesh_s2ckv")
+
+[connection signal="area_entered" from="controls/up_semi" to="." method="_on_up_semi_area_entered"]
+[connection signal="area_entered" from="controls/down_semi" to="." method="_on_down_semi_area_entered"]
+[connection signal="area_entered" from="controls/stop_start" to="." method="_on_start_stop_area_entered"]
+[connection signal="area_entered" from="controls/up" to="." method="_on_up_area_entered"]
+[connection signal="area_entered" from="controls/down" to="." method="_on_down_area_entered"]
+[connection signal="area_entered" from="controls/scale_up" to="." method="_on_scale_area_entered"]
+[connection signal="area_entered" from="controls/scale_down" to="." method="_on_scale_down_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

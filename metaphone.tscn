@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://c8tx40me7j55t"]
+[gd_scene load_steps=30 format=3 uid="uid://c8tx40me7j55t"]
 
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="1_83we6"]
 [ext_resource type="Script" uid="uid://nxajcnxqcaey" path="res://timer.gd" id="1_byv7j"]
 [ext_resource type="PackedScene" uid="uid://2i1nqhynnlm0" path="res://button.tscn" id="4_byv7j"]
 [ext_resource type="PackedScene" uid="uid://cend6ikv2su2t" path="res://tip.tscn" id="7_65ndq"]
 [ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://hand.gd" id="9_00tvn"]
+[ext_resource type="PackedScene" uid="uid://b7dvkr5ss01as" path="res://sequencer.tscn" id="17_s2ckv"]
 [ext_resource type="Script" uid="uid://crm1vgeaih5wn" path="res://examples/xr_sequencer/sequencer2.gd" id="21_1eg4j"]
 [ext_resource type="PackedScene" uid="uid://dm1qa5btl0821" path="res://examples/xr_sequencer/pad_a.tscn" id="23_bo4sn"]
 [ext_resource type="Material" uid="uid://bwy778jyvpj15" path="res://examples/tank_game_3d/seq_mat.tres" id="24_dclji"]
@@ -19,12 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://b2447e5p6kwug" path="res://examples/room/scene_anchor.tscn" id="39_5wcqy"]
 [ext_resource type="PackedScene" uid="uid://cukl4cie1tact" path="res://examples/room/scene_global_mesh.tscn" id="40_c1vpu"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_byv7j"]
-radius = 0.02
-height = 0.2
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_00tvn"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ieg28"]
 radius = 0.01
+height = 0.04
 
 [sub_resource type="Resource" id="Resource_byv7j"]
 metadata/__load_path__ = "res://fonts/Hyperspace.otf"
@@ -41,11 +39,6 @@ vertex_color_use_as_albedo = true
 material = SubResource("StandardMaterial3D_byv7j")
 
 [sub_resource type="MultiMesh" id="MultiMesh_00tvn"]
-transform_format = 1
-use_colors = true
-mesh = SubResource("BoxMesh_byv7j")
-
-[sub_resource type="MultiMesh" id="MultiMesh_s2ckv"]
 transform_format = 1
 use_colors = true
 mesh = SubResource("BoxMesh_byv7j")
@@ -85,13 +78,6 @@ script = ExtResource("9_00tvn")
 script = ExtResource("33_g5gje")
 hand_pose_set = ExtResource("34_63uls")
 
-[node name="left_hand" type="Area3D" parent="XROrigin3D/left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0680579, 0.159387)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/left/left_hand"]
-transform = Transform3D(0.96436834, 0, 0.2645632, 0, 1, 0, -0.2645632, 0, 0.96436834, -0.010835271, -0.054099996, -0.115197845)
-shape = SubResource("CapsuleShape3D_byv7j")
-
 [node name="LeftHandHumanoid2" parent="XROrigin3D/left" instance=ExtResource("35_lbacc")]
 
 [node name="LeftHandHumanoidMesh" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="0"]
@@ -100,28 +86,9 @@ surface_material_override/0 = ExtResource("36_4cadk")
 [node name="XRHandModifier3D" type="XRHandModifier3D" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="1"]
 
 [node name="tip5" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="2" instance=ExtResource("7_65ndq")]
-transform = Transform3D(-0.6511841, 0.19506983, 0.7334213, -0.5517817, 0.5418098, -0.634018, -0.52105254, -0.8175509, -0.24518181, 0.02811512, 0.08753302, -0.09421306)
-bone_name = "LeftThumbTip"
-bone_idx = 4
-
-[node name="tip6" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="3" instance=ExtResource("7_65ndq")]
 transform = Transform3D(0.01489234, 0.39270008, 0.919546, -0.9930924, 0.11285266, -0.03211129, -0.11638325, -0.91271573, 0.39166808, -0.01110013, 0.04294307, -0.17161417)
 bone_name = "LeftIndexTip"
 bone_idx = 9
-
-[node name="tip7" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="4" instance=ExtResource("7_65ndq")]
-transform = Transform3D(-0.0012686667, 0.40591744, 0.9139086, -0.9998837, -0.014399034, 0.0050073517, 0.015192071, -0.91379625, 0.40588838, -0.009556267, -0.007819917, -0.18401754)
-bone_name = "LeftMiddleTip"
-bone_idx = 14
-
-[node name="tip8" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="5" instance=ExtResource("7_65ndq")]
-transform = Transform3D(-0.018526802, 0.40487766, 0.9141832, -0.9863993, -0.15675521, 0.049434118, 0.16331781, -0.9008338, 0.40227523, -0.0047395905, -0.04577413, -0.16991536)
-bone_name = "LeftRingTip"
-bone_idx = 19
-
-[node name="tip9" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="6" instance=ExtResource("7_65ndq")]
-transform = Transform3D(-0.034004584, 0.3591568, 0.9326572, -0.96170473, -0.26570606, 0.06725704, 0.2719686, -0.8946539, 0.35443816, 0.007914149, -0.06398126, -0.12933527)
-bone_name = "LeftLittleTip"
 
 [node name="right" type="XRNode3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.382, 0, 0)
@@ -131,58 +98,34 @@ script = ExtResource("9_00tvn")
 
 [node name="RightHandHumanoid2" parent="XROrigin3D/right" instance=ExtResource("37_qy652")]
 
-[node name="tip1" type="BoneAttachment3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="0"]
-transform = Transform3D(-0.6363154, -0.19506986, -0.7463579, 0.56441003, 0.54180986, -0.62280273, 0.525874, -0.8175509, -0.2346625, -0.02811512, 0.08753302, -0.09421306)
-bone_name = "RightThumbTip"
-bone_idx = 4
+[node name="Skeleton3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid" index="0"]
+bones/0/position = Vector3(-0.009999533, 0.020026566, 3.5932288e-05)
+bones/0/rotation = Quaternion(0.15032642, 0.82222533, -0.41320056, -0.36140388)
+bones/0/scale = Vector3(0.99999976, 0.9999999, 0.9999999)
+bones/9/position = Vector3(-0.0144017115, -0.18588886, 0.055714846)
+bones/9/rotation = Quaternion(0.029629126, 0.7843349, -0.44617033, 0.42996845)
+bones/9/scale = Vector3(1, 1.0000001, 1.0000002)
+bones/13/position = Vector3(-0.014042869, -0.15854816, 0.04854116)
+bones/13/rotation = Quaternion(0.12692279, 0.7842564, -0.48233, 0.36903968)
+bones/13/scale = Vector3(1, 1.0000002, 1.0000001)
 
-[node name="right_hand" type="Area3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip1"]
-transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0)
+[node name="XRHandModifier3D" type="XRHandModifier3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="0"]
+hand_tracker = &"/user/hand_tracker/right"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip1/right_hand"]
-shape = SubResource("SphereShape3D_00tvn")
+[node name="RightHandHumanoidMesh" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("36_4cadk")
 
-[node name="tip2" type="BoneAttachment3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="1"]
-transform = Transform3D(0.01903836, -0.39268863, -0.9194744, 0.99322706, 0.11285307, -0.027631793, 0.11461615, -0.91272074, 0.39217746, 0.011100034, 0.04294298, -0.17161338)
+[node name="tip5" type="BoneAttachment3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="2"]
+transform = Transform3D(0.9999999, 4.4703484e-07, 1.4901161e-07, -1.1920929e-07, 0.9999999, 2.682209e-07, -1.3411045e-07, -1.4901161e-08, 1.0000002, 0, 0, 1.4901161e-08)
 bone_name = "RightIndexTip"
 bone_idx = 9
 
-[node name="right_hand" type="Area3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip2"]
+[node name="right_hand" type="Area3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip5"]
 transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip2/right_hand"]
-shape = SubResource("SphereShape3D_00tvn")
-
-[node name="tip3" type="BoneAttachment3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="2"]
-transform = Transform3D(-0.0015172586, -0.40008578, -0.9164762, 0.99988544, -0.014408365, 0.004634563, -0.015059267, -0.91636395, 0.4000617, 0.009556467, -0.007819824, -0.18401802)
-bone_name = "RightMiddleTip"
-bone_idx = 14
-
-[node name="right_hand" type="Area3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip3"]
-transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip3/right_hand"]
-shape = SubResource("SphereShape3D_00tvn")
-
-[node name="tip4" type="BoneAttachment3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="3"]
-transform = Transform3D(-0.018526802, -0.40487766, -0.9141832, 0.9863993, -0.15675521, 0.049434118, -0.16331781, -0.9008338, 0.40227523, 0.0047395905, -0.04577413, -0.16991536)
-bone_name = "RightRingTip"
-bone_idx = 19
-
-[node name="right_hand" type="Area3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip4"]
-transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip4/right_hand"]
-shape = SubResource("SphereShape3D_00tvn")
-
-[node name="tip5" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="4" instance=ExtResource("7_65ndq")]
-transform = Transform3D(-0.034004584, -0.3591568, -0.9326572, 0.96170473, -0.26570606, 0.06725704, -0.2719686, -0.8946539, 0.35443816, -0.007914149, -0.06398126, -0.12933527)
-
-[node name="XRHandModifier3D" type="XRHandModifier3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="5"]
-hand_tracker = &"/user/hand_tracker/right"
-
-[node name="RightHandHumanoidMesh" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="6"]
-surface_material_override/0 = ExtResource("36_4cadk")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip5/right_hand"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.018, 0)
+shape = SubResource("CapsuleShape3D_ieg28")
 
 [node name="HandPoseDetector" parent="XROrigin3D/right" instance=ExtResource("38_4ru4y")]
 hand_tracker_name = "/user/hand_tracker/right"
@@ -202,7 +145,7 @@ key_shift = 2
 soundfont = "res://assets/GM.sf2"
 
 [node name="sequencer2" type="Marker3D" parent="instruments"]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.37691236, 0.7745184, 0.054571986)
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.37691236, 0.7745184, -0.092311054)
 script = ExtResource("21_1eg4j")
 font = SubResource("Resource_byv7j")
 path_str = "res://drumset"
@@ -247,52 +190,8 @@ surface_material_override/0 = ExtResource("24_dclji")
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="instruments/sequencer2"]
 multimesh = SubResource("MultiMesh_00tvn")
 
-[node name="sequencer" type="Marker3D" parent="instruments"]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.37691236, 0.7745184, 0.8495128)
-script = ExtResource("21_1eg4j")
-font = SubResource("Resource_byv7j")
-path_str = "res://drumset"
-pad_scene = ExtResource("23_bo4sn")
-steps = 16
-out_color = Color(0.029999971, 1, 0.11083323, 0.3882353)
-in_color = Color(0.33901316, 0.6156455, 0.6028598, 0.52156866)
-instrument = 9
-midi_channel = 2
-
-[node name="controls" type="Marker3D" parent="instruments/sequencer"]
-transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, -0.1, 0, 0)
-
-[node name="up_semi" parent="instruments/sequencer/controls" instance=ExtResource("4_byv7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38833192, 0.22768164, -0.09116878)
-
-[node name="down_semi" parent="instruments/sequencer/controls" instance=ExtResource("4_byv7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38957015, 0.09743416, -0.18233755)
-
-[node name="stop_start" parent="instruments/sequencer/controls" instance=ExtResource("4_byv7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037737757, -0.13521773, -0.045584388)
-
-[node name="up" parent="instruments/sequencer/controls" instance=ExtResource("4_byv7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037737757, 0.20531154, -0.045584388)
-
-[node name="down" parent="instruments/sequencer/controls" instance=ExtResource("4_byv7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037737757, 0.10212934, -0.045584388)
-
-[node name="scale_up" parent="instruments/sequencer/controls" instance=ExtResource("4_byv7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20677093, 0.47066367, -0.045584388)
-
-[node name="scale_down" parent="instruments/sequencer/controls" instance=ExtResource("4_byv7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20793706, 0.37140548, -0.091168776)
-
-[node name="Timer" type="Timer" parent="instruments/sequencer"]
-wait_time = 0.2
-
-[node name="timer_ball" type="MeshInstance3D" parent="instruments/sequencer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
-mesh = SubResource("SphereMesh_00tvn")
-surface_material_override/0 = ExtResource("24_dclji")
-
-[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="instruments/sequencer"]
-multimesh = SubResource("MultiMesh_s2ckv")
+[node name="sequencer" parent="instruments" instance=ExtResource("17_s2ckv")]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.37691236, 0.7745184, 1.3168678)
 
 [node name="record" type="Node" parent="instruments"]
 
@@ -329,15 +228,6 @@ light_energy = 16.0
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
 [connection signal="pose_ended" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_ended"]
 [connection signal="pose_started" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_started"]
-[connection signal="area_entered" from="XROrigin3D/left/left_hand" to="XROrigin3D/left" method="_on_right_hand_area_entered"]
-[connection signal="area_entered" from="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip1/right_hand" to="XROrigin3D/right" method="_on_right_hand_area_entered"]
-[connection signal="area_exited" from="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip1/right_hand" to="XROrigin3D/right" method="_on_right_hand_area_exited"]
-[connection signal="area_entered" from="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip2/right_hand" to="XROrigin3D/right" method="_on_right_hand_area_entered"]
-[connection signal="area_exited" from="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip2/right_hand" to="XROrigin3D/right" method="_on_right_hand_area_exited"]
-[connection signal="area_entered" from="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip3/right_hand" to="XROrigin3D/right" method="_on_right_hand_area_entered"]
-[connection signal="area_exited" from="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip3/right_hand" to="XROrigin3D/right" method="_on_right_hand_area_exited"]
-[connection signal="area_entered" from="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip4/right_hand" to="XROrigin3D/right" method="_on_right_hand_area_entered"]
-[connection signal="area_exited" from="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip4/right_hand" to="XROrigin3D/right" method="_on_right_hand_area_exited"]
 [connection signal="pose_ended" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_ended"]
 [connection signal="pose_started" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_started"]
 [connection signal="area_entered" from="instruments/sequencer2/controls/up_semi" to="instruments/sequencer2" method="_on_up_semi_area_entered"]
@@ -348,14 +238,6 @@ light_energy = 16.0
 [connection signal="area_entered" from="instruments/sequencer2/controls/scale_up" to="instruments/sequencer2" method="_on_scale_area_entered"]
 [connection signal="area_entered" from="instruments/sequencer2/controls/scale_down" to="instruments/sequencer2" method="_on_scale_down_area_entered"]
 [connection signal="timeout" from="instruments/sequencer2/Timer" to="instruments/sequencer2" method="_on_timer_timeout"]
-[connection signal="area_entered" from="instruments/sequencer/controls/up_semi" to="instruments/sequencer" method="_on_up_semi_area_entered"]
-[connection signal="area_entered" from="instruments/sequencer/controls/down_semi" to="instruments/sequencer" method="_on_down_semi_area_entered"]
-[connection signal="area_entered" from="instruments/sequencer/controls/stop_start" to="instruments/sequencer" method="_on_start_stop_area_entered"]
-[connection signal="area_entered" from="instruments/sequencer/controls/up" to="instruments/sequencer" method="_on_up_area_entered"]
-[connection signal="area_entered" from="instruments/sequencer/controls/down" to="instruments/sequencer" method="_on_down_area_entered"]
-[connection signal="area_entered" from="instruments/sequencer/controls/scale_up" to="instruments/sequencer" method="_on_scale_area_entered"]
-[connection signal="area_entered" from="instruments/sequencer/controls/scale_down" to="instruments/sequencer" method="_on_scale_down_area_entered"]
-[connection signal="timeout" from="instruments/sequencer/Timer" to="instruments/sequencer" method="_on_timer_timeout"]
 
 [editable path="XROrigin3D/left/LeftHandHumanoid2"]
 [editable path="XROrigin3D/right/RightHandHumanoid2"]
