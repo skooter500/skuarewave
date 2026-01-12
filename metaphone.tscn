@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://c8tx40me7j55t"]
+[gd_scene load_steps=30 format=3 uid="uid://c8tx40me7j55t"]
 
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="1_83we6"]
 [ext_resource type="Script" uid="uid://nxajcnxqcaey" path="res://timer.gd" id="1_byv7j"]
 [ext_resource type="Script" uid="uid://ox8smfnahvcm" path="res://xr_camera_3d.gd" id="2_8d825"]
+[ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://label.tscn" id="6_s2ckv"]
 [ext_resource type="PackedScene" uid="uid://cend6ikv2su2t" path="res://tip.tscn" id="7_65ndq"]
 [ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://hand.gd" id="9_00tvn"]
 [ext_resource type="Script" uid="uid://n7iy2lr1dvkr" path="res://instruments.gd" id="12_ucien"]
@@ -23,6 +24,23 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_s2ckv"]
 size = Vector3(1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byv7j"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_byv7j"]
+material = SubResource("StandardMaterial3D_byv7j")
+
+[sub_resource type="MultiMesh" id="MultiMesh_s2ckv"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_byv7j")
+
+[sub_resource type="MultiMesh" id="MultiMesh_65ndq"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_byv7j")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ieg28"]
 radius = 0.01
@@ -48,7 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8232094)
 script = ExtResource("12_ucien")
 
 [node name="Timer" type="Timer" parent="instruments"]
-wait_time = 0.5
+wait_time = 0.2
 autostart = true
 
 [node name="MidiPlayer" parent="instruments" instance=ExtResource("1_83we6")]
@@ -56,7 +74,7 @@ key_shift = 2
 soundfont = "res://assets/Aspirin-Stereo.sf2"
 
 [node name="drums" parent="instruments" instance=ExtResource("17_s2ckv")]
-transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.3711385e-08, 1.2707679, 0.7745184, -0.1665498)
+transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 1.4229131, 0.7745184, -0.8892404)
 hit_color = Color(0, 0.24, 0.96, 0.32156864)
 midi_channel = 9
 root_note = 35
@@ -75,16 +93,45 @@ visible = false
 mesh = SubResource("BoxMesh_s2ckv")
 
 [node name="start_stop" parent="instruments" instance=ExtResource("16_8d825")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1601084, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72084427, 1.1601084, 0.4805627)
 
 [node name="sequencer" parent="instruments" instance=ExtResource("17_s2ckv")]
 transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -0.9509082, 0.8463087, 0)
-instrument = 1
+instrument = 17
 midi_channel = 1
+root_note = 60
+
+[node name="MultiMeshInstance3D" parent="instruments/sequencer" index="3"]
+multimesh = SubResource("MultiMesh_s2ckv")
 
 [node name="sequencer2" parent="instruments" instance=ExtResource("17_s2ckv")]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.8463087, -1.331272)
-instrument = 40
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.23772669, 0.8463087, -1.5024357)
+instrument = 25
+root_note = 60
+
+[node name="MultiMeshInstance3D" parent="instruments/sequencer2" index="3"]
+multimesh = SubResource("MultiMesh_65ndq")
+
+[node name="mode" parent="instruments" instance=ExtResource("6_s2ckv")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6742881, 1.3001149, 0.47975582)
+text = "REVERB"
+horizontal_alignment = 2
+
+[node name="reverb" parent="instruments" instance=ExtResource("16_8d825")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72084427, 1.295292, 0.4805627)
+
+[node name="mode3" parent="instruments" instance=ExtResource("6_s2ckv")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6742881, 1.387475, 0.47975582)
+text = "DELAY"
+horizontal_alignment = 2
+
+[node name="delay" parent="instruments" instance=ExtResource("16_8d825")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72084427, 1.3826522, 0.4805627)
+
+[node name="mode2" parent="instruments" instance=ExtResource("6_s2ckv")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.66227347, 1.1633335, 0.47975582)
+text = "STOP/START"
+horizontal_alignment = 2
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
@@ -192,10 +239,18 @@ light_energy = 16.0
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
 [connection signal="timeout" from="instruments/Timer" to="instruments" method="_on_timer_timeout"]
 [connection signal="area_entered" from="instruments/start_stop" to="instruments" method="_on_start_stop_area_entered"]
+[connection signal="area_entered" from="instruments/reverb" to="instruments" method="_on_reverb_area_entered"]
+[connection signal="area_entered" from="instruments/delay" to="instruments" method="_on_delay_area_entered"]
 [connection signal="pose_ended" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_ended"]
 [connection signal="pose_started" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_started"]
 [connection signal="pose_ended" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_ended"]
 [connection signal="pose_started" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_started"]
 
+[editable path="instruments/sequencer"]
+[editable path="instruments/sequencer2"]
+[editable path="instruments/sequencer2/controls/clear"]
+[editable path="instruments/mode"]
+[editable path="instruments/mode3"]
+[editable path="instruments/mode2"]
 [editable path="XROrigin3D/left/LeftHandHumanoid2"]
 [editable path="XROrigin3D/right/RightHandHumanoid2"]

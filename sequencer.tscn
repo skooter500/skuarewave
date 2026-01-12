@@ -45,7 +45,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49900213, 0.8422569, -0.04
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3857132, 0.8440504, -0.045494214)
 
 [node name="stop_start" parent="controls" instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4492158, 1.19381, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38609913, 1.130135, -0.045584388)
+
+[node name="clear" parent="controls" instance=ExtResource("3_qjhr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50168896, 1.1255949, -0.045584388)
 
 [node name="up" parent="controls" instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5003638, 0.9519278, -0.045584388)
@@ -66,16 +69,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49959126, 0.7474096, -0.04
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38778615, 0.7464541, -0.043849096)
 
 [node name="mode" parent="controls" instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30681992, 0.74630535, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5676448, 0.7585491, -0.039757475)
+horizontal_alignment = 2
 
 [node name="instrument" parent="controls" instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30681992, 1.0413444, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5676448, 1.0413444, -0.039757475)
+horizontal_alignment = 2
+
+[node name="mute" parent="controls" instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5676448, 1.1235524, -0.039757475)
+text = "Clear"
+horizontal_alignment = 2
+
+[node name="mute2" parent="controls" instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25448462, 1.1235524, -0.039757475)
+text = "MUTE"
+horizontal_alignment = 2
 
 [node name="root" parent="controls" instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30681992, 0.9552486, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5676448, 0.9552486, -0.039757475)
+horizontal_alignment = 2
 
 [node name="root2" parent="controls" instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30681992, 0.84563017, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5676448, 0.84563017, -0.039757475)
+horizontal_alignment = 2
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
@@ -91,6 +108,7 @@ multimesh = SubResource("MultiMesh_twh6a")
 [connection signal="area_entered" from="controls/up_semi" to="." method="_on_up_semi_area_entered"]
 [connection signal="area_entered" from="controls/down_semi" to="." method="_on_down_semi_area_entered"]
 [connection signal="area_entered" from="controls/stop_start" to="." method="_on_start_stop_area_entered"]
+[connection signal="area_entered" from="controls/clear" to="." method="_on_clear_area_entered"]
 [connection signal="area_entered" from="controls/up" to="." method="_on_up_area_entered"]
 [connection signal="area_entered" from="controls/down" to="." method="_on_down_area_entered"]
 [connection signal="area_entered" from="controls/inst_up" to="." method="_on_inst_up_area_entered"]

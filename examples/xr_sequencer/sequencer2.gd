@@ -291,10 +291,7 @@ func play_sample(e, row, col):
 	m.message = MIDI_MESSAGE_NOTE_ON
 	m.pitch = hit_note
 	m.velocity = 100
-	m.channel = midi_channel
-	
-	print("Note: " + str(hit_note) + " Channel: " + str(midi_channel))
-		
+	m.channel = midi_channel			
 	midi_player.receive_raw_midi_message(m)	
 				
 	
@@ -311,6 +308,7 @@ func hand_entered(area, row, col):
 	play_sample(0, row, col)
 	
 func note_off(note):
+	
 	var m = InputEventMIDI.new()
 	m.message = MIDI_MESSAGE_NOTE_OFF
 	m.pitch = note
@@ -318,6 +316,7 @@ func note_off(note):
 	m.instrument = instrument
 	m.channel = midi_channel
 	midi_player.receive_raw_midi_message(m)
+	
 
 func hand_exited(area, row, col):
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()	
@@ -361,9 +360,20 @@ func make_sequencer():
 
 func play_sample_gate(e, row, col, duration):
 	var note = midi_notes[row]
+	print("Note off: " + str(note) + " Channel: " + str(midi_channel))	
 	play_sample(e, row, col)	
-	await get_tree().create_timer(duration)
+	await get_tree().create_timer(duration).timeout
+	print("Note off: " + str(note) + " Channel: " + str(midi_channel))
+	
 	note_off(note)
+
+func change_color_back(row, col):
+	await get_tree().create_timer(0.2).timeout
+	if sequence[row][col] == Step.ON:
+		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
+	else:
+		mm.multimesh.set_instance_color((col * notes) + row, out_color)	
+	
 
 func play_step(col):
 	var p = Vector3(s * col * spacer, s * -1 * spacer, 0)
@@ -374,12 +384,8 @@ func play_step(col):
 	for row in range(notes):
 		if sequence[row][col]:
 			mm.multimesh.set_instance_color((col * notes) + row, hit_color)	
-			play_sample_gate(0, row, col, 5)		
-			await get_tree().create_timer(0.2).timeout
-			if sequence[row][col] == Step.ON:
-				mm.multimesh.set_instance_color((col * notes) + row, in_color)	
-			else:
-				mm.multimesh.set_instance_color((col * notes) + row, out_color)	
+			play_sample_gate(0, row, col, 0.3)		
+			change_color_back(row, col)
 					
 
 var step_index:int = 0
@@ -451,4 +457,12 @@ func _on_inst_down_area_entered(area: Area3D) -> void:
 	instrument = (instrument - 1)
 	if instrument < 0:
 		instrument = 127
+	pass # Replace with function body.
+
+
+func _on_clear_area_entered(area: Area3D) -> void:
+	for row in notes:
+		for col in steps:
+			sequence[row][col] = Step.OFF
+	assign_colors()
 	pass # Replace with function body.
