@@ -225,17 +225,10 @@ func play_sample(e, row, col):
 		
 	midi_player.receive_raw_midi_message(m)	
 				
-	await get_tree().create_timer(0.8).timeout
 	
-	m = InputEventMIDI.new()
-	m.message = MIDI_MESSAGE_NOTE_OFF
-	m.pitch = note
-	m.velocity = 0
-	m.instrument = instrument
-	m.channel = midi_channel
-	midi_player.receive_raw_midi_message(m)
 	
-func toggle(area, row, col):
+	
+func hand_entered(area, row, col):
 	print("Strike " + str(row) + " " + str(col))
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
 	if hand.gesture == "Index Pinch":
@@ -245,13 +238,22 @@ func toggle(area, row, col):
 		mm.multimesh.set_instance_color((col * notes) + row, hit_color)	
 	play_sample(0, row, col)
 	
+func note_off(note):
+	var m = InputEventMIDI.new()
+	m.message = MIDI_MESSAGE_NOTE_OFF
+	m.pitch = note
+	m.velocity = 0
+	m.instrument = instrument
+	m.channel = midi_channel
+	midi_player.receive_raw_midi_message(m)
+
 func hand_exited(area, row, col):
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()	
 	if sequence[row][col] != Step.ON:
 		mm.multimesh.set_instance_color((col * notes) + row, out_color)	
 	else:
 		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
-	
+	note_off(midi_notes[row])
 
 var s = 0.08
 var spacer = 1.1
@@ -281,10 +283,15 @@ func make_sequencer():
 			t.origin = p
 			mm.multimesh.set_instance_transform(i, t)
 			i += 1
-			pad.area_entered.connect(toggle.bind(row, col))
+			pad.area_entered.connect(hand_entered.bind(row, col))
 			pad.area_exited.connect(hand_exited.bind(row, col))
 			add_child(pad)
 
+func play_sample_gate(e, row, col, duration):
+	var note = midi_notes[row]
+	play_sample(e, row, col)	
+	await get_tree().create_timer(duration - 0.2).timeout
+	note_off(note)
 
 func play_step(col):
 	var p = Vector3(s * col * spacer, s * -1 * spacer, 0)
@@ -293,8 +300,8 @@ func play_step(col):
 	for row in range(notes):
 		if sequence[row][col]:
 			mm.multimesh.set_instance_color((col * notes) + row, hit_color)	
+			play_sample_gate(0, row, col, 1)		
 			await get_tree().create_timer(0.2).timeout
-			play_sample(0, row, col)
 			if sequence[row][col] == Step.ON:
 				mm.multimesh.set_instance_color((col * notes) + row, in_color)	
 			else:

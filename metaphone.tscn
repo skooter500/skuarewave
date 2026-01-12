@@ -79,6 +79,7 @@ soundfont = "res://assets/Aspirin-Stereo.sf2"
 
 [node name="drums" parent="instruments" instance=ExtResource("17_s2ckv")]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.3711385e-08, 1.2707679, 0.7745184, -0.1665498)
+notes = null
 hit_color = Color(0, 0.24, 0.96, 0.32156864)
 midi_channel = 9
 root_note = 35
@@ -102,8 +103,13 @@ script = ExtResource("14_s2ckv")
 font = SubResource("Resource_byv7j")
 pad_scene = ExtResource("15_ucien")
 steps = 16
+notes = null
 out_color = Color(0.029999971, 1, 0.11083323, 0.3882353)
 in_color = Color(0.33901316, 0.6156455, 0.6028598, 0.52156866)
+hit_color = null
+instrument = null
+midi_channel = null
+root_note = null
 
 [node name="controls" type="Marker3D" parent="instruments/sequencer"]
 transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.24113709, -0.46659946, 0.072165936)
@@ -147,15 +153,18 @@ surface_material_override/0 = ExtResource("17_ymxam")
 multimesh = SubResource("MultiMesh_uo375")
 
 [node name="sequencer2" type="Marker3D" parent="instruments"]
-transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -1.2932353, 0.779745, 0.656127)
+transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -0.45643568, 0.779745, 0.6561269)
 script = ExtResource("14_s2ckv")
 font = SubResource("Resource_byv7j")
 pad_scene = ExtResource("15_ucien")
 steps = 16
+notes = null
 out_color = Color(0.029999971, 1, 0.11083323, 0.3882353)
 in_color = Color(0.33901316, 0.6156455, 0.6028598, 0.52156866)
+hit_color = null
 instrument = 66
 midi_channel = 2
+root_note = null
 
 [node name="controls" type="Marker3D" parent="instruments/sequencer2"]
 transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.24113709, -0.46659946, 0.072165936)
