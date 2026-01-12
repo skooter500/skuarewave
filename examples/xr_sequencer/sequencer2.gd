@@ -213,15 +213,15 @@ func play_sample(e, row, col):
 	# Great example
 	change_instrument(midi_channel, instrument)
 	
-	var note = midi_notes[row]
+	var hit_note = midi_notes[row]
 	# print("play sample:" + str(i))
 	var m = InputEventMIDI.new()
 	m.message = MIDI_MESSAGE_NOTE_ON
-	m.pitch = note
+	m.pitch = hit_note
 	m.velocity = 100
 	m.channel = midi_channel
 	
-	print("Note: " + str(note) + " Channel: " + str(midi_channel))
+	print("Note: " + str(hit_note) + " Channel: " + str(midi_channel))
 		
 	midi_player.receive_raw_midi_message(m)	
 				
@@ -290,17 +290,19 @@ func make_sequencer():
 func play_sample_gate(e, row, col, duration):
 	var note = midi_notes[row]
 	play_sample(e, row, col)	
-	await get_tree().create_timer(duration - 0.2).timeout
+	await get_tree().create_timer(duration)
 	note_off(note)
 
 func play_step(col):
 	var p = Vector3(s * col * spacer, s * -1 * spacer, 0)
 			
 	$timer_ball.position = p
+	if stopped:
+		return
 	for row in range(notes):
 		if sequence[row][col]:
 			mm.multimesh.set_instance_color((col * notes) + row, hit_color)	
-			play_sample_gate(0, row, col, 1)		
+			play_sample_gate(0, row, col, 5)		
 			await get_tree().create_timer(0.2).timeout
 			if sequence[row][col] == Step.ON:
 				mm.multimesh.set_instance_color((col * notes) + row, in_color)	
@@ -310,21 +312,16 @@ func play_step(col):
 
 var step_index:int = 0
 
-func _on_timer_timeout() -> void:
+func next_step() -> void:
 	play_step(step_index)
 	step_index = (step_index + 1) % steps
 	pass # Replace with function body.
 
+var stopped = false
 
 func _on_start_stop_area_entered(area: Area3D) -> void:
 	# $"../sequencer/Timer".start()
-	
-	if $Timer.is_stopped():
-		start.emit()
-		$Timer.start()
-	else:
-		stop.emit()
-		$Timer.stop()
+	stopped = ! stopped
 	pass # Replace with function body.
 
 func _on_up_area_entered(area: Area3D) -> void:

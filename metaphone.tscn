@@ -73,13 +73,16 @@ script = ExtResource("1_byv7j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8232094)
 script = ExtResource("12_ucien")
 
+[node name="Timer" type="Timer" parent="instruments"]
+wait_time = 0.5
+autostart = true
+
 [node name="MidiPlayer" parent="instruments" instance=ExtResource("1_83we6")]
 key_shift = 2
 soundfont = "res://assets/Aspirin-Stereo.sf2"
 
 [node name="drums" parent="instruments" instance=ExtResource("17_s2ckv")]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.3711385e-08, 1.2707679, 0.7745184, -0.1665498)
-notes = null
 hit_color = Color(0, 0.24, 0.96, 0.32156864)
 midi_channel = 9
 root_note = 35
@@ -103,13 +106,8 @@ script = ExtResource("14_s2ckv")
 font = SubResource("Resource_byv7j")
 pad_scene = ExtResource("15_ucien")
 steps = 16
-notes = null
 out_color = Color(0.029999971, 1, 0.11083323, 0.3882353)
 in_color = Color(0.33901316, 0.6156455, 0.6028598, 0.52156866)
-hit_color = null
-instrument = null
-midi_channel = null
-root_note = null
 
 [node name="controls" type="Marker3D" parent="instruments/sequencer"]
 transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.24113709, -0.46659946, 0.072165936)
@@ -141,9 +139,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49959126, 0.7474096, -0.04
 [node name="scale_down" parent="instruments/sequencer/controls" instance=ExtResource("16_8d825")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38778615, 0.7464541, -0.043849096)
 
-[node name="Timer" type="Timer" parent="instruments/sequencer"]
-wait_time = 0.2
-
 [node name="timer_ball" type="MeshInstance3D" parent="instruments/sequencer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0782841, 0)
 mesh = SubResource("BoxMesh_twh6a")
@@ -158,13 +153,10 @@ script = ExtResource("14_s2ckv")
 font = SubResource("Resource_byv7j")
 pad_scene = ExtResource("15_ucien")
 steps = 16
-notes = null
 out_color = Color(0.029999971, 1, 0.11083323, 0.3882353)
 in_color = Color(0.33901316, 0.6156455, 0.6028598, 0.52156866)
-hit_color = null
 instrument = 66
 midi_channel = 2
-root_note = null
 
 [node name="controls" type="Marker3D" parent="instruments/sequencer2"]
 transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.24113709, -0.46659946, 0.072165936)
@@ -238,7 +230,7 @@ surface_material_override/0 = ExtResource("36_4cadk")
 [node name="XRHandModifier3D" type="XRHandModifier3D" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="1"]
 
 [node name="tip5" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="2" instance=ExtResource("7_65ndq")]
-transform = Transform3D(0.01489234, 0.39270008, 0.919546, -0.9930924, 0.11285266, -0.03211129, -0.11638325, -0.91271573, 0.39166808, -0.01110013, 0.04294307, -0.17161417)
+transform = Transform3D(0.01489234, 0.39270008, 0.919546, -0.9930924, 0.11285266, -0.03211129, -0.11638325, -0.91271573, 0.39166808, 0.036445767, 0.04294307, -0.17161417)
 bone_name = "LeftIndexTip"
 bone_idx = 9
 
@@ -314,6 +306,7 @@ transform = Transform3D(-0.220772, -0.975312, -0.00516406, 0.254535, -0.0627264,
 light_energy = 16.0
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
+[connection signal="timeout" from="instruments/Timer" to="instruments" method="_on_timer_timeout"]
 [connection signal="area_entered" from="instruments/sequencer/controls/up_semi" to="instruments/sequencer" method="_on_up_semi_area_entered"]
 [connection signal="area_entered" from="instruments/sequencer/controls/down_semi" to="instruments/sequencer" method="_on_down_semi_area_entered"]
 [connection signal="area_entered" from="instruments/sequencer/controls/stop_start" to="instruments/sequencer" method="_on_start_stop_area_entered"]
@@ -323,7 +316,6 @@ light_energy = 16.0
 [connection signal="area_entered" from="instruments/sequencer/controls/inst_down" to="instruments/sequencer" method="_on_inst_down_area_entered"]
 [connection signal="area_entered" from="instruments/sequencer/controls/scale_up" to="instruments/sequencer" method="_on_scale_area_entered"]
 [connection signal="area_entered" from="instruments/sequencer/controls/scale_down" to="instruments/sequencer" method="_on_scale_down_area_entered"]
-[connection signal="timeout" from="instruments/sequencer/Timer" to="instruments/sequencer" method="_on_timer_timeout"]
 [connection signal="area_entered" from="instruments/sequencer2/controls/up_semi" to="instruments/sequencer2" method="_on_up_semi_area_entered"]
 [connection signal="area_entered" from="instruments/sequencer2/controls/down_semi" to="instruments/sequencer2" method="_on_down_semi_area_entered"]
 [connection signal="area_entered" from="instruments/sequencer2/controls/stop_start" to="instruments/sequencer2" method="_on_start_stop_area_entered"]
@@ -334,9 +326,7 @@ light_energy = 16.0
 [connection signal="area_entered" from="instruments/sequencer2/controls/scale_up" to="instruments/sequencer2" method="_on_scale_area_entered"]
 [connection signal="area_entered" from="instruments/sequencer2/controls/scale_down" to="instruments/sequencer2" method="_on_scale_down_area_entered"]
 [connection signal="timeout" from="instruments/sequencer2/Timer" to="instruments/sequencer2" method="_on_timer_timeout"]
-[connection signal="area_entered" from="instruments/start_stop" to="instruments/drums" method="_on_start_stop_area_entered"]
-[connection signal="area_entered" from="instruments/start_stop" to="instruments/sequencer" method="_on_start_stop_area_entered"]
-[connection signal="area_entered" from="instruments/start_stop" to="instruments/sequencer2" method="_on_start_stop_area_entered"]
+[connection signal="area_entered" from="instruments/start_stop" to="instruments" method="_on_start_stop_area_entered"]
 [connection signal="pose_ended" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_ended"]
 [connection signal="pose_started" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_started"]
 [connection signal="pose_ended" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_ended"]

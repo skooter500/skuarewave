@@ -64,6 +64,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49959126, 0.7474096, -0.04
 [node name="scale_down" parent="controls" instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38778615, 0.7464541, -0.043849096)
 
+[node name="Label3D" type="Label3D" parent="controls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30681992, 0.74630535, -0.039757475)
+pixel_size = 0.0005
+modulate = Color(0, 1, 0.7166667, 0.46666667)
+text = "Major"
+outline_size = 0
+
+[node name="Label3D2" type="Label3D" parent="controls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30681992, 1.0357469, -0.039757475)
+pixel_size = 0.0005
+modulate = Color(0, 1, 0.7166667, 0.46666667)
+text = "Major"
+outline_size = 0
+
+[node name="Label3D3" type="Label3D" parent="controls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30681992, 0.9455968, -0.039757475)
+pixel_size = 0.0005
+modulate = Color(0, 1, 0.7166667, 0.46666667)
+text = "Major"
+outline_size = 0
+
+[node name="Label3D4" type="Label3D" parent="controls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30681992, 0.8415147, -0.039757475)
+pixel_size = 0.0005
+modulate = Color(0, 1, 0.7166667, 0.46666667)
+text = "Major"
+outline_size = 0
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 

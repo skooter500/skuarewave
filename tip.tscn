@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://cend6ikv2su2t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ieg28"]
-radius = 0.01
+radius = 0.02
 height = 0.04
 
 [node name="tip5" type="BoneAttachment3D"]
