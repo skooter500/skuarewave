@@ -10,8 +10,6 @@ var file_names = []
 @export var steps:int = 8
 @export var notes:int = 16
 
-var rows:int
-var cols:int
 
 signal start
 signal step
@@ -21,7 +19,7 @@ signal stop
 @export var in_color:Color
 @export var hit_color:Color
 
-enum Step {OFF, ON, HIT}
+enum Step {OFF, ON, HIT_ON, HIT_OFF}
 
 
 @export var instrument:int = 1
@@ -41,9 +39,12 @@ func _ready():
 	# load_samples()
 	initialise_sequence(notes, steps)
 	make_sequencer()
+	assign_colors()
 	midi_notes = get_scale_notes(root_note, mucical_scale)
 	
 	change_instrument(midi_channel, instrument)
+	
+	
 
 
 enum Scale {
@@ -165,11 +166,9 @@ func initialise_sequence(rows, cols):
 		for j in range(cols):
 			row.append(Step.OFF)
 		sequence.append(row)
-	self.rows = rows
-	self.cols = cols
 	
 func _process(delta: float) -> void:
-	assign_colors()
+	pass
 
 func assign_colors():
 	var i = 0
@@ -181,8 +180,12 @@ func assign_colors():
 					c = out_color
 				Step.ON:
 					c = in_color
-				Step.HIT:
-					c = hit_color					
+				Step.HIT_ON:
+					c = hit_color
+					sequence[row][col] = Step.ON
+				Step.HIT_OFF:
+					c = hit_color
+					sequence[row][col] = Step.OFF
 			mm.multimesh.set_instance_color(i, c)
 			i += 1
 
@@ -198,13 +201,13 @@ func print_sequence():
 			s += "1" if sequence[row][col] else "0" 
 		print(s)
 		
-func play_sample(e, i):
+func play_sample(e, row, col):
 	
 	# Potential race condition!!!!
 	# Great example
 	change_instrument(midi_channel, instrument)
 	
-	var note = midi_notes[i]
+	var note = midi_notes[row]
 	# print("play sample:" + str(i))
 	var m = InputEventMIDI.new()
 	m.message = MIDI_MESSAGE_NOTE_ON
@@ -214,9 +217,9 @@ func play_sample(e, i):
 	
 	print("Note: " + str(note) + " Channel: " + str(midi_channel))
 		
-	midi_player.receive_raw_midi_message(m)
-	
-	await get_tree().create_timer(1.0).timeout
+	midi_player.receive_raw_midi_message(m)	
+				
+	await get_tree().create_timer(0.8).timeout
 	
 	m = InputEventMIDI.new()
 	m.message = MIDI_MESSAGE_NOTE_OFF
@@ -230,14 +233,19 @@ func toggle(area, row, col):
 	print("Strike " + str(row) + " " + str(col))
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
 	if hand.gesture == "Index Pinch":
-		sequence[row][col] = Step.ON if sequence[row][col] == Step.OFF or sequence[row][col] == Step.HIT else Step.OFF  
+		sequence[row][col] = Step.ON if sequence[row][col] == Step.OFF else Step.OFF 
+		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
 	else:
-		if sequence[row][col] != Step.ON: sequence[row][col] = Step.HIT
-	play_sample(0, row)
+		mm.multimesh.set_instance_color((col * notes) + row, hit_color)	
+	play_sample(0, row, col)
 	
 func hand_exited(area, row, col):
+	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()	
 	if sequence[row][col] != Step.ON:
-		sequence[row][col] = Step.OFF
+		mm.multimesh.set_instance_color((col * notes) + row, out_color)	
+	else:
+		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
+	
 
 var s = 0.08
 var spacer = 1.1
@@ -276,9 +284,16 @@ func play_step(col):
 	var p = Vector3(s * col * spacer, s * -1 * spacer, 0)
 			
 	$timer_ball.position = p
-	for row in range(rows):
+	for row in range(notes):
 		if sequence[row][col]:
-			play_sample(0, row)
+			mm.multimesh.set_instance_color((col * notes) + row, hit_color)	
+			await get_tree().create_timer(0.2).timeout
+			play_sample(0, row, col)
+			if sequence[row][col] == Step.ON:
+				mm.multimesh.set_instance_color((col * notes) + row, in_color)	
+			else:
+				mm.multimesh.set_instance_color((col * notes) + row, out_color)	
+					
 
 var step_index:int = 0
 
