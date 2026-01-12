@@ -28,6 +28,61 @@ enum Step {OFF, ON, HIT_ON, HIT_OFF}
 
 @onready var midi_player:MidiPlayer = $"../MidiPlayer"
 
+func midi_note_to_string(midi_num: int) -> String:
+	# List of note names in an octave
+	var notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+	
+	# MIDI notes start at C-1 (which is 0). 
+	# To get the octave, we divide by 12 and subtract 1.
+	var octave = (midi_num / 12) - 1
+	
+	# To get the note name, we find the remainder when divided by 12.
+	var note_name = notes[midi_num % 12]
+	
+	return note_name + str(octave)
+	
+var instruments = [
+		# 1-8 Piano
+		"Acoustic Grand Piano", "Bright Acoustic Piano", "Electric Grand Piano", "Honky-tonk Piano",
+		"Electric Piano 1", "Electric Piano 2", "Harpsichord", "Clavi",
+		# 9-16 Chromatic Percussion
+		"Celesta", "Glockenspiel", "Music Box", "Vibraphone", "Marimba", "Xylophone", "Tubular Bells", "Dulcimer",
+		# 17-24 Organ
+		"Drawbar Organ", "Percussive Organ", "Rock Organ", "Church Organ", "Reed Organ", "Accordion", "Harmonica", "Tango Accordion",
+		# 25-32 Guitar
+		"Acoustic Guitar (nylon)", "Acoustic Guitar (steel)", "Electric Guitar (jazz)", "Electric Guitar (clean)",
+		"Electric Guitar (muted)", "Overdriven Guitar", "Distortion Guitar", "Guitar harmonics",
+		# 33-40 Bass
+		"Acoustic Bass", "Electric Bass (finger)", "Electric Bass (pick)", "Fretless Bass", "Slap Bass 1", "Slap Bass 2", "Synth Bass 1", "Synth Bass 2",
+		# 41-48 Strings
+		"Violin", "Viola", "Cello", "Contrabass", "Tremolo Strings", "Pizzicato Strings", "Orchestral Harp", "Timpani",
+		# 49-56 Ensemble
+		"String Ensemble 1", "String Ensemble 2", "SynthStrings 1", "SynthStrings 2", "Choir Aahs", "Voice Oohs", "Synth Voice", "Orchestra Hit",
+		# 57-64 Brass
+		"Trumpet", "Trombone", "Tuba", "Muted Trumpet", "French Horn", "Brass Section", "SynthBrass 1", "SynthBrass 2",
+		# 65-72 Reed
+		"Soprano Sax", "Alto Sax", "Tenor Sax", "Baritone Sax", "Oboe", "English Horn", "Bassoon", "Clarinet",
+		# 73-80 Pipe
+		"Piccolo", "Flute", "Recorder", "Pan Flute", "Blown Bottle", "Shakuhachi", "Whistle", "Ocarina",
+		# 81-88 Lead
+		"Lead 1 (square)", "Lead 2 (sawtooth)", "Lead 3 (calliope)", "Lead 4 (chiff)", "Lead 5 (charang)", "Lead 6 (voice)", "Lead 7 (fifths)", "Lead 8 (bass + lead)",
+		# 89-96 Pad
+		"Pad 1 (new age)", "Pad 2 (warm)", "Pad 3 (polysynth)", "Pad 4 (choir)", "Pad 5 (bowed)", "Pad 6 (metallic)", "Pad 7 (halo)", "Pad 8 (sweep)",
+		# 97-104 Effects
+		"FX 1 (rain)", "FX 2 (soundtrack)", "FX 3 (crystal)", "FX 4 (atmosphere)", "FX 5 (brightness)", "FX 6 (goblins)", "FX 7 (echoes)", "FX 8 (sci-fi)",
+		# 105-112 Ethnic
+		"Sitar", "Banjo", "Shamisen", "Koto", "Kalimba", "Bag pipe", "Fiddle", "Shanai",
+		# 113-120 Percussive
+		"Tinkle Bell", "Agogo", "Steel Drums", "Woodblock", "Taiko Drum", "Melodic Tom", "Synth Drum", "Reverse Cymbal",
+		# 121-128 Sound Effects
+		"Guitar Fret Noise", "Breath Noise", "Seashore", "Bird Tweet", "Telephone Ring", "Helicopter", "Applause", "Gunshot"
+	]
+
+# Example usage:
+# print(midi_note_to_string(60)) -> "C4"
+# print(midi_note_to_string(21)) -> "A0"
+# print(midi_note_to_string(70)) -> "A#4"
+
 func change_instrument(channel: int, program: int):
 	var midi_event = InputEventMIDI.new()
 	midi_event.channel = channel
@@ -177,10 +232,21 @@ func _process(delta: float) -> void:
 	update_labels()
 	pass
 
+func get_midi_instrument_name(program_num: int) -> String:
+	# MIDI Program numbers are 0-127. 
+	# If your input is 1-128, subtract 1 from program_num first.
+	if program_num < 0 or program_num > 127:
+		return "Unknown Instrument"
+
+	
+
+	return instruments[program_num]
+
 func update_labels():
-	$controls/instrument.text = str(instrument)
-	$controls/root.text = str(root_note)
-	$controls/mode.text = str(scale)
+	$controls/instrument.text = get_midi_instrument_name(instrument)
+	$controls/root.text = midi_note_to_string(root_note)
+	$controls/root2.text = midi_note_to_string(root_note)
+	$controls/mode.text = str(Scale.keys()[mucical_scale])
 
 func assign_colors():
 	var i = 0

@@ -36,7 +36,7 @@ instrument = 9
 midi_channel = 2
 
 [node name="controls" type="Marker3D" parent="."]
-transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.24113709, -0.46659946, 0.072165936)
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.14864141, -0.46659946, 0.072165936)
 
 [node name="up_semi" parent="controls" instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49900213, 0.8422569, -0.04448858)
@@ -73,6 +73,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30681992, 1.0413444, -0.03
 
 [node name="root" parent="controls" instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30681992, 0.9552486, -0.039757475)
+
+[node name="root2" parent="controls" instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30681992, 0.84563017, -0.039757475)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
