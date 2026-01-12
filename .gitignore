@@ -4,6 +4,7 @@ Thumbs.db
 .godot/*
 data/*
 dev/*
+android/*
 ui/*
 *.import
 default_bus_layout.tres

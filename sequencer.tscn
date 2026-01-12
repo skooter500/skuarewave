@@ -35,7 +35,7 @@ instrument = 9
 midi_channel = 2
 
 [node name="controls" type="Marker3D" parent="."]
-transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.013537087, -0.30006298, 3.3836685e-09)
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.24113709, -0.46659946, 0.072165936)
 
 [node name="up_semi" parent="controls" instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49900213, 0.8422569, -0.04448858)
@@ -52,17 +52,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5003638, 0.9519278, -0.045
 [node name="down" parent="controls" instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3840101, 0.9511898, -0.045584388)
 
+[node name="inst_up" parent="controls" instance=ExtResource("3_qjhr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5003638, 1.03878, -0.045584388)
+
+[node name="inst_down" parent="controls" instance=ExtResource("3_qjhr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3840101, 1.0380421, -0.045584388)
+
 [node name="scale_up" parent="controls" instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49959126, 1.041952, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49959126, 0.7474096, -0.045584388)
 
 [node name="scale_down" parent="controls" instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38778615, 1.0409966, -0.043849096)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38778615, 0.7464541, -0.043849096)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 
 [node name="timer_ball" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0782841, 0)
 mesh = SubResource("BoxMesh_twh6a")
 surface_material_override/0 = ExtResource("4_g1h6b")
 
@@ -74,6 +80,8 @@ multimesh = SubResource("MultiMesh_twh6a")
 [connection signal="area_entered" from="controls/stop_start" to="." method="_on_start_stop_area_entered"]
 [connection signal="area_entered" from="controls/up" to="." method="_on_up_area_entered"]
 [connection signal="area_entered" from="controls/down" to="." method="_on_down_area_entered"]
+[connection signal="area_entered" from="controls/inst_up" to="." method="_on_inst_up_area_entered"]
+[connection signal="area_entered" from="controls/inst_down" to="." method="_on_inst_down_area_entered"]
 [connection signal="area_entered" from="controls/scale_up" to="." method="_on_scale_area_entered"]
 [connection signal="area_entered" from="controls/scale_down" to="." method="_on_scale_down_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

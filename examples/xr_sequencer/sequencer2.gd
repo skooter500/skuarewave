@@ -38,7 +38,13 @@ func change_instrument(channel: int, program: int):
 func _ready():
 	# load_samples()
 	initialise_sequence(notes, steps)
+	
 	make_sequencer()
+	
+	in_color = Color.from_hsv(randf(), 1, 1, 0.5)
+	out_color = Color.from_hsv(fmod(in_color.h + 0.3, 1.0), 1, 1, 0.5)
+	hit_color = Color.from_hsv(fmod(out_color.h + 0.3, 1.0), 1, 1, 0.5)
+	
 	assign_colors()
 	midi_notes = get_scale_notes(root_note, mucical_scale)
 	
@@ -356,4 +362,17 @@ func _on_scale_down_area_entered(area: Area3D) -> void:
 		mucical_scale = Scale.size() -1
 	print("Scale: " + str(mucical_scale))
 	midi_notes = get_scale_notes(root_note, mucical_scale)
+	pass # Replace with function body.
+
+
+func _on_inst_up_area_entered(area: Area3D) -> void:
+	instrument = (instrument + 1) % 127
+	print(instrument)
+	pass # Replace with function body.
+
+
+func _on_inst_down_area_entered(area: Area3D) -> void:
+	instrument = (instrument - 1)
+	if instrument < 0:
+		instrument = 127
 	pass # Replace with function body.
