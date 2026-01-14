@@ -73,7 +73,7 @@ key_shift = 2
 soundfont = "res://assets/Aspirin-Stereo.sf2"
 
 [node name="drums" parent="instruments" instance=ExtResource("17_s2ckv")]
-transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 1.4229131, 0.7745184, -0.8892404)
+transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 3.4865966, 0.7745184, -0.88924026)
 hit_color = Color(0, 0.24, 0.96, 0.32156864)
 midi_channel = 9
 root_note = 35
@@ -95,7 +95,7 @@ mesh = SubResource("BoxMesh_s2ckv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72084427, 1.2822423, 0.4805627)
 
 [node name="sequencer" parent="instruments" instance=ExtResource("17_s2ckv")]
-transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -0.9510298, 0.8463087, 5.312084e-12)
+transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -1.4260659, 0.8463087, 2.07698e-08)
 instrument = 17
 midi_channel = 1
 root_note = 60
@@ -104,7 +104,7 @@ root_note = 60
 multimesh = SubResource("MultiMesh_s2ckv")
 
 [node name="sequencer2" parent="instruments" instance=ExtResource("17_s2ckv")]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.23772669, 0.8463087, -1.3263329)
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.19837236, 0.44135952, -0.48528433)
 instrument = 25
 root_note = 60
 
