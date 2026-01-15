@@ -25,6 +25,11 @@ func _ready() -> void:
 	var y = remap(value, min, max, start_y, end_y)
 	global_position.y = y
 
+func set_value(value):
+	self.value = value
+	var y = remap(value, min, max, start_y, end_y)
+	global_position.y = y
+	  
 
 func _on_grab_area_entered(area: Area3D) -> void:
 	print("Hand Entered")

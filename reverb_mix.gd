@@ -11,4 +11,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if "wet" in effect:
 		effect.wet = $grab.value
-	effect.dry = 1.0 - $grab.value
+		effect.dry = 1.0 - $grab.value

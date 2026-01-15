@@ -7,9 +7,9 @@ var effect:AudioEffectLowPassFilter
 
 func _ready() -> void:
 	effect = AudioServer.get_bus_effect(bus_index, effect_index)
-	$grab.set_value(effect.cutoff_hz)
+	$grab.set_value(effect.resonance)
 	pass
 
 func _process(delta: float) -> void:
-	effect.cutoff_hz = $grab.value	
+	effect.resonance = $grab.value	
 	pass	

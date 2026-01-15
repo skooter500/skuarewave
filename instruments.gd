@@ -26,7 +26,12 @@ func _on_reverb_area_entered(_area: Area3D) -> void:
 func _on_delay_area_entered(_area: Area3D) -> void:
 	if not _has_effect(0, AudioEffectDelay):
 		var delay = AudioEffectDelay.new()
-		
+		delay.tap1_active = true
+		delay.tap1_delay_ms = 250.0  # Quarter note at 120 BPM
+		delay.tap1_level_db = -6
+		delay.feedback_active = true
+		delay.feedback_delay_ms = 250.0
+		delay.feedback_level_db = -6  # Crank for dub-style repeats
 		AudioServer.add_bus_effect(0, delay)
 	else:
 		_remove_effect(0, AudioEffectDelay)

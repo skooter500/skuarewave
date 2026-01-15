@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwytkrjomji6m"]
+
+[ext_resource type="PackedScene" uid="uid://bo3p0qs3gk7ji" path="res://analog.tscn" id="1_6lhm0"]
+[ext_resource type="Script" uid="uid://kxuny0ts5hjo" path="res://low_cut.gd" id="2_d8rx1"]
+[ext_resource type="Script" uid="uid://m4a0tfbb687n" path="res://low_res.gd" id="3_mgabo"]
+
+[node name="low_pass_filter" type="Marker3D"]
+
+[node name="low_cut" parent="." instance=ExtResource("1_6lhm0")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.99630046, 1.3463478, 0.4796364)
+script = ExtResource("2_d8rx1")
+
+[node name="grab" parent="low_cut" index="0"]
+max = 20000.0
+
+[node name="mesh" parent="low_cut/grab" index="1"]
+skeleton = NodePath("../../../..")
+
+[node name="title" parent="low_cut" index="1"]
+text = "LOW CUT"
+
+[node name="low_res" parent="." instance=ExtResource("1_6lhm0")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.0953448, 1.3463478, 0.47963643)
+script = ExtResource("3_mgabo")
+
+[node name="grab" parent="low_res" index="0"]
+value = 1.0
+max = 4.0
+
+[node name="mesh" parent="low_res/grab" index="1"]
+skeleton = NodePath("../../../..")
+
+[node name="title" parent="low_res" index="1"]
+text = "LOW RES"
+
+[editable path="low_cut"]
+[editable path="low_res"]

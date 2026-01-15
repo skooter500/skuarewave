@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://ctufrpn842xq2" path="res://reverb_mix.gd" id="8_ymxam"]
 [ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://hand.gd" id="9_00tvn"]
 [ext_resource type="Script" uid="uid://do1q716vi5th3" path="res://vol.gd" id="9_ymxam"]
-[ext_resource type="Script" uid="uid://kxuny0ts5hjo" path="res://low_cut.gd" id="10_uo375"]
+[ext_resource type="Script" uid="uid://c3j46j5t5te57" path="res://delay_mix.gd" id="10_uo375"]
 [ext_resource type="Script" uid="uid://n7iy2lr1dvkr" path="res://instruments.gd" id="12_ucien"]
 [ext_resource type="PackedScene" uid="uid://2i1nqhynnlm0" path="res://button.tscn" id="16_8d825"]
 [ext_resource type="PackedScene" uid="uid://b7dvkr5ss01as" path="res://sequencer.tscn" id="17_s2ckv"]
@@ -120,9 +120,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6
 text = "REVERB"
 horizontal_alignment = 2
 
-[node name="reverb" parent="instruments" instance=ExtResource("16_8d825")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72084427, 1.4174259, 0.4805627)
-
 [node name="mode3" parent="instruments" instance=ExtResource("6_s2ckv")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6742881, 1.5096089, 0.47975582)
 text = "DELAY"
@@ -137,7 +134,7 @@ text = "STOP/START"
 horizontal_alignment = 2
 
 [node name="vol" parent="instruments" instance=ExtResource("7_8d825")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2012637, 1.3463478, 0.4796364)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0071368, 1.3463478, 0.4796364)
 script = ExtResource("9_ymxam")
 
 [node name="grab" parent="instruments/vol" index="0"]
@@ -148,31 +145,18 @@ max = 10.0
 text = "VOLUME"
 
 [node name="reverb_mix2" parent="instruments" instance=ExtResource("7_8d825")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.887748, 1.3463478, 0.4796364)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.86476976, 1.3463478, 0.4796364)
 script = ExtResource("8_ymxam")
 
 [node name="title" parent="instruments/reverb_mix2" index="1"]
 text = "REVERB"
 
-[node name="low_cut" parent="instruments" instance=ExtResource("7_8d825")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.887748, 1.3463478, 0.4796364)
+[node name="delay_mix" parent="instruments" instance=ExtResource("7_8d825")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.86476976, 1.3463478, 0.4796364)
 script = ExtResource("10_uo375")
 
-[node name="grab" parent="instruments/low_cut" index="0"]
-max = 20000.0
-
-[node name="title" parent="instruments/low_cut" index="1"]
-text = "LOW CUT"
-
-[node name="low_res" parent="instruments" instance=ExtResource("7_8d825")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.887748, 1.3463478, 0.4796364)
-script = ExtResource("10_uo375")
-
-[node name="grab" parent="instruments/low_res" index="0"]
-max = 20000.0
-
-[node name="title" parent="instruments/low_res" index="1"]
-text = "LOW CUT"
+[node name="title" parent="instruments/delay_mix" index="1"]
+text = "REVERB"
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
@@ -280,7 +264,6 @@ light_energy = 16.0
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
 [connection signal="timeout" from="instruments/Timer" to="instruments" method="_on_timer_timeout"]
 [connection signal="area_entered" from="instruments/start_stop" to="instruments" method="_on_start_stop_area_entered"]
-[connection signal="area_entered" from="instruments/reverb" to="instruments" method="_on_reverb_area_entered"]
 [connection signal="area_entered" from="instruments/delay" to="instruments" method="_on_delay_area_entered"]
 [connection signal="pose_ended" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_ended"]
 [connection signal="pose_started" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_started"]
@@ -299,7 +282,6 @@ light_energy = 16.0
 [editable path="instruments/mode2"]
 [editable path="instruments/vol"]
 [editable path="instruments/reverb_mix2"]
-[editable path="instruments/low_cut"]
-[editable path="instruments/low_res"]
+[editable path="instruments/delay_mix"]
 [editable path="XROrigin3D/left/LeftHandHumanoid2"]
 [editable path="XROrigin3D/right/RightHandHumanoid2"]
