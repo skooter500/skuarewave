@@ -9,6 +9,8 @@ var height = 1
 @export var min:float = 0
 @export var max:float = 1
 
+signal value_changed
+
 func _ready() -> void:
 	var c = Color.from_hsv(randf(), 1, 1, 0.5)
 
@@ -19,6 +21,9 @@ func _ready() -> void:
 	
 	start_y = global_position.y
 	end_y = global_position.y + height
+	
+	var y = remap(value, min, max, start_y, end_y)
+	global_position.y = y
 
 
 func _on_grab_area_entered(area: Area3D) -> void:
@@ -40,7 +45,8 @@ func _process(delta: float) -> void:
 		
 		# hand_start_y = hand.position.y		
 	value = remap(global_position.y, start_y, end_y, min, max)
-	$"../label".text = str(value)
+	
+	$"label".text = "%.2f" % value
 
 
 func _on_area_entered(area: Area3D) -> void:
