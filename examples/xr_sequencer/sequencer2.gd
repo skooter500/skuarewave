@@ -387,7 +387,7 @@ func play_sample_gate(e, row, col, duration):
 	if hit_note == note:
 		return
 	
-	print("Note off: " + str(note) + " Channel: " + str(midi_channel))	
+	print("Note on: " + str(note) + " Channel: " + str(midi_channel))	
 	play_sample(e, row, col)	
 	await get_tree().create_timer(duration).timeout
 	print("Note off: " + str(note) + " Channel: " + str(midi_channel))

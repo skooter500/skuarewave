@@ -66,7 +66,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 script = ExtResource("1_byv7j")
 
 [node name="instruments" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0900598, 0, -0.8232094)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0900598, 0, -0.38366947)
 script = ExtResource("12_ucien")
 
 [node name="Timer" type="Timer" parent="instruments"]

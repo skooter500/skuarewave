@@ -12,15 +12,24 @@ func _ready() -> void:
 	effect.feedback_active = true
 	effect.feedback_delay_ms = 250.0
 	effect.feedback_level_db = -6  # Crank for dub-style repeats
-	effect.dry = 0
+	effect.dry = 1
 	set_delay_amount(0)
 
-# Fade delay in/out by adjusting tap volumes
-func set_delay_amount(value: float):  # 0.0 to 1.0
-	var db = lerp(-60, -6, value)  # -60db = silent, -6db = loud
-	effect.tap1_level_db = db
-	effect.tap2_level_db = db  # if using multiple taps
-	effect.feedback_level_db = db - 6  # Keep feedback quieter
+func set_delay_amount(value: float):
+	if value == 0.0:
+		effect.tap1_active = false
+		effect.tap2_active = false
+		effect.feedback_active = false
+	else:
+		effect.tap1_active = true
+		effect.feedback_active = true
+		
+		# Almost linear, slight curve
+		var curved = pow(value, 0.7)
+		effect.tap1_level_db = lerp(-30, -6, curved)  # Narrower dB range
+		effect.feedback_level_db = lerp(-35, -10, curved)  # More feedback presence
+
+
 
 func _process(delta: float) -> void:
 	set_delay_amount($grab.value)
