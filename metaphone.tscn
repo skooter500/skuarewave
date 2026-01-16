@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c8tx40me7j55t"]
+[gd_scene load_steps=36 format=3 uid="uid://c8tx40me7j55t"]
 
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="1_83we6"]
 [ext_resource type="Script" uid="uid://nxajcnxqcaey" path="res://timer.gd" id="1_byv7j"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://hand.gd" id="9_00tvn"]
 [ext_resource type="Script" uid="uid://do1q716vi5th3" path="res://vol.gd" id="9_ymxam"]
 [ext_resource type="Script" uid="uid://c3j46j5t5te57" path="res://delay_mix.gd" id="10_uo375"]
+[ext_resource type="Script" uid="uid://ctrwjvs1jddta" path="res://record_2.gd" id="11_2c0tl"]
 [ext_resource type="Script" uid="uid://n7iy2lr1dvkr" path="res://instruments.gd" id="12_ucien"]
 [ext_resource type="PackedScene" uid="uid://2i1nqhynnlm0" path="res://button.tscn" id="16_8d825"]
 [ext_resource type="PackedScene" uid="uid://b7dvkr5ss01as" path="res://sequencer.tscn" id="17_s2ckv"]
@@ -23,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://df5hynbooj1uj" path="res://addons/hand_pose_detector/hand_pose_detector.tscn" id="38_4ru4y"]
 [ext_resource type="PackedScene" uid="uid://b2447e5p6kwug" path="res://examples/room/scene_anchor.tscn" id="39_5wcqy"]
 [ext_resource type="PackedScene" uid="uid://cukl4cie1tact" path="res://examples/room/scene_global_mesh.tscn" id="40_c1vpu"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_uo375"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_wjjwd"]
 
@@ -69,6 +72,14 @@ script = ExtResource("1_byv7j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0900598, 0, -0.42798713)
 script = ExtResource("12_ucien")
 
+[node name="record2" type="Node3D" parent="instruments"]
+script = ExtResource("11_2c0tl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="instruments/record2"]
+stream = SubResource("AudioStreamMicrophone_uo375")
+autoplay = true
+bus = &"Record"
+
 [node name="Timer" type="Timer" parent="instruments"]
 wait_time = 0.2
 
@@ -77,7 +88,7 @@ key_shift = 2
 soundfont = "res://assets/Aspirin-Stereo.sf2"
 
 [node name="drums" parent="instruments" instance=ExtResource("17_s2ckv")]
-transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 3.4865966, 0.7745184, -0.88924026)
+transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 1.4953325, 0.7745184, 0.3973448)
 hit_color = Color(0, 0.24, 0.96, 0.32156864)
 midi_channel = 9
 root_note = 35
@@ -96,7 +107,7 @@ visible = false
 mesh = SubResource("BoxMesh_s2ckv")
 
 [node name="sequencer" parent="instruments" instance=ExtResource("17_s2ckv")]
-transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -1.7306789, 0.8463087, 3.408486e-08)
+transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -0.5646795, 0.8463087, 1.4764935)
 instrument = 17
 midi_channel = 1
 root_note = 60
@@ -105,7 +116,7 @@ root_note = 60
 multimesh = SubResource("MultiMesh_s2ckv")
 
 [node name="sequencer2" parent="instruments" instance=ExtResource("17_s2ckv")]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.19837236, 0.44135952, -0.48528433)
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.2411685, 0.44135952, -0.7860879)
 instrument = 25
 root_note = 60
 
@@ -113,6 +124,7 @@ root_note = 60
 multimesh = SubResource("MultiMesh_65ndq")
 
 [node name="controls" type="Marker3D" parent="instruments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2149153, 0, 1.4318666)
 
 [node name="start_stop" parent="instruments/controls" instance=ExtResource("16_8d825")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55855256, 1.3490331, 0.4805627)

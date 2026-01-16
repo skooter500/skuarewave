@@ -407,7 +407,7 @@ func play_step(col):
 	var p = Vector3(s * col * spacer, s * -1 * spacer, 0)
 			
 	$timer_ball.position = p	
-	timer_ball_top.position = Vector3(0, s * (notes) * spacer, 0)
+	timer_ball_top.position = Vector3(s * col * spacer, s * (notes) * spacer, 0)
 	
 	if stopped:
 		return
