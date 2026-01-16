@@ -11,6 +11,8 @@ var height = 0.5
 
 @export var whole:bool = false 
 
+@export var rod:PackedScene
+
 signal value_changed
 
 func _ready() -> void:
@@ -20,12 +22,19 @@ func _ready() -> void:
 	mat = mat.duplicate()
 	mat.albedo_color = c
 	$mesh.set_surface_override_material(0, mat)
-	
+	$"../rod".set_surface_override_material(0, mat)
 	start_y = global_position.y
 	end_y = global_position.y + height
 	
 	var y = remap(value, min, max, start_y, end_y)
 	global_position.y = y
+	create_rod()
+	
+func create_rod():
+	var y = start_y + (height / 2.0)
+	$"../rod".global_position.y = y
+	$"../rod".scale.y = height
+	pass
 
 func set_value(value):
 	self.value = value

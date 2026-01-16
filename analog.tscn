@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo3p0qs3gk7ji"]
+[gd_scene load_steps=7 format=3 uid="uid://bo3p0qs3gk7ji"]
 
 [ext_resource type="Script" uid="uid://x8lqdu7ewv6h" path="res://analog.gd" id="1_wukub"]
 [ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://label.tscn" id="2_aigei"]
@@ -11,6 +11,9 @@ transparency = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g1h6b"]
 size = Vector3(0.05870056, 0.6190758, 0.05883789)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wukub"]
+size = Vector3(0.02, 1, 0.01)
 
 [node name="analog" type="Marker3D"]
 
@@ -33,6 +36,9 @@ shape = SubResource("BoxShape3D_g1h6b")
 [node name="title" parent="." instance=ExtResource("2_aigei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050591536, 0)
 horizontal_alignment = 1
+
+[node name="rod" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_wukub")
 
 [connection signal="area_entered" from="grab" to="grab" method="_on_grab_area_entered"]
 [connection signal="area_exited" from="grab" to="grab" method="_on_grab_area_exited"]
