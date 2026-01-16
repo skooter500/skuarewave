@@ -66,7 +66,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 script = ExtResource("1_byv7j")
 
 [node name="instruments" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0900598, 0, -0.38366947)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0900598, 0, -0.42798713)
 script = ExtResource("12_ucien")
 
 [node name="Timer" type="Timer" parent="instruments"]
@@ -95,9 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2017696, 1.3538728, -0.180
 visible = false
 mesh = SubResource("BoxMesh_s2ckv")
 
-[node name="start_stop" parent="instruments" instance=ExtResource("16_8d825")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72084427, 1.2822423, 0.4805627)
-
 [node name="sequencer" parent="instruments" instance=ExtResource("17_s2ckv")]
 transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -1.4260659, 0.8463087, 2.07698e-08)
 instrument = 17
@@ -115,48 +112,65 @@ root_note = 60
 [node name="MultiMeshInstance3D" parent="instruments/sequencer2" index="3"]
 multimesh = SubResource("MultiMesh_65ndq")
 
-[node name="mode" parent="instruments" instance=ExtResource("6_s2ckv")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6742881, 1.4222487, 0.47975582)
-text = "REVERB"
-horizontal_alignment = 2
+[node name="controls" type="Marker3D" parent="instruments"]
 
-[node name="mode3" parent="instruments" instance=ExtResource("6_s2ckv")]
+[node name="start_stop" parent="instruments/controls" instance=ExtResource("16_8d825")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6679434, 1.3490331, 0.4805627)
+
+[node name="vol" parent="instruments/controls" instance=ExtResource("7_8d825")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0990498, 1.3463478, 0.4796364)
+script = ExtResource("9_ymxam")
+
+[node name="grab" parent="instruments/controls/vol" index="0"]
+value = 10.0
+max = 10.0
+
+[node name="mesh" parent="instruments/controls/vol/grab" index="1"]
+skeleton = NodePath("../../../..")
+
+[node name="title" parent="instruments/controls/vol" index="1"]
+text = "VOLUME"
+
+[node name="mode3" parent="instruments/controls" instance=ExtResource("6_s2ckv")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6742881, 1.5096089, 0.47975582)
-text = "DELAY"
+text = "MIC"
 horizontal_alignment = 2
 
-[node name="delay" parent="instruments" instance=ExtResource("16_8d825")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72084427, 1.504786, 0.4805627)
-
-[node name="mode2" parent="instruments" instance=ExtResource("6_s2ckv")]
+[node name="mode2" parent="instruments/controls" instance=ExtResource("6_s2ckv")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.66227347, 1.2854674, 0.47975582)
 text = "STOP/START"
 horizontal_alignment = 2
 
-[node name="vol" parent="instruments" instance=ExtResource("7_8d825")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0990498, 1.3463478, 0.4796364)
-script = ExtResource("9_ymxam")
-
-[node name="grab" parent="instruments/vol" index="0"]
-value = 10.0
-max = 10.0
-
-[node name="title" parent="instruments/vol" index="1"]
-text = "VOLUME"
-
-[node name="reverb_mix2" parent="instruments" instance=ExtResource("7_8d825")]
+[node name="reverb_mix2" parent="instruments/controls" instance=ExtResource("7_8d825")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.86476976, 1.3463478, 0.4796364)
 script = ExtResource("8_ymxam")
 
-[node name="title" parent="instruments/reverb_mix2" index="1"]
+[node name="mesh" parent="instruments/controls/reverb_mix2/grab" index="1"]
+skeleton = NodePath("../../../..")
+
+[node name="title" parent="instruments/controls/reverb_mix2" index="1"]
 text = "REVERB"
 
-[node name="delay_mix" parent="instruments" instance=ExtResource("7_8d825")]
+[node name="delay_mix" parent="instruments/controls" instance=ExtResource("7_8d825")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.9685682, 1.3463478, 0.4796364)
 script = ExtResource("10_uo375")
 
-[node name="title" parent="instruments/delay_mix" index="1"]
+[node name="mesh" parent="instruments/controls/delay_mix/grab" index="1"]
+skeleton = NodePath("../../../..")
+
+[node name="title" parent="instruments/controls/delay_mix" index="1"]
 text = "Delay"
+
+[node name="mic_vol" parent="instruments/controls" instance=ExtResource("7_8d825")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7622316, 1.3463478, 0.47963637)
+script = ExtResource("9_ymxam")
+bus_index = 1
+
+[node name="mesh" parent="instruments/controls/mic_vol/grab" index="1"]
+skeleton = NodePath("../../../..")
+
+[node name="title" parent="instruments/controls/mic_vol" index="1"]
+text = "MIC"
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
@@ -263,8 +277,7 @@ light_energy = 16.0
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
 [connection signal="timeout" from="instruments/Timer" to="instruments" method="_on_timer_timeout"]
-[connection signal="area_entered" from="instruments/start_stop" to="instruments" method="_on_start_stop_area_entered"]
-[connection signal="area_entered" from="instruments/delay" to="instruments" method="_on_delay_area_entered"]
+[connection signal="area_entered" from="instruments/controls/start_stop" to="instruments" method="_on_start_stop_area_entered"]
 [connection signal="pose_ended" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_ended"]
 [connection signal="pose_started" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_started"]
 [connection signal="pose_ended" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_ended"]
@@ -277,11 +290,11 @@ light_energy = 16.0
 [editable path="instruments/sequencer2/controls/clear"]
 [editable path="instruments/sequencer2/controls/gate"]
 [editable path="instruments/sequencer2/controls/vel"]
-[editable path="instruments/mode"]
-[editable path="instruments/mode3"]
-[editable path="instruments/mode2"]
-[editable path="instruments/vol"]
-[editable path="instruments/reverb_mix2"]
-[editable path="instruments/delay_mix"]
+[editable path="instruments/controls/vol"]
+[editable path="instruments/controls/mode3"]
+[editable path="instruments/controls/mode2"]
+[editable path="instruments/controls/reverb_mix2"]
+[editable path="instruments/controls/delay_mix"]
+[editable path="instruments/controls/mic_vol"]
 [editable path="XROrigin3D/left/LeftHandHumanoid2"]
 [editable path="XROrigin3D/right/RightHandHumanoid2"]

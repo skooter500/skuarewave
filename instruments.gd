@@ -49,3 +49,7 @@ func _remove_effect(bus_idx: int, effect_class) -> void:
 		if is_instance_of(AudioServer.get_bus_effect(bus_idx, i), effect_class):
 			AudioServer.remove_bus_effect(bus_idx, i)
 			break # Stop after removing one instance
+
+
+func _on_mic_area_entered(area: Area3D) -> void:
+	pass # Replace with function body.
