@@ -3,6 +3,7 @@ extends Marker3D
 @export var font:Font 
 
 var sequence = []
+var notes_in_cell = []
 var file_names = []
 
 @export var pad_scene:PackedScene
@@ -233,9 +234,12 @@ func test_sequence():
 func initialise_sequence(rows, cols):
 	for i in range(rows):
 		var row = []
+		var row1 = []
 		for j in range(cols):
 			row.append(Step.OFF)
+			row1.append(-1)
 		sequence.append(row)
+		notes_in_cell.append(row1)
 	
 func _process(delta: float) -> void:
 	update_labels()
@@ -309,9 +313,9 @@ func hand_entered(area, row, col):
 	else:
 		mm.multimesh.set_instance_color((col * notes) + row, hit_color)	
 	
-	hit_note = midi_notes[row]
-	
+	hit_note = midi_notes[row]	
 	note_on(hit_note)
+	notes_in_cell[row][col] = hit_note
 
 func note_on(note):
 	change_instrument(midi_channel, instrument)
@@ -342,8 +346,8 @@ func hand_exited(area, row, col):
 		mm.multimesh.set_instance_color((col * notes) + row, out_color)	
 	else:
 		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
-	
-	note_off(midi_notes[row])
+
+	note_off(notes_in_cell[row][col])
 	hit_note = -1 
 	
 var s = 0.08

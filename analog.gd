@@ -9,6 +9,8 @@ var height = 0.5
 @export var min:float = 0
 @export var max:float = 1
 
+@export var whole:bool = false 
+
 signal value_changed
 
 func _ready() -> void:
@@ -51,4 +53,7 @@ func _process(delta: float) -> void:
 		# hand_start_y = hand.position.y		
 	value = remap(global_position.y, start_y, end_y, min, max)
 	
-	$"label".text = "%.2f" % value
+	if whole:
+		$"label".text = str(int(round(value)))
+	else:
+		$"label".text = "%.2f" % value
