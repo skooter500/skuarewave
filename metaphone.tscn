@@ -82,6 +82,7 @@ transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.99999994, 0, -
 hit_color = Color(0, 0.24, 0.96, 0.32156864)
 midi_channel = 9
 root_note = 35
+mucical_scale = 0
 
 [node name="record" type="Node" parent="instruments"]
 
@@ -108,7 +109,7 @@ multimesh = SubResource("MultiMesh_s2ckv")
 
 [node name="sequencer2" parent="instruments" instance=ExtResource("17_s2ckv")]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.042931557, 0.8446685, -0.58785135)
-instrument = 1
+instrument = 81
 root_note = 60
 
 [node name="MultiMeshInstance3D" parent="instruments/sequencer2" index="3"]
@@ -139,7 +140,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.5
 script = ExtResource("8_2c0tl")
 
 [node name="grab" parent="instruments/controls/tempo" index="0"]
-value = 120.0
+value = 90.0
 min = 60.0
 max = 200.0
 whole = true

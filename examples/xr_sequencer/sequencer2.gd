@@ -153,7 +153,7 @@ enum Scale {
 	IRISH,  # Hexatonic ` common in trad
 }
 
-var mucical_scale:Scale = Scale.MAJOR
+@export var mucical_scale:Scale = Scale.PENTATONIC_MINOR
 
 # Define scale intervals (semitones from root)
 var scale_intervals = {
@@ -439,15 +439,17 @@ func _on_start_stop_area_entered(area: Area3D) -> void:
 	pass # Replace with function body.
 
 func _on_up_area_entered(area: Area3D) -> void:
-	root_note = root_note + 12
-	midi_notes = get_scale_notes(root_note, mucical_scale)
+	if root_note + 12 < 128:
+		root_note = root_note + 12
+		midi_notes = get_scale_notes(root_note, mucical_scale)
 
 	pass # Replace with function body.
 
 
 func _on_down_area_entered(area: Area3D) -> void:
-	root_note = root_note - 12
-	midi_notes = get_scale_notes(root_note, mucical_scale)
+	if root_note - 12 >= 0:	
+		root_note = root_note - 12
+		midi_notes = get_scale_notes(root_note, mucical_scale)
 	pass # Replace with function body.
 	
 	
@@ -463,14 +465,16 @@ func _on_scale_area_entered(area: Area3D) -> void:
 
 
 func _on_up_semi_area_entered(area: Area3D) -> void:
-	root_note += 1
-	midi_notes = get_scale_notes(root_note, mucical_scale)	
+	if root_note < 127:
+		root_note += 1
+		midi_notes = get_scale_notes(root_note, mucical_scale)	
 	pass # Replace with function body.
 
 
 func _on_down_semi_area_entered(area: Area3D) -> void:
-	root_note -= 1
-	midi_notes = get_scale_notes(root_note, mucical_scale)
+	if root_note > 0:
+		root_note -= 1
+		midi_notes = get_scale_notes(root_note, mucical_scale)
 	pass # Replace with function body.
 
 
