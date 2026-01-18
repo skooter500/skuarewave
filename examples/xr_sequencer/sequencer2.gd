@@ -313,13 +313,14 @@ func hand_entered(area, row, col):
 	else:
 		mm.multimesh.set_instance_color((col * notes) + row, hit_color)	
 	
+	await get_tree().process_frame
 	hit_note = midi_notes[row]	
 	note_on(hit_note)
 	notes_in_cell[row][col] = hit_note
 
 func note_on(note):
 	change_instrument(midi_channel, instrument)
-	# print("play sample:" + str(i))
+	print("Note on: " + str(note))
 	var m = InputEventMIDI.new()
 	m.message = MIDI_MESSAGE_NOTE_ON
 	m.pitch = note
@@ -329,7 +330,7 @@ func note_on(note):
 	
 
 func note_off(note):
-	
+	print("Note off: " + str(note))	
 	var m = InputEventMIDI.new()
 	m.message = MIDI_MESSAGE_NOTE_OFF
 	m.pitch = note
@@ -340,7 +341,7 @@ func note_off(note):
 	
 
 func hand_exited(area, row, col):
-	
+	print("Hand exited " + str(row) + " " + str(col))	
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()	
 	if sequence[row][col] != Step.ON:
 		mm.multimesh.set_instance_color((col * notes) + row, out_color)	

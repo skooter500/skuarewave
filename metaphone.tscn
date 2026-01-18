@@ -48,7 +48,7 @@ use_colors = true
 mesh = SubResource("BoxMesh_byv7j")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ieg28"]
-radius = 0.01
+radius = 0.02
 height = 0.04
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_00q4b"]
@@ -74,7 +74,7 @@ script = ExtResource("12_ucien")
 wait_time = 0.2
 
 [node name="MidiPlayer" parent="instruments" instance=ExtResource("1_83we6")]
-volume_db = 0.0
+volume_db = -10.0
 soundfont = "res://assets/Aspirin-Stereo.sf2"
 
 [node name="drums" parent="instruments" instance=ExtResource("17_s2ckv")]
@@ -201,7 +201,7 @@ spawn_in_front = NodePath("../../instruments")
 [node name="AudioListener3D" type="AudioListener3D" parent="XROrigin3D/XRCamera3D"]
 
 [node name="left" type="XRNode3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28372958, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28372958, -0.08487674, 0)
 tracker = &"/user/hand_tracker/left"
 show_when_tracked = true
 script = ExtResource("9_00tvn")
@@ -221,6 +221,9 @@ surface_material_override/0 = ExtResource("36_4cadk")
 transform = Transform3D(0.01489234, 0.39270008, 0.919546, -0.9930924, 0.11285266, -0.03211129, -0.11638325, -0.91271573, 0.39166808, -0.01110013, 0.04294307, -0.17161417)
 bone_name = "LeftIndexTip"
 bone_idx = 9
+
+[node name="right_hand" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D/tip5" index="0"]
+transform = Transform3D(1, 0, -3.7252903e-09, 0, 1.0000002, -2.9802322e-08, 0, -2.9802322e-08, 1.0000005, 0.0037370138, -0.0004246682, 0.00012084842)
 
 [node name="right" type="XRNode3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.382, 0, 0)
@@ -315,4 +318,5 @@ light_energy = 16.0
 [editable path="instruments/controls/delay_mix"]
 [editable path="instruments/controls/mic_vol"]
 [editable path="XROrigin3D/left/LeftHandHumanoid2"]
+[editable path="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D/tip5"]
 [editable path="XROrigin3D/right/RightHandHumanoid2"]
