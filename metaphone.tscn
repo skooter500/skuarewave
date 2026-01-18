@@ -74,7 +74,7 @@ script = ExtResource("12_ucien")
 wait_time = 0.2
 
 [node name="MidiPlayer" parent="instruments" instance=ExtResource("1_83we6")]
-key_shift = 2
+volume_db = 0.0
 soundfont = "res://assets/Aspirin-Stereo.sf2"
 
 [node name="drums" parent="instruments" instance=ExtResource("17_s2ckv")]
