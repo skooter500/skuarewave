@@ -14,6 +14,7 @@ func _on_start_stop_area_entered(area: Area3D) -> void:
 func _on_timer_timeout() -> void:
 	$sequencer.next_step()
 	$sequencer2.next_step()
+	$sequencer3.next_step()
 	$drums.next_step()
 	pass # Replace with function body.
 
