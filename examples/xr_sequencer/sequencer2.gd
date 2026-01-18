@@ -314,6 +314,8 @@ func play_sample(e, row, col):
 var exit_queue = []
 var enter_queue = []
 	
+var note_count = {}  # Track how many cells are holding each note
+
 func hand_entered(area, row, col):
 	print("Hand Entered " + str(row) + " " + str(col))
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
@@ -324,8 +326,35 @@ func hand_entered(area, row, col):
 		mm.multimesh.set_instance_color((col * notes) + row, hit_color)	
 	
 	hit_note = midi_notes[row]
-	enter_queue.append(hit_note)
+	
+	# Initialize counter if needed
+	if not note_count.has(hit_note):
+		note_count[hit_note] = 0
+	
+	# Only queue note-on if this is the FIRST instance
+	if note_count[hit_note] == 0:
+		enter_queue.append(hit_note)
+	
+	# Increment the count
+	note_count[hit_note] += 1
 	notes_in_cell[row][col] = hit_note
+
+func hand_exited(area, row, col):
+	print("Hand exited " + str(row) + " " + str(col))	
+	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()	
+	if sequence[row][col] != Step.ON:
+		mm.multimesh.set_instance_color((col * notes) + row, out_color)	
+	else:
+		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
+
+	hit_note = notes_in_cell[row][col]
+	
+	# Decrement the count
+	note_count[hit_note] -= 1
+	
+	# Only queue note-off if this was the LAST instance
+	if note_count[hit_note] == 0:
+		exit_queue.append(hit_note)
 	
 func note_on(note):
 	change_instrument(midi_channel, instrument)
@@ -349,16 +378,7 @@ func note_off(note):
 	midi_player.receive_raw_midi_message(m)
 	
 
-func hand_exited(area, row, col):
-	print("Hand exited " + str(row) + " " + str(col))	
-	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()	
-	if sequence[row][col] != Step.ON:
-		mm.multimesh.set_instance_color((col * notes) + row, out_color)	
-	else:
-		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
 
-	hit_note = notes_in_cell[row][col]
-	exit_queue.append(hit_note)
 	
 var s = 0.08
 var spacer = 1.1
