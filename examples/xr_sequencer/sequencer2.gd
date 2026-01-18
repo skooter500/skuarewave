@@ -500,8 +500,9 @@ func _on_up_semi_area_entered(area: Area3D) -> void:
 
 func _on_down_semi_area_entered(area: Area3D) -> void:
 	if root_note > 0:
-		root_note -= 1
+		root_note = root_note - 1
 		midi_notes = get_scale_notes(root_note, mucical_scale)
+	print("Root note: " + str(root_note))
 	pass # Replace with function body.
 
 
