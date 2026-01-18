@@ -301,8 +301,8 @@ func print_sequence():
 			s += "1" if sequence[row][col] else "0" 
 		print(s)
 		
-var	hit_note = -1
-
+var hit_note:int = -1
+		
 func play_sample(e, row, col):
 	
 	# Potential race condition!!!!
@@ -325,7 +325,8 @@ func hand_entered(area, row, col):
 	else:
 		mm.multimesh.set_instance_color((col * notes) + row, hit_color)	
 	
-
+	hit_note = midi_notes[row]
+	
 	# Initialize if needed
 	if not active_cells.has(hit_note):
 		active_cells[hit_note] = []
