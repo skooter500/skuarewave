@@ -120,7 +120,7 @@ func create_labels():
 		labels.push_back(label)
 		
 		label = label_scene.instantiate()		
-		p = Vector3(s * (steps + 0.5) * spacer, s * row * spacer, 0)
+		p = Vector3(s * (steps + 0.1) * spacer, s * row * spacer, 0)
 		label.position = p		
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		add_child(label)

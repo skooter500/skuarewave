@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c8tx40me7j55t"]
+[gd_scene load_steps=36 format=3 uid="uid://c8tx40me7j55t"]
 
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="1_83we6"]
 [ext_resource type="Script" uid="uid://nxajcnxqcaey" path="res://timer.gd" id="1_byv7j"]
@@ -43,6 +43,11 @@ use_colors = true
 mesh = SubResource("BoxMesh_byv7j")
 
 [sub_resource type="MultiMesh" id="MultiMesh_65ndq"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_byv7j")
+
+[sub_resource type="MultiMesh" id="MultiMesh_2c0tl"]
 transform_format = 1
 use_colors = true
 mesh = SubResource("BoxMesh_byv7j")
@@ -115,11 +120,19 @@ root_note = 60
 [node name="MultiMeshInstance3D" parent="instruments/sequencer2" index="3"]
 multimesh = SubResource("MultiMesh_65ndq")
 
+[node name="sequencer3" parent="instruments" instance=ExtResource("17_s2ckv")]
+transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, 0.62453747, 0.8446685, 2.0784426)
+instrument = 72
+root_note = 48
+
+[node name="MultiMeshInstance3D" parent="instruments/sequencer3" index="3"]
+multimesh = SubResource("MultiMesh_2c0tl")
+
 [node name="controls" type="Marker3D" parent="instruments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2149153, 0, 1.4318666)
+transform = Transform3D(0.7156074, 0, 0.69850266, 0, 1, 0, -0.69850266, 0, 0.7156074, 0.9924259, 0, 0.27703726)
 
 [node name="start_stop" parent="instruments/controls" instance=ExtResource("16_8d825")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48486346, 1.3490331, 0.4805627)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4848634, 1.6350915, 0.4805628)
 
 [node name="vol" parent="instruments/controls" instance=ExtResource("7_8d825")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6577144, 1.3463478, 0.4796364)
@@ -152,7 +165,7 @@ skeleton = NodePath("../../../..")
 text = "TEMPO"
 
 [node name="mode2" parent="instruments/controls" instance=ExtResource("6_s2ckv")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.51612234, 1.2941833, 0.47975582)
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.51612234, 1.5590525, 0.47975588)
 text = "START"
 horizontal_alignment = 2
 
@@ -311,6 +324,9 @@ light_energy = 16.0
 [editable path="instruments/sequencer2/controls/clear"]
 [editable path="instruments/sequencer2/controls/gate"]
 [editable path="instruments/sequencer2/controls/vel"]
+[editable path="instruments/sequencer3"]
+[editable path="instruments/sequencer3/controls/gate"]
+[editable path="instruments/sequencer3/controls/vel"]
 [editable path="instruments/controls/vol"]
 [editable path="instruments/controls/tempo"]
 [editable path="instruments/controls/mode2"]

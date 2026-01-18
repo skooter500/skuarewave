@@ -41,7 +41,7 @@ midi_channel = 2
 label_scene = ExtResource("4_1yhx7")
 
 [node name="controls" type="Marker3D" parent="."]
-transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.14864141, -0.26539487, 0.072165936)
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.10090655, -0.26539487, 0.044889063)
 
 [node name="up_semi" parent="controls" instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49900213, 0.8422569, -0.04448858)
@@ -91,6 +91,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25448462, 1.1235524, -0.03
 text = "MUTE"
 horizontal_alignment = 2
 
+[node name="mute3" parent="controls" instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31761962, 0.94752383, -0.039757475)
+text = "+/- 12"
+
+[node name="mute5" parent="controls" instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31761962, 1.0377669, -0.039757475)
+text = "INST"
+
+[node name="mute6" parent="controls" instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31761962, 0.7442564, -0.039757475)
+text = "MODE"
+
+[node name="mute4" parent="controls" instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31761962, 0.83990633, -0.039757475)
+text = "+/- 1"
+
 [node name="root" parent="controls" instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5676448, 0.9552486, -0.039757475)
 horizontal_alignment = 2
@@ -100,7 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5676448, 0.84563017, -0.03
 horizontal_alignment = 2
 
 [node name="gate" parent="controls" instance=ExtResource("5_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7480659, 0.7538852, -0.039678335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9026357, 0.7538852, -0.039678335)
 
 [node name="grab" parent="controls/gate" index="0"]
 value = 0.2
@@ -109,7 +125,7 @@ value = 0.2
 text = "Gate"
 
 [node name="vel" parent="controls" instance=ExtResource("5_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8676163, 0.7538852, -0.039678335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.022186, 0.7538852, -0.039678335)
 
 [node name="grab" parent="controls/vel" index="0"]
 value = 100.0
