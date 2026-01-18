@@ -243,6 +243,15 @@ func initialise_sequence(rows, cols):
 	
 func _process(delta: float) -> void:
 	update_labels()
+	
+	for note in exit_queue:
+		note_off(note)
+	exit_queue.clear()
+	
+	# Then process enters (note-ons)
+	for note in enter_queue:
+		note_on(note)
+	enter_queue.clear()
 	pass
 
 func get_midi_instrument_name(program_num: int) -> String:
@@ -302,7 +311,8 @@ func play_sample(e, row, col):
 	note_on(note)
 				
 	
-	
+var exit_queue = []
+var enter_queue = []
 	
 func hand_entered(area, row, col):
 	print("Hand Entered " + str(row) + " " + str(col))
@@ -313,11 +323,10 @@ func hand_entered(area, row, col):
 	else:
 		mm.multimesh.set_instance_color((col * notes) + row, hit_color)	
 	
-	await get_tree().process_frame
-	hit_note = midi_notes[row]	
-	note_on(hit_note)
+	hit_note = midi_notes[row]
+	enter_queue.append(hit_note)
 	notes_in_cell[row][col] = hit_note
-
+	
 func note_on(note):
 	change_instrument(midi_channel, instrument)
 	print("Note on: " + str(note))
@@ -348,8 +357,8 @@ func hand_exited(area, row, col):
 	else:
 		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
 
-	note_off(notes_in_cell[row][col])
-	hit_note = -1 
+	hit_note = notes_in_cell[row][col]
+	exit_queue.append(hit_note)
 	
 var s = 0.08
 var spacer = 1.1
