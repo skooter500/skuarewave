@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://03pivv0mboix"]
+
+[ext_resource type="PackedScene" uid="uid://2i1nqhynnlm0" path="res://button.tscn" id="1_kxtwu"]
+[ext_resource type="PackedScene" uid="uid://bo3p0qs3gk7ji" path="res://analog.tscn" id="2_dob1i"]
+[ext_resource type="Script" uid="uid://do1q716vi5th3" path="res://vol.gd" id="3_hkas0"]
+[ext_resource type="Script" uid="uid://b8ggd12d6ecl5" path="res://tempo.gd" id="4_cf7nr"]
+[ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://label.tscn" id="5_dist8"]
+[ext_resource type="Script" uid="uid://ctufrpn842xq2" path="res://reverb_mix.gd" id="6_347em"]
+[ext_resource type="Script" uid="uid://c3j46j5t5te57" path="res://delay_mix.gd" id="7_sqjlr"]
+
+[node name="controls" type="Marker3D"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="start_stop" parent="." instance=ExtResource("1_kxtwu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4848634, 1.6350915, 0.4805628)
+
+[node name="vol" parent="." instance=ExtResource("2_dob1i")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6577144, 1.3463478, 0.4796364)
+script = ExtResource("3_hkas0")
+
+[node name="grab" parent="vol" index="0"]
+value = 10.0
+max = 10.0
+
+[node name="mesh" parent="vol/grab" index="1"]
+skeleton = NodePath("../../../..")
+
+[node name="title" parent="vol" index="1"]
+text = "VOLUME"
+
+[node name="tempo" parent="." instance=ExtResource("2_dob1i")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.576894, 1.3463478, 0.4796364)
+script = ExtResource("4_cf7nr")
+
+[node name="grab" parent="tempo" index="0"]
+value = 90.0
+min = 60.0
+max = 200.0
+whole = true
+
+[node name="mesh" parent="tempo/grab" index="1"]
+skeleton = NodePath("../../../..")
+
+[node name="title" parent="tempo" index="1"]
+text = "TEMPO"
+
+[node name="mode2" parent="." instance=ExtResource("5_dist8")]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.51612234, 1.5590525, 0.47975588)
+text = "START"
+horizontal_alignment = 2
+
+[node name="mode3" parent="." instance=ExtResource("5_dist8")]
+transform = Transform3D(-0.99999934, 0, -8.940689e-08, 0, 1, 0, 8.940689e-08, 0, -0.99999934, -0.57682955, 2.0517595, 0.47975555)
+text = "SQUARE: WAVE
+CREATED by Bryan Duggan
+@skooter500
+bryanduggan.org"
+
+[node name="reverb_mix2" parent="." instance=ExtResource("2_dob1i")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.86476976, 1.3463478, 0.4796364)
+script = ExtResource("6_347em")
+
+[node name="mesh" parent="reverb_mix2/grab" index="1"]
+skeleton = NodePath("../../../..")
+
+[node name="title" parent="reverb_mix2" index="1"]
+text = "REVERB"
+
+[node name="delay_mix" parent="." instance=ExtResource("2_dob1i")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.9685682, 1.3463478, 0.4796364)
+script = ExtResource("7_sqjlr")
+
+[node name="mesh" parent="delay_mix/grab" index="1"]
+skeleton = NodePath("../../../..")
+
+[node name="title" parent="delay_mix" index="1"]
+text = "Delay"
+
+[node name="mic_vol" parent="." instance=ExtResource("2_dob1i")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7622316, 1.3463478, 0.47963637)
+script = ExtResource("3_hkas0")
+bus_index = 1
+
+[node name="grab" parent="mic_vol" index="0"]
+max = 10.0
+
+[node name="mesh" parent="mic_vol/grab" index="1"]
+skeleton = NodePath("../../../..")
+
+[node name="title" parent="mic_vol" index="1"]
+text = "MIC"
+
+[editable path="vol"]
+[editable path="tempo"]
+[editable path="mode2"]
+[editable path="mode3"]
+[editable path="reverb_mix2"]
+[editable path="delay_mix"]
+[editable path="mic_vol"]

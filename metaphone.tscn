@@ -1,18 +1,12 @@
-[gd_scene load_steps=36 format=3 uid="uid://c8tx40me7j55t"]
+[gd_scene load_steps=30 format=3 uid="uid://c8tx40me7j55t"]
 
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="1_83we6"]
 [ext_resource type="Script" uid="uid://nxajcnxqcaey" path="res://timer.gd" id="1_byv7j"]
 [ext_resource type="Script" uid="uid://ox8smfnahvcm" path="res://xr_camera_3d.gd" id="2_8d825"]
-[ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://label.tscn" id="6_s2ckv"]
-[ext_resource type="PackedScene" uid="uid://bo3p0qs3gk7ji" path="res://analog.tscn" id="7_8d825"]
+[ext_resource type="PackedScene" uid="uid://03pivv0mboix" path="res://controls.tscn" id="5_65ndq"]
 [ext_resource type="PackedScene" uid="uid://cend6ikv2su2t" path="res://tip.tscn" id="7_65ndq"]
-[ext_resource type="Script" uid="uid://b8ggd12d6ecl5" path="res://tempo.gd" id="8_2c0tl"]
-[ext_resource type="Script" uid="uid://ctufrpn842xq2" path="res://reverb_mix.gd" id="8_ymxam"]
 [ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://hand.gd" id="9_00tvn"]
-[ext_resource type="Script" uid="uid://do1q716vi5th3" path="res://vol.gd" id="9_ymxam"]
-[ext_resource type="Script" uid="uid://c3j46j5t5te57" path="res://delay_mix.gd" id="10_uo375"]
 [ext_resource type="Script" uid="uid://n7iy2lr1dvkr" path="res://instruments.gd" id="12_ucien"]
-[ext_resource type="PackedScene" uid="uid://2i1nqhynnlm0" path="res://button.tscn" id="16_8d825"]
 [ext_resource type="PackedScene" uid="uid://b7dvkr5ss01as" path="res://sequencer.tscn" id="17_s2ckv"]
 [ext_resource type="Script" uid="uid://bs8nmn7mjqaek" path="res://examples/bge/start_passthrough.gd" id="30_b66op"]
 [ext_resource type="Material" uid="uid://dvo75cymypytd" path="res://examples/tank_game_3d/green.tres" id="31_11imp"]
@@ -128,80 +122,8 @@ root_note = 48
 [node name="MultiMeshInstance3D" parent="instruments/sequencer3" index="3"]
 multimesh = SubResource("MultiMesh_2c0tl")
 
-[node name="controls" type="Marker3D" parent="instruments"]
-transform = Transform3D(0.7156074, 0, 0.69850266, 0, 1, 0, -0.69850266, 0, 0.7156074, 0.9924259, 0, 0.27703726)
-
-[node name="start_stop" parent="instruments/controls" instance=ExtResource("16_8d825")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4848634, 1.6350915, 0.4805628)
-
-[node name="vol" parent="instruments/controls" instance=ExtResource("7_8d825")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6577144, 1.3463478, 0.4796364)
-script = ExtResource("9_ymxam")
-
-[node name="grab" parent="instruments/controls/vol" index="0"]
-value = 10.0
-max = 10.0
-
-[node name="mesh" parent="instruments/controls/vol/grab" index="1"]
-skeleton = NodePath("../../../..")
-
-[node name="title" parent="instruments/controls/vol" index="1"]
-text = "VOLUME"
-
-[node name="tempo" parent="instruments/controls" instance=ExtResource("7_8d825")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.576894, 1.3463478, 0.4796364)
-script = ExtResource("8_2c0tl")
-
-[node name="grab" parent="instruments/controls/tempo" index="0"]
-value = 90.0
-min = 60.0
-max = 200.0
-whole = true
-
-[node name="mesh" parent="instruments/controls/tempo/grab" index="1"]
-skeleton = NodePath("../../../..")
-
-[node name="title" parent="instruments/controls/tempo" index="1"]
-text = "TEMPO"
-
-[node name="mode2" parent="instruments/controls" instance=ExtResource("6_s2ckv")]
-transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.51612234, 1.5590525, 0.47975588)
-text = "START"
-horizontal_alignment = 2
-
-[node name="reverb_mix2" parent="instruments/controls" instance=ExtResource("7_8d825")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.86476976, 1.3463478, 0.4796364)
-script = ExtResource("8_ymxam")
-
-[node name="mesh" parent="instruments/controls/reverb_mix2/grab" index="1"]
-skeleton = NodePath("../../../..")
-
-[node name="title" parent="instruments/controls/reverb_mix2" index="1"]
-text = "REVERB"
-
-[node name="delay_mix" parent="instruments/controls" instance=ExtResource("7_8d825")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.9685682, 1.3463478, 0.4796364)
-script = ExtResource("10_uo375")
-
-[node name="mesh" parent="instruments/controls/delay_mix/grab" index="1"]
-skeleton = NodePath("../../../..")
-
-[node name="title" parent="instruments/controls/delay_mix" index="1"]
-text = "Delay"
-
-[node name="mic_vol" parent="instruments/controls" instance=ExtResource("7_8d825")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7622316, 1.3463478, 0.47963637)
-script = ExtResource("9_ymxam")
-bus_index = 1
-
-[node name="grab" parent="instruments/controls/mic_vol" index="0"]
-max = 10.0
-
-[node name="mesh" parent="instruments/controls/mic_vol/grab" index="1"]
-skeleton = NodePath("../../../..")
-
-[node name="title" parent="instruments/controls/mic_vol" index="1"]
-text = "MIC"
+[node name="controls" parent="instruments" instance=ExtResource("5_65ndq")]
+transform = Transform3D(0.71560735, 0, 0.69850254, 0, 1, 0, -0.69850254, 0, 0.71560735, 0.9924259, 0, 0.27703726)
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
@@ -327,9 +249,11 @@ light_energy = 16.0
 [editable path="instruments/sequencer3"]
 [editable path="instruments/sequencer3/controls/gate"]
 [editable path="instruments/sequencer3/controls/vel"]
+[editable path="instruments/controls"]
 [editable path="instruments/controls/vol"]
 [editable path="instruments/controls/tempo"]
 [editable path="instruments/controls/mode2"]
+[editable path="instruments/controls/mode3"]
 [editable path="instruments/controls/reverb_mix2"]
 [editable path="instruments/controls/delay_mix"]
 [editable path="instruments/controls/mic_vol"]

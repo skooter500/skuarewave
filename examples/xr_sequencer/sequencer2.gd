@@ -314,7 +314,7 @@ func play_sample(e, row, col):
 var exit_queue = []
 var enter_queue = []
 	
-var note_count = {}  # Track how many cells are holding each note
+var active_cells = {}  # {note: [[row,col], [row,col], ...]}
 
 func hand_entered(area, row, col):
 	print("Hand Entered " + str(row) + " " + str(col))
@@ -327,16 +327,15 @@ func hand_entered(area, row, col):
 	
 	hit_note = midi_notes[row]
 	
-	# Initialize counter if needed
-	if not note_count.has(hit_note):
-		note_count[hit_note] = 0
+	# Initialize if needed
+	if not active_cells.has(hit_note):
+		active_cells[hit_note] = []
 	
-	# Only queue note-on if this is the FIRST instance
-	if note_count[hit_note] == 0:
-		enter_queue.append(hit_note)
+	# Always queue note-on (retriggering)
+	enter_queue.append(hit_note)
 	
-	# Increment the count
-	note_count[hit_note] += 1
+	# Track this cell as active
+	active_cells[hit_note].append([row, col])
 	notes_in_cell[row][col] = hit_note
 
 func hand_exited(area, row, col):
@@ -349,11 +348,11 @@ func hand_exited(area, row, col):
 
 	hit_note = notes_in_cell[row][col]
 	
-	# Decrement the count
-	note_count[hit_note] -= 1
+	# Remove this cell from active list
+	active_cells[hit_note].erase([row, col])
 	
-	# Only queue note-off if this was the LAST instance
-	if note_count[hit_note] == 0:
+	# Only queue note-off if NO cells are left
+	if active_cells[hit_note].is_empty():
 		exit_queue.append(hit_note)
 	
 func note_on(note):
