@@ -421,8 +421,13 @@ func play_sample_gate(e, row, col, duration):
 	print("Note on: " + str(note) + " Channel: " + str(midi_channel))	
 	play_sample(e, row, col)	
 	await get_tree().create_timer(duration).timeout
-	print("Note off: " + str(note) + " Channel: " + str(midi_channel))
-	note_off(note)
+	
+	# Only turn off if no hands are holding this note
+	if not active_cells.has(note) or active_cells[note].is_empty():
+		print("Note off: " + str(note) + " Channel: " + str(midi_channel))
+		note_off(note)
+	else:
+		print("Skipping note off - hand is holding note: " + str(note))
 
 
 func change_color_back(row, col):

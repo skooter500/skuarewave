@@ -102,13 +102,14 @@ transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4
 instrument = 17
 midi_channel = 1
 root_note = 60
+mucical_scale = 1
 
 [node name="MultiMeshInstance3D" parent="instruments/sequencer" index="3"]
 multimesh = SubResource("MultiMesh_s2ckv")
 
 [node name="sequencer2" parent="instruments" instance=ExtResource("17_s2ckv")]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.042931557, 0.8446685, -0.58785135)
-instrument = 81
+instrument = 80
 root_note = 60
 
 [node name="MultiMeshInstance3D" parent="instruments/sequencer2" index="3"]
@@ -118,6 +119,7 @@ multimesh = SubResource("MultiMesh_65ndq")
 transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, 0.62453747, 0.8446685, 2.0784426)
 instrument = 72
 root_note = 48
+mucical_scale = 1
 
 [node name="MultiMeshInstance3D" parent="instruments/sequencer3" index="3"]
 multimesh = SubResource("MultiMesh_2c0tl")
