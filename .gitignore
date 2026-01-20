@@ -2,15 +2,6 @@
 Thumbs.db
 .import/*
 .godot/*
-data/*
 dev/*
 android/*
-ui/*
 *.import
-default_bus_layout.tres
-default_env.tres
-export_presets.cfg
-godot-midi-player.png
-icon.png
-TestScene.tscn
-TestScene.gd
