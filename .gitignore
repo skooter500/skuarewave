@@ -12,6 +12,5 @@ default_env.tres
 export_presets.cfg
 godot-midi-player.png
 icon.png
-project.godot
 TestScene.tscn
 TestScene.gd
