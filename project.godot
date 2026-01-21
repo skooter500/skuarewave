@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="square | wave"
+config/name="skuare|wave"
 run/main_scene="uid://c8tx40me7j55t"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="uid://ck5yxjygyqchv"

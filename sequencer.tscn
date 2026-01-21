@@ -44,92 +44,128 @@ label_scene = ExtResource("4_1yhx7")
 transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.10090655, -0.26539487, 0.044889063)
 
 [node name="up_semi" parent="controls" unique_id=2138419497 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49900213, 0.8422569, -0.04448858)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5023537, 0.8422569, -0.04448858)
 
 [node name="down_semi" parent="controls" unique_id=1018370246 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3857132, 0.8440504, -0.045494214)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3890648, 0.8440504, -0.045494214)
 
 [node name="stop_start" parent="controls" unique_id=2141351437 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38609916, 1.1294441, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38945073, 1.1667024, -0.045584388)
 
 [node name="forwards" parent="controls" unique_id=1935275129 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38609916, 1.2114494, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56099385, 1.2866337, -0.04558437)
 
 [node name="backwards" parent="controls" unique_id=879559165 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5001504, 1.2114494, -0.045584384)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4546005, 1.2866337, -0.045584384)
 
 [node name="ping_pong" parent="controls" unique_id=881514405 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.60786545, 1.2114494, -0.04558438)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33954233, 1.291291, -0.045584388)
 
 [node name="clear" parent="controls" unique_id=1584419201 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50168896, 1.1255949, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5050405, 1.1628531, -0.045584388)
 
 [node name="up" parent="controls" unique_id=731043316 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5003638, 0.9519278, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5037154, 0.9519278, -0.045584388)
 
 [node name="down" parent="controls" unique_id=547150324 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3840101, 0.9511898, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3873617, 0.9511898, -0.045584388)
 
 [node name="inst_up" parent="controls" unique_id=1285216855 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5003638, 1.03878, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5037154, 1.03878, -0.045584388)
 
 [node name="inst_down" parent="controls" unique_id=349627763 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3840101, 1.0380421, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3873617, 1.0380421, -0.045584388)
 
 [node name="scale_up" parent="controls" unique_id=1503189843 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49959126, 0.7474096, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50294286, 0.7474096, -0.045584388)
 
 [node name="scale_down" parent="controls" unique_id=437597239 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38778615, 0.7464541, -0.043849096)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39113772, 0.7464541, -0.043849096)
 
 [node name="mode" parent="controls" unique_id=488361937 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5676448, 0.7585491, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 0.7585491, -0.039757475)
 horizontal_alignment = 2
 
 [node name="instrument" parent="controls" unique_id=170103231 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5676448, 1.0413444, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 1.0413444, -0.039757475)
 horizontal_alignment = 2
 
-[node name="mute" parent="controls" unique_id=85306595 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5676448, 1.1235524, -0.039757475)
+[node name="clear2" parent="controls" unique_id=85306595 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 1.1608107, -0.039757475)
 text = "Clear"
 horizontal_alignment = 2
 
-[node name="mute2" parent="controls" unique_id=612615996 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25448462, 1.1267207, -0.039757475)
+[node name="mute" parent="controls" unique_id=612615996 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3222619, 1.1670837, -0.03975747)
 text = "MUTE"
-horizontal_alignment = 2
 
 [node name="direction" parent="controls" unique_id=687586001 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8046762, 1.2112031, -0.039757453)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6230666, 1.2836528, -0.03975742)
 text = "DIRECTION"
+horizontal_alignment = 2
 
 [node name="mute3" parent="controls" unique_id=1218249019 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31761962, 0.94752383, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 0.94752383, -0.039757475)
 text = "+/- 12"
 
 [node name="mute5" parent="controls" unique_id=1187675703 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31761962, 1.0377669, -0.039757475)
-text = "INST"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 1.0377669, -0.039757475)
+text = "+/- INST"
 
-[node name="mute7" parent="controls" unique_id=2032595283 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31761962, 1.2077876, -0.039757475)
-text = "DIR"
+[node name="mute7" parent="controls" unique_id=1461974304 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 1.1021926, -0.03975747)
+text = "+"
+horizontal_alignment = 1
+
+[node name="mute11" parent="controls" unique_id=1917705396 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5648352, 1.2306114, -0.039757464)
+text = "F"
+horizontal_alignment = 1
+
+[node name="mute12" parent="controls" unique_id=1691737374 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45255744, 1.2306114, -0.03975747)
+text = "R"
+horizontal_alignment = 1
+
+[node name="mute13" parent="controls" unique_id=1866575689 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33860397, 1.2306114, -0.03975747)
+text = "P"
+horizontal_alignment = 1
+
+[node name="mute9" parent="controls" unique_id=1203840972 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 0.69330055, -0.03975747)
+text = "+"
+horizontal_alignment = 1
+
+[node name="mute8" parent="controls" unique_id=2029846493 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38927794, 1.1021926, -0.039757475)
+text = "-"
+horizontal_alignment = 1
+
+[node name="mute10" parent="controls" unique_id=438680737 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38927794, 0.6832458, -0.039757475)
+text = "-"
+horizontal_alignment = 1
+
+[node name="dir" parent="controls" unique_id=2032595283 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3136267, 1.4458938, -0.039757475)
+modulate = Color(0, 6.436, 4.693, 0.792)
+text = ""
 
 [node name="mute6" parent="controls" unique_id=866690688 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31761962, 0.7442564, -0.039757475)
-text = "MODE"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 0.7442564, -0.039757475)
+text = "+/- MODE"
 
 [node name="mute4" parent="controls" unique_id=1010640520 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31761962, 0.83990633, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 0.83990633, -0.039757475)
 text = "+/- 1"
 
 [node name="root" parent="controls" unique_id=61118654 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5676448, 0.9552486, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 0.9552486, -0.039757475)
 horizontal_alignment = 2
 
 [node name="root2" parent="controls" unique_id=2055426953 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5676448, 0.84563017, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 0.84563017, -0.039757475)
 horizontal_alignment = 2
 
 [node name="gate" parent="controls" unique_id=754814461 instance=ExtResource("5_1yhx7")]

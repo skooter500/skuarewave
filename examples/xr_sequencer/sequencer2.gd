@@ -253,6 +253,20 @@ func _process(delta: float) -> void:
 		note_on(note)
 	enter_queue.clear()
 	pass
+	
+var is_blinking:bool = false
+
+	
+
+func start_color_blink(label):
+	is_blinking = true
+	while is_blinking:
+		label.modulate = blink_on
+		await get_tree().create_timer(0.25).timeout
+		if not is_blinking:
+			break
+		label.modulate = blink_off
+		await get_tree().create_timer(0.25).timeout
 
 func get_midi_instrument_name(program_num: int) -> String:
 	# MIDI Program numbers are 0-127. 
@@ -271,6 +285,20 @@ func update_labels():
 	$controls/mode.text = str(Scale.keys()[mucical_scale])
 	# Add this line if you have a label for direction:
 	$controls/direction.text = str(Direction.keys()[playback_direction])
+	$controls/mute.text = "UNMUTE" if stopped else "MUTE"
+
+
+	if direction_change_requested and not is_blinking:
+		start_color_blink($controls/dir)
+		start_color_blink($controls/direction)
+	elif not direction_change_requested:
+		is_blinking = false
+		$controls/dir.modulate = blink_off
+		$controls/direction.modulate = blink_off
+
+var blink_off = Color(0.0, 6.436, 4.693, 0.792)
+var blink_on = Color(5.049, 1.406, 6.271, 0.792)
+
 
 func assign_colors():
 	var i = 0

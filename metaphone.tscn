@@ -101,18 +101,18 @@ mesh = SubResource("BoxMesh_s2ckv")
 transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -0.93380964, 0.8463087, 1.059513)
 instrument = 17
 midi_channel = 1
-root_note = 60
+root_note = 48
 mucical_scale = 1
 
-[node name="MultiMeshInstance3D" parent="instruments/sequencer" index="3"]
+[node name="MultiMeshInstance3D" parent="instruments/sequencer" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_s2ckv")
 
 [node name="sequencer2" parent="instruments" unique_id=1630129912 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.042931557, 0.8446685, -0.58785135)
 instrument = 80
-root_note = 60
+root_note = 48
 
-[node name="MultiMeshInstance3D" parent="instruments/sequencer2" index="3"]
+[node name="MultiMeshInstance3D" parent="instruments/sequencer2" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_65ndq")
 
 [node name="sequencer3" parent="instruments" unique_id=600002492 instance=ExtResource("17_s2ckv")]
@@ -121,17 +121,23 @@ instrument = 72
 root_note = 48
 mucical_scale = 1
 
-[node name="MultiMeshInstance3D" parent="instruments/sequencer3" index="3"]
+[node name="MultiMeshInstance3D" parent="instruments/sequencer3" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_2c0tl")
 
 [node name="controls" parent="instruments" unique_id=1187298749 instance=ExtResource("5_65ndq")]
 transform = Transform3D(0.71560735, 0, 0.69850254, 0, 1, 0, -0.69850254, 0, 0.71560735, 0.9924259, 0, 0.27703726)
 
 [node name="mode3" parent="instruments/controls" index="4"]
-text = "SQUARE | WAVE
+text = "SKUAREWAVE
 Created By: Bryan Duggan
 @skooter500
 bryanduggan.org"
+
+[node name="reverb_mix2" parent="instruments/controls" index="5"]
+effect_index = 1
+
+[node name="delay_mix" parent="instruments/controls" index="6"]
+effect_index = 0
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=811185315]
 
