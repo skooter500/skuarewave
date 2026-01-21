@@ -269,6 +269,8 @@ func update_labels():
 	$controls/root.text = midi_note_to_string(root_note)
 	$controls/root2.text = midi_note_to_string(root_note)
 	$controls/mode.text = str(Scale.keys()[mucical_scale])
+	# Add this line if you have a label for direction:
+	$controls/direction.text = str(Direction.keys()[playback_direction])
 
 func assign_colors():
 	var i = 0
@@ -458,10 +460,6 @@ func play_step(col):
 
 var step_index:int = 0
 
-func next_step() -> void:
-	play_step(step_index)
-	step_index = (step_index + 1) % steps
-	pass # Replace with function body.
 
 var stopped = false
 
@@ -538,4 +536,86 @@ func _on_clear_area_entered(area: Area3D) -> void:
 		for col in steps:
 			sequence[row][col] = Step.OFF
 	assign_colors()
+	pass # Replace with function body.
+
+# Direction!
+
+# Add near the top with other enums
+enum Direction {FORWARD, BACKWARD, PING_PONG}
+
+# Add with other @export variables
+@export var playback_direction:Direction = Direction.FORWARD
+
+# Add a variable to track ping-pong state
+var ping_pong_forward:bool = true
+
+# Replace the next_step() function with this:
+
+# Replace next_step() and add direction change handling:
+
+var direction_change_pending:Direction = Direction.FORWARD
+var direction_change_requested:bool = false
+
+func next_step() -> void:
+	play_step(step_index)
+	
+	# Apply direction change at sequence boundaries
+	if direction_change_requested:
+		if playback_direction == Direction.FORWARD and step_index == steps - 1:
+			apply_direction_change()
+		elif playback_direction == Direction.BACKWARD and step_index == 0:
+			apply_direction_change()
+		elif playback_direction == Direction.PING_PONG and (step_index == 0 or step_index == steps - 1):
+			apply_direction_change()
+	
+	match playback_direction:
+		Direction.FORWARD:
+			step_index = (step_index + 1) % steps
+			
+		Direction.BACKWARD:
+			step_index = step_index - 1
+			if step_index < 0:
+				step_index = steps - 1
+				
+		Direction.PING_PONG:
+			if ping_pong_forward:
+				if step_index == steps - 1:
+					ping_pong_forward = false  # Stay on last step, will move backward next
+				else:
+					step_index += 1
+			else:
+				if step_index == 0:
+					ping_pong_forward = true  # Stay on first step, will move forward next
+				else:
+					step_index -= 1
+
+func apply_direction_change():
+	var old_direction = playback_direction
+	playback_direction = direction_change_pending
+	direction_change_requested = false
+	
+	# Mirror position when switching between forward/backward
+	if old_direction == Direction.FORWARD and playback_direction == Direction.BACKWARD:
+		step_index = steps - 1 - step_index
+	elif old_direction == Direction.BACKWARD and playback_direction == Direction.FORWARD:
+		step_index = steps - 1 - step_index
+
+func _on_ping_pong_area_entered(area: Area3D) -> void:
+	direction_change_pending = Direction.PING_PONG
+	direction_change_requested = true
+	print("Direction change queued: " + str(Direction.keys()[direction_change_pending]))
+
+
+func _on_forwards_area_entered(area: Area3D) -> void:
+	direction_change_pending = Direction.FORWARD
+	direction_change_requested = true
+	print("Direction change queued: " + str(Direction.keys()[direction_change_pending]))
+	pass # Replace with function body.
+
+
+func _on_backwards_area_entered(area: Area3D) -> void:
+	direction_change_pending = Direction.BACKWARD
+	direction_change_requested = true
+	print("Direction change queued: " + str(Direction.keys()[direction_change_pending]))
+	
 	pass # Replace with function body.

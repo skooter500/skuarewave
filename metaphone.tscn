@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c8tx40me7j55t"]
+[gd_scene format=3 uid="uid://c8tx40me7j55t"]
 
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="1_83we6"]
 [ext_resource type="Script" uid="uid://nxajcnxqcaey" path="res://timer.gd" id="1_byv7j"]
@@ -12,9 +12,9 @@
 [ext_resource type="Material" uid="uid://dvo75cymypytd" path="res://examples/tank_game_3d/green.tres" id="31_11imp"]
 [ext_resource type="Script" uid="uid://muj58x3jqroj" path="res://addons/hand_pose_detector/hand_pose_detector.gd" id="33_g5gje"]
 [ext_resource type="Resource" uid="uid://ckjd0xa2a240p" path="res://addons/hand_pose_detector/poses/standard_pose_set.tres" id="34_63uls"]
-[ext_resource type="PackedScene" uid="uid://cjcehqrfoxav3" path="res://addons/hand_pose_detector/hands/LeftHandHumanoid.gltf" id="35_lbacc"]
+[ext_resource type="PackedScene" uid="uid://dmfes1pnuo66v" path="res://addons/hand_pose_detector/hands/LeftHandHumanoid.gltf" id="35_lbacc"]
 [ext_resource type="Material" uid="uid://r4hqqldkh2wy" path="res://examples/bge/trans.tres" id="36_4cadk"]
-[ext_resource type="PackedScene" uid="uid://dabmoo0spa6vg" path="res://addons/hand_pose_detector/hands/RightHandHumanoid.gltf" id="37_qy652"]
+[ext_resource type="PackedScene" uid="uid://bw6l6qaymsfua" path="res://addons/hand_pose_detector/hands/RightHandHumanoid.gltf" id="37_qy652"]
 [ext_resource type="PackedScene" uid="uid://df5hynbooj1uj" path="res://addons/hand_pose_detector/hand_pose_detector.tscn" id="38_4ru4y"]
 [ext_resource type="PackedScene" uid="uid://b2447e5p6kwug" path="res://examples/room/scene_anchor.tscn" id="39_5wcqy"]
 [ext_resource type="PackedScene" uid="uid://cukl4cie1tact" path="res://examples/room/scene_global_mesh.tscn" id="40_c1vpu"]
@@ -60,44 +60,44 @@ background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 
-[node name="root" type="Node3D"]
+[node name="root" type="Node3D" unique_id=1496378130]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1660296313]
 script = ExtResource("1_byv7j")
 
-[node name="instruments" type="Node3D" parent="."]
+[node name="instruments" type="Node3D" parent="." unique_id=1822275068]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0900598, 0, -0.42798713)
 script = ExtResource("12_ucien")
 
-[node name="Timer" type="Timer" parent="instruments"]
+[node name="Timer" type="Timer" parent="instruments" unique_id=658303578]
 wait_time = 0.2
 
-[node name="MidiPlayer" parent="instruments" instance=ExtResource("1_83we6")]
+[node name="MidiPlayer" parent="instruments" unique_id=1134933499 instance=ExtResource("1_83we6")]
 volume_db = -10.0
 soundfont = "res://assets/Aspirin-Stereo.sf2"
 
-[node name="drums" parent="instruments" instance=ExtResource("17_s2ckv")]
+[node name="drums" parent="instruments" unique_id=684359294 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 1.4953325, 0.918069, 0.3973448)
 hit_color = Color(0, 0.24, 0.96, 0.32156864)
 midi_channel = 9
 root_note = 35
 mucical_scale = 0
 
-[node name="record" type="Node" parent="instruments"]
+[node name="record" type="Node" parent="instruments" unique_id=1406815149]
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="instruments/record"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="instruments/record" unique_id=904922801]
 stream = SubResource("AudioStreamMicrophone_wjjwd")
 autoplay = true
 bus = &"Record"
 
-[node name="analyzer" type="Node" parent="instruments"]
+[node name="analyzer" type="Node" parent="instruments" unique_id=1160703387]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="instruments"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="instruments" unique_id=907970887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2017696, 1.3538728, -0.18026552)
 visible = false
 mesh = SubResource("BoxMesh_s2ckv")
 
-[node name="sequencer" parent="instruments" instance=ExtResource("17_s2ckv")]
+[node name="sequencer" parent="instruments" unique_id=19113346 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -0.93380964, 0.8463087, 1.059513)
 instrument = 17
 midi_channel = 1
@@ -107,7 +107,7 @@ mucical_scale = 1
 [node name="MultiMeshInstance3D" parent="instruments/sequencer" index="3"]
 multimesh = SubResource("MultiMesh_s2ckv")
 
-[node name="sequencer2" parent="instruments" instance=ExtResource("17_s2ckv")]
+[node name="sequencer2" parent="instruments" unique_id=1630129912 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.042931557, 0.8446685, -0.58785135)
 instrument = 80
 root_note = 60
@@ -115,7 +115,7 @@ root_note = 60
 [node name="MultiMeshInstance3D" parent="instruments/sequencer2" index="3"]
 multimesh = SubResource("MultiMesh_65ndq")
 
-[node name="sequencer3" parent="instruments" instance=ExtResource("17_s2ckv")]
+[node name="sequencer3" parent="instruments" unique_id=600002492 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, 0.62453747, 0.8446685, 2.0784426)
 instrument = 72
 root_note = 48
@@ -124,37 +124,43 @@ mucical_scale = 1
 [node name="MultiMeshInstance3D" parent="instruments/sequencer3" index="3"]
 multimesh = SubResource("MultiMesh_2c0tl")
 
-[node name="controls" parent="instruments" instance=ExtResource("5_65ndq")]
+[node name="controls" parent="instruments" unique_id=1187298749 instance=ExtResource("5_65ndq")]
 transform = Transform3D(0.71560735, 0, 0.69850254, 0, 1, 0, -0.69850254, 0, 0.71560735, 0.9924259, 0, 0.27703726)
 
-[node name="XROrigin3D" type="XROrigin3D" parent="."]
+[node name="mode3" parent="instruments/controls" index="4"]
+text = "SQUARE | WAVE
+Created By: Bryan Duggan
+@skooter500
+bryanduggan.org"
 
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" node_paths=PackedStringArray("spawn_in_front")]
+[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=811185315]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=1130441161 node_paths=PackedStringArray("spawn_in_front")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10548, 0)
 near = 0.001
 script = ExtResource("2_8d825")
 spawn_in_front = NodePath("../../instruments")
 
-[node name="AudioListener3D" type="AudioListener3D" parent="XROrigin3D/XRCamera3D"]
+[node name="AudioListener3D" type="AudioListener3D" parent="XROrigin3D/XRCamera3D" unique_id=2071563029]
 
-[node name="left" type="XRNode3D" parent="XROrigin3D"]
+[node name="left" type="XRNode3D" parent="XROrigin3D" unique_id=857214756]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28372958, -0.08487674, 0)
 tracker = &"/user/hand_tracker/left"
 show_when_tracked = true
 script = ExtResource("9_00tvn")
 
-[node name="HandPoseDetector" type="Node" parent="XROrigin3D/left"]
+[node name="HandPoseDetector" type="Node" parent="XROrigin3D/left" unique_id=1832235387]
 script = ExtResource("33_g5gje")
 hand_pose_set = ExtResource("34_63uls")
 
-[node name="LeftHandHumanoid2" parent="XROrigin3D/left" instance=ExtResource("35_lbacc")]
+[node name="LeftHandHumanoid2" parent="XROrigin3D/left" unique_id=1738900531 instance=ExtResource("35_lbacc")]
 
-[node name="LeftHandHumanoidMesh" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="0"]
+[node name="LeftHandHumanoidMesh" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" parent_id_path=PackedInt32Array(1738900531, 1399616132) index="0" unique_id=1044562069]
 surface_material_override/0 = ExtResource("36_4cadk")
 
-[node name="XRHandModifier3D" type="XRHandModifier3D" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="1"]
+[node name="XRHandModifier3D" type="XRHandModifier3D" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" parent_id_path=PackedInt32Array(1738900531, 1399616132) index="1" unique_id=269424477]
 
-[node name="tip5" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="2" instance=ExtResource("7_65ndq")]
+[node name="tip5" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" parent_id_path=PackedInt32Array(1738900531, 1399616132) index="2" unique_id=740102888 instance=ExtResource("7_65ndq")]
 transform = Transform3D(0.01489234, 0.39270008, 0.919546, -0.9930924, 0.11285266, -0.03211129, -0.11638325, -0.91271573, 0.39166808, -0.01110013, 0.04294307, -0.17161417)
 bone_name = "LeftIndexTip"
 bone_idx = 9
@@ -162,15 +168,15 @@ bone_idx = 9
 [node name="right_hand" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D/tip5" index="0"]
 transform = Transform3D(1, 0, -3.7252903e-09, 0, 1.0000002, -2.9802322e-08, 0, -2.9802322e-08, 1.0000005, 0.0037370138, -0.0004246682, 0.00012084842)
 
-[node name="right" type="XRNode3D" parent="XROrigin3D"]
+[node name="right" type="XRNode3D" parent="XROrigin3D" unique_id=1332199885]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.382, 0, 0)
 tracker = &"/user/hand_tracker/right"
 show_when_tracked = true
 script = ExtResource("9_00tvn")
 
-[node name="RightHandHumanoid2" parent="XROrigin3D/right" instance=ExtResource("37_qy652")]
+[node name="RightHandHumanoid2" parent="XROrigin3D/right" unique_id=1270115842 instance=ExtResource("37_qy652")]
 
-[node name="Skeleton3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid" index="0"]
+[node name="Skeleton3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid" parent_id_path=PackedInt32Array(1270115842, 1678342709) index="0" unique_id=846784448]
 bones/0/position = Vector3(-0.009999533, 0.020026566, 3.5932288e-05)
 bones/0/rotation = Quaternion(0.15032642, 0.82222533, -0.41320056, -0.36140388)
 bones/0/scale = Vector3(0.99999976, 0.9999999, 0.9999999)
@@ -181,55 +187,55 @@ bones/13/position = Vector3(-0.014042869, -0.15854816, 0.04854116)
 bones/13/rotation = Quaternion(0.12692279, 0.7842564, -0.48233, 0.36903968)
 bones/13/scale = Vector3(1, 1.0000002, 1.0000001)
 
-[node name="XRHandModifier3D" type="XRHandModifier3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="0"]
+[node name="XRHandModifier3D" type="XRHandModifier3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="0" unique_id=514983887]
 hand_tracker = &"/user/hand_tracker/right"
 
-[node name="RightHandHumanoidMesh" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="1"]
+[node name="RightHandHumanoidMesh" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="1" unique_id=282004857]
 surface_material_override/0 = ExtResource("36_4cadk")
 
-[node name="tip5" type="BoneAttachment3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="2"]
+[node name="tip5" type="BoneAttachment3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="2" unique_id=732703088]
 transform = Transform3D(0.9999999, 4.4703484e-07, 1.4901161e-07, -1.1920929e-07, 0.9999999, 2.682209e-07, -1.3411045e-07, -1.4901161e-08, 1.0000002, 0, 0, 1.4901161e-08)
 bone_name = "RightIndexTip"
 bone_idx = 9
 
-[node name="right_hand" type="Area3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip5"]
+[node name="right_hand" type="Area3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip5" unique_id=1248967195]
 transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip5/right_hand"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip5/right_hand" unique_id=734859244]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.018, 0)
 shape = SubResource("CapsuleShape3D_ieg28")
 
-[node name="HandPoseDetector" parent="XROrigin3D/right" instance=ExtResource("38_4ru4y")]
+[node name="HandPoseDetector" parent="XROrigin3D/right" unique_id=1275132854 instance=ExtResource("38_4ru4y")]
 hand_tracker_name = "/user/hand_tracker/right"
 hand_pose_set = ExtResource("34_63uls")
 
-[node name="OpenXRFbSceneManager" type="OpenXRFbSceneManager" parent="XROrigin3D"]
+[node name="OpenXRFbSceneManager" type="OpenXRFbSceneManager" parent="XROrigin3D" unique_id=908634191]
 default_scene = ExtResource("39_5wcqy")
 auto_create = false
 visible = false
 scenes/global_mesh = ExtResource("40_c1vpu")
 
-[node name="start_passthrough" type="Node" parent="."]
+[node name="start_passthrough" type="Node" parent="." unique_id=394152677]
 script = ExtResource("30_b66op")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=954595673]
 transform = Transform3D(-0.486978, -0.857167, -0.16768, -0.325568, -1.4231e-08, 0.945518, -0.810468, 0.515038, -0.279066, 0, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=195329942]
 
-[node name="ground" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="ground" type="MeshInstance3D" parent="StaticBody3D" unique_id=1497994064]
 visible = false
 material_override = ExtResource("31_11imp")
 mesh = SubResource("PlaneMesh_00q4b")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2146540621]
 shape = SubResource("WorldBoundaryShape3D_307sh")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=625995929]
 environment = SubResource("Environment_c4jos")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1402405280]
 transform = Transform3D(-0.220772, -0.975312, -0.00516406, 0.254535, -0.0627264, 0.965027, -0.941526, 0.211737, 0.2621, -4.2177, 1.84116, -4.5774)
 light_energy = 16.0
 
