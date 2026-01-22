@@ -347,7 +347,8 @@ var enter_queue = []
 var active_cells = {}  # {note: [[row,col], [row,col], ...]}
 
 func hand_entered(area, row, col):
-	print("Hand Entered " + str(row) + " " + str(col))
+	if not area.is_in_group("finger_tip"):
+		return
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
 	if hand.gesture == "Index Pinch":
 		sequence[row][col] = Step.ON if sequence[row][col] == Step.OFF else Step.OFF 
@@ -369,7 +370,8 @@ func hand_entered(area, row, col):
 	notes_in_cell[row][col] = hit_note
 
 func hand_exited(area, row, col):
-	print("Hand exited " + str(row) + " " + str(col))	
+	if not area.is_in_group("finger_tip"):
+		return
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()	
 	if sequence[row][col] != Step.ON:
 		mm.multimesh.set_instance_color((col * notes) + row, out_color)	
@@ -492,11 +494,15 @@ var step_index:int = 0
 var stopped = false
 
 func _on_start_stop_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	# $"../sequencer/Timer".start()
 	stopped = ! stopped
 	pass # Replace with function body.
 
 func _on_up_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	if root_note + 12 < 128:
 		root_note = root_note + 12
 		midi_notes = get_scale_notes(root_note, mucical_scale)
@@ -505,6 +511,8 @@ func _on_up_area_entered(area: Area3D) -> void:
 
 
 func _on_down_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	if root_note - 12 >= 0:	
 		root_note = root_note - 12
 		midi_notes = get_scale_notes(root_note, mucical_scale)
@@ -629,12 +637,16 @@ func apply_direction_change():
 		step_index = steps - 1 - step_index
 
 func _on_ping_pong_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	direction_change_pending = Direction.PING_PONG
 	direction_change_requested = true
 	print("Direction change queued: " + str(Direction.keys()[direction_change_pending]))
 
 
 func _on_forwards_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	direction_change_pending = Direction.FORWARD
 	direction_change_requested = true
 	print("Direction change queued: " + str(Direction.keys()[direction_change_pending]))
@@ -642,6 +654,8 @@ func _on_forwards_area_entered(area: Area3D) -> void:
 
 
 func _on_backwards_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	direction_change_pending = Direction.BACKWARD
 	direction_change_requested = true
 	print("Direction change queued: " + str(Direction.keys()[direction_change_pending]))

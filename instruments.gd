@@ -1,5 +1,12 @@
 extends Node3D
 
+func _ready() -> void:
+	sequencers.push_back($drums)
+	sequencers.push_back($sequencer)
+	sequencers.push_back($sequencer2)
+	sequencers.push_back($sequencer3)
+
+	
 
 func _on_start_stop_area_entered(area: Area3D) -> void:
 	if $Timer.is_stopped():
@@ -10,12 +17,11 @@ func _on_start_stop_area_entered(area: Area3D) -> void:
 		$controls/mode2.text = "Start"
 	pass # Replace with function body.
 
+var sequencers = []
 
 func _on_timer_timeout() -> void:
-	$sequencer.next_step()
-	$sequencer2.next_step()
-	$sequencer3.next_step()
-	$drums.next_step()
+	for sequencer in sequencers:
+		sequencer.next_step()
 	pass # Replace with function body.
 
 

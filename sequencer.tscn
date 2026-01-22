@@ -5,9 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://2i1nqhynnlm0" path="res://button.tscn" id="3_qjhr7"]
 [ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://label.tscn" id="4_1yhx7"]
 [ext_resource type="PackedScene" uid="uid://bo3p0qs3gk7ji" path="res://analog.tscn" id="5_1yhx7"]
+[ext_resource type="Script" uid="uid://b1gpipmkpapbs" path="res://pick_and_move.gd" id="6_qjhr7"]
 
 [sub_resource type="Resource" id="Resource_byv7j"]
 metadata/__load_path__ = "res://fonts/Hyperspace.otf"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1h6b"]
+size = Vector3(1.2840576, 1, 0.27327347)
 
 [sub_resource type="BoxMesh" id="BoxMesh_twh6a"]
 size = Vector3(0.06, 0.06, 0.06)
@@ -39,6 +43,14 @@ in_color = Color(0.33901316, 0.6156455, 0.6028598, 0.52156866)
 instrument = 9
 midi_channel = 2
 label_scene = ExtResource("4_1yhx7")
+
+[node name="pick_and_move" type="Area3D" parent="." unique_id=205023483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21253023, 0.7628473, 0.16403352)
+script = ExtResource("6_qjhr7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pick_and_move" unique_id=1578594321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9610864, 0, 0.13808636)
+shape = SubResource("BoxShape3D_g1h6b")
 
 [node name="controls" type="Marker3D" parent="." unique_id=73690061]
 transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.10090655, -0.26539487, 0.044889063)
@@ -200,6 +212,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_twh6a")
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=1824471230]
 multimesh = SubResource("MultiMesh_twh6a")
 
+[connection signal="area_entered" from="pick_and_move" to="pick_and_move" method="_on_area_entered"]
+[connection signal="area_exited" from="pick_and_move" to="pick_and_move" method="_on_area_exited"]
 [connection signal="area_entered" from="controls/up_semi" to="." method="_on_up_semi_area_entered"]
 [connection signal="area_entered" from="controls/down_semi" to="." method="_on_down_semi_area_entered"]
 [connection signal="area_entered" from="controls/stop_start" to="." method="_on_start_stop_area_entered"]

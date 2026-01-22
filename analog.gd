@@ -43,14 +43,16 @@ func set_value(value):
 	  
 
 func _on_grab_area_entered(area: Area3D) -> void:
-	print("Hand Entered")
+	if not area.is_in_group("finger_tip"):
+		return
 	hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
 	d = global_position.y - hand.global_position.y
 	pass # Replace with function body.
 
 
 func _on_grab_area_exited(area: Area3D) -> void:
-	print("Hand exited")
+	if not area.is_in_group("finger_tip"):
+		return
 	hand = null	
 	pass # Replace with function body.
 

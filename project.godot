@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="skuare|wave"
+config/name="skuarewave"
 run/main_scene="uid://c8tx40me7j55t"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="uid://ck5yxjygyqchv"
@@ -28,9 +28,13 @@ driver/enable_input=true
 
 settings/addon_root_folder="res://addons/debug_draw_3d"
 
+[global_group]
+
+finger_tip=""
+
 [gui]
 
-theme/custom_font="uid://c1iebo6k5j1vr"
+theme/custom_font="uid://0jk2p2kfmllu"
 
 [rendering]
 

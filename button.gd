@@ -12,10 +12,14 @@ func _ready() -> void:
 	$MeshInstance3D.set_surface_override_material(0, mat)	
 
 func _on_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	$MeshInstance3D.get_surface_override_material(0).albedo_color = in_color 
 	pass # Replace with function body.
 
 
 func _on_area_exited(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	$MeshInstance3D.get_surface_override_material(0).albedo_color = out_color	
 	pass # Replace with function body.

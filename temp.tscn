@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://claqsm16iutik"]
+
+[ext_resource type="PackedScene" uid="uid://b7dvkr5ss01as" path="res://sequencer.tscn" id="1_pippe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufh25"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_byv7j"]
+material = SubResource("StandardMaterial3D_ufh25")
+
+[sub_resource type="MultiMesh" id="MultiMesh_k81e3"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_byv7j")
+
+[sub_resource type="MultiMesh" id="MultiMesh_f68d1"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_byv7j")
+
+[sub_resource type="MultiMesh" id="MultiMesh_h2clf"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_byv7j")
+
+[node name="Node3D" type="Node3D" unique_id=953033434]
+
+[node name="sequencer" parent="." unique_id=631711506 instance=ExtResource("1_pippe")]
+transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -0.93380964, 0.8463087, 1.059513)
+instrument = 17
+midi_channel = 1
+root_note = 48
+mucical_scale = 1
+
+[node name="MultiMeshInstance3D" parent="sequencer" index="3" unique_id=1824471230]
+multimesh = SubResource("MultiMesh_k81e3")
+
+[node name="sequencer2" parent="." unique_id=1891659621 instance=ExtResource("1_pippe")]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.042931557, 0.8446685, -0.58785135)
+visible = false
+instrument = 80
+root_note = 48
+
+[node name="MultiMeshInstance3D" parent="sequencer2" index="3" unique_id=1824471230]
+multimesh = SubResource("MultiMesh_f68d1")
+
+[node name="sequencer3" parent="." unique_id=1129861667 instance=ExtResource("1_pippe")]
+transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, 0.62453747, 0.8446685, 2.0784426)
+visible = false
+instrument = 72
+root_note = 48
+mucical_scale = 1
+
+[node name="MultiMeshInstance3D" parent="sequencer3" index="3" unique_id=1824471230]
+multimesh = SubResource("MultiMesh_h2clf")
+
+[editable path="sequencer"]
+[editable path="sequencer/controls/gate"]
+[editable path="sequencer/controls/vel"]
+[editable path="sequencer2"]
+[editable path="sequencer2/controls/gate"]
+[editable path="sequencer2/controls/vel"]
+[editable path="sequencer3"]
+[editable path="sequencer3/controls/gate"]
+[editable path="sequencer3/controls/vel"]
