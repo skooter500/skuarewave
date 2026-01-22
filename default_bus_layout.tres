@@ -1,19 +1,23 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://5u6eb38bx5ob"]
 
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g28q7"]
+resource_name = "Reverb"
+predelay_feedback = 0.71
+room_size = 0.66
+damping = 0.72
+spread = 0.5
+wet = 0.0
+
 [sub_resource type="AudioEffectDelay" id="AudioEffectDelay_j3pel"]
 resource_name = "Delay"
 dry = 0.0
-
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g28q7"]
-resource_name = "Reverb"
-room_size = 0.7
-spread = 0.53
-wet = 1.0
+tap1_delay_ms = 500.0
+tap2_delay_ms = 750.0
 
 [resource]
-bus/0/effect/0/effect = SubResource("AudioEffectDelay_j3pel")
+bus/0/effect/0/effect = SubResource("AudioEffectReverb_g28q7")
 bus/0/effect/0/enabled = true
-bus/0/effect/1/effect = SubResource("AudioEffectReverb_g28q7")
+bus/0/effect/1/effect = SubResource("AudioEffectDelay_j3pel")
 bus/0/effect/1/enabled = true
 bus/1/name = &"Record"
 bus/1/solo = false

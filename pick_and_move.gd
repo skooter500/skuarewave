@@ -10,12 +10,16 @@ func _on_area_entered(area: Area3D) -> void:
 	print(hand)
 
 func _on_area_exited(area: Area3D) -> void:
-	#hand = null
-	#if held:
-		#print("Removing")
-		#held.reparent(old_parent, true)
-		#hand = null
-		#held = null
+	if not area.is_in_group("finger_tip"):
+		return
+	
+	hand = null
+	
+	if held:
+		print("Removing")
+		held.reparent(old_parent, true)
+		hand = null
+		held = null
 	pass
 
 func _process(delta: float) -> void:

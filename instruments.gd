@@ -9,6 +9,8 @@ func _ready() -> void:
 	
 
 func _on_start_stop_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	if $Timer.is_stopped():
 		$"Timer".start()
 		$controls/mode2.text = "stop"
