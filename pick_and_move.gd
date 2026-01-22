@@ -6,21 +6,21 @@ var old_parent:Node3D = null
 func _on_area_entered(area: Area3D) -> void:
 	if not area.is_in_group("finger_tip"):
 		return
-	if held:
-		return
 	hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
+	print(hand)
 
 func _on_area_exited(area: Area3D) -> void:
-	hand = null
-	if held:
-		print("Removing")
-		held.reparent(old_parent, true)
-		hand = null
-		held = null
+	#hand = null
+	#if held:
+		#print("Removing")
+		#held.reparent(old_parent, true)
+		#hand = null
+		#held = null
 	pass
 
 func _process(delta: float) -> void:
 	if hand:
+		print(hand.gesture)
 		if hand.gesture == "Fist":
 			if not held:
 				print("Adding")
@@ -30,6 +30,6 @@ func _process(delta: float) -> void:
 		else:
 			if held:
 				print("Removing")
-				held.reparent(old_parent, true)			
-			hand = null
-			held = null
+				held.reparent(old_parent, true)		
+				held = null	
+				hand = null
