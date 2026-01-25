@@ -27,7 +27,7 @@ enum Step {OFF, ON, HIT_ON, HIT_OFF}
 @export var midi_channel:int = 1
 @export var root_note:int = 68
 
-@onready var midi_player:MidiPlayer = $"../MidiPlayer"
+@onready var midi_player:MidiPlayer = $"../../../MidiPlayer"
 
 @export var label_scene:PackedScene
 

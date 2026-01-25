@@ -24,9 +24,18 @@ config/icon="uid://ck5yxjygyqchv"
 buses/default_bus_layout="uid://5u6eb38bx5ob"
 driver/enable_input=true
 
+[autoload]
+
+XRToolsUserSettings="*uid://bqgb8i74tm0t"
+XRToolsRumbleManager="*uid://by853dk86g1qw"
+
 [debug_draw_3d]
 
 settings/addon_root_folder="res://addons/debug_draw_3d"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
 
 [global_group]
 
