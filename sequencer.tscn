@@ -36,6 +36,8 @@ mesh = SubResource("BoxMesh_byv7j")
 [node name="pickable_sequencer" type="Marker3D" unique_id=450981641]
 
 [node name="pickable" parent="." unique_id=1719777704 instance=ExtResource("1_qjhr7")]
+linear_damp = 100.0
+angular_damp = 100.0
 
 [node name="CollisionShape3D" parent="pickable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.560628, 0.6879742, 0.14151001)
