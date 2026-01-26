@@ -43,7 +43,11 @@ finger_tip=""
 
 [gui]
 
-theme/custom_font="uid://c1iebo6k5j1vr"
+theme/custom_font="uid://0jk2p2kfmllu"
+
+[physics]
+
+3d/default_gravity=0.0
 
 [rendering]
 

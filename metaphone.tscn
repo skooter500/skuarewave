@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://c8tx40me7j55t"]
 
-[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="1_83we6"]
 [ext_resource type="Script" uid="uid://nxajcnxqcaey" path="res://timer.gd" id="1_byv7j"]
 [ext_resource type="Script" uid="uid://ox8smfnahvcm" path="res://xr_camera_3d.gd" id="2_8d825"]
 [ext_resource type="PackedScene" uid="uid://03pivv0mboix" path="res://controls.tscn" id="5_65ndq"]
@@ -69,16 +68,8 @@ script = ExtResource("12_ucien")
 [node name="Timer" type="Timer" parent="instruments" unique_id=658303578]
 wait_time = 0.2
 
-[node name="MidiPlayer" parent="instruments" unique_id=1134933499 instance=ExtResource("1_83we6")]
-volume_db = -10.0
-soundfont = "res://assets/Aspirin-Stereo.sf2"
-
 [node name="drums" parent="instruments" unique_id=684359294 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 1.4953325, 0.918069, 0.3973448)
-hit_color = Color(0, 0.24, 0.96, 0.32156864)
-midi_channel = 9
-root_note = 35
-mucical_scale = 0
 
 [node name="record" type="Node" parent="instruments" unique_id=1406815149]
 
@@ -91,29 +82,33 @@ bus = &"Record"
 
 [node name="sequencer" parent="instruments" unique_id=19113346 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -0.93380964, 0.8463087, 1.059513)
-instrument = 17
-midi_channel = 1
-root_note = 48
-mucical_scale = 1
 
-[node name="MultiMeshInstance3D" parent="instruments/sequencer" index="3" unique_id=1824471230]
+[node name="sequencer" parent="instruments/sequencer/PickableObject" parent_id_path=PackedInt32Array(19113346, 1719777704) index="1" unique_id=631711506]
+instrument = 20
+root_note = 48
+
+[node name="MultiMeshInstance3D" parent="instruments/sequencer/PickableObject/sequencer" index="4" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_s2ckv")
 
 [node name="sequencer2" parent="instruments" unique_id=1630129912 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.042931557, 0.8446685, -0.58785135)
-instrument = 80
+
+[node name="sequencer" parent="instruments/sequencer2/PickableObject" parent_id_path=PackedInt32Array(1630129912, 1719777704) index="1" unique_id=631711506]
+instrument = 90
+midi_channel = 3
 root_note = 48
 
-[node name="MultiMeshInstance3D" parent="instruments/sequencer2" index="3" unique_id=1824471230]
+[node name="MultiMeshInstance3D" parent="instruments/sequencer2/PickableObject/sequencer" index="4" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_65ndq")
 
 [node name="sequencer3" parent="instruments" unique_id=600002492 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, 0.62453747, 0.8446685, 2.0784426)
-instrument = 72
-root_note = 48
-mucical_scale = 1
 
-[node name="MultiMeshInstance3D" parent="instruments/sequencer3" index="3" unique_id=1824471230]
+[node name="sequencer" parent="instruments/sequencer3/PickableObject" parent_id_path=PackedInt32Array(600002492, 1719777704) index="1" unique_id=631711506]
+midi_channel = 3
+root_note = 48
+
+[node name="MultiMeshInstance3D" parent="instruments/sequencer3/PickableObject/sequencer" index="4" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_2c0tl")
 
 [node name="controls" parent="instruments" unique_id=1187298749 instance=ExtResource("5_65ndq")]
@@ -240,15 +235,17 @@ light_energy = 16.0
 [connection signal="pose_started" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_started"]
 
 [editable path="instruments/sequencer"]
-[editable path="instruments/sequencer/controls/gate"]
-[editable path="instruments/sequencer/controls/vel"]
+[editable path="instruments/sequencer/PickableObject"]
+[editable path="instruments/sequencer/PickableObject/sequencer/controls/gate"]
+[editable path="instruments/sequencer/PickableObject/sequencer/controls/vel"]
 [editable path="instruments/sequencer2"]
-[editable path="instruments/sequencer2/controls/clear"]
-[editable path="instruments/sequencer2/controls/gate"]
-[editable path="instruments/sequencer2/controls/vel"]
+[editable path="instruments/sequencer2/PickableObject"]
+[editable path="instruments/sequencer2/PickableObject/sequencer/controls/gate"]
+[editable path="instruments/sequencer2/PickableObject/sequencer/controls/vel"]
 [editable path="instruments/sequencer3"]
-[editable path="instruments/sequencer3/controls/gate"]
-[editable path="instruments/sequencer3/controls/vel"]
+[editable path="instruments/sequencer3/PickableObject"]
+[editable path="instruments/sequencer3/PickableObject/sequencer/controls/gate"]
+[editable path="instruments/sequencer3/PickableObject/sequencer/controls/vel"]
 [editable path="instruments/controls"]
 [editable path="instruments/controls/vol"]
 [editable path="instruments/controls/tempo"]

@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://2i1nqhynnlm0" path="res://button.tscn" id="3_qjhr7"]
 [ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://label.tscn" id="4_1yhx7"]
 [ext_resource type="PackedScene" uid="uid://bo3p0qs3gk7ji" path="res://analog.tscn" id="5_1yhx7"]
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="5_g1h6b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g1h6b"]
-size = Vector3(1, 1, 0.0791626)
+size = Vector3(1, 1, 0.12207031)
 
 [sub_resource type="Resource" id="Resource_byv7j"]
 metadata/__load_path__ = "res://fonts/Hyperspace.otf"
@@ -32,13 +33,12 @@ transform_format = 1
 use_colors = true
 mesh = SubResource("BoxMesh_byv7j")
 
-[node name="Marker3D" type="Marker3D" unique_id=450981641]
+[node name="pickable_sequencer" type="Marker3D" unique_id=450981641]
 
 [node name="PickableObject" parent="." unique_id=1719777704 instance=ExtResource("1_qjhr7")]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
 
 [node name="CollisionShape3D" parent="PickableObject" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.560628, 0.6879742, 0.11758423)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.560628, 0.6879742, 0.14151001)
 shape = SubResource("BoxShape3D_g1h6b")
 
 [node name="sequencer" type="Marker3D" parent="PickableObject" unique_id=631711506]
@@ -51,6 +51,10 @@ in_color = Color(0.33901316, 0.6156455, 0.6028598, 0.52156866)
 instrument = 9
 midi_channel = 2
 label_scene = ExtResource("4_1yhx7")
+
+[node name="MidiPlayer" parent="PickableObject/sequencer" unique_id=1005795330 instance=ExtResource("5_g1h6b")]
+volume_db = -10.0
+soundfont = "res://assets/Aspirin-Stereo.sf2"
 
 [node name="controls" type="Marker3D" parent="PickableObject/sequencer" unique_id=73690061]
 transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.10090655, -0.26539487, 0.044889063)
