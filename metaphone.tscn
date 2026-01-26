@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://03pivv0mboix" path="res://controls.tscn" id="5_65ndq"]
 [ext_resource type="PackedScene" uid="uid://cend6ikv2su2t" path="res://tip.tscn" id="7_65ndq"]
 [ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://hand.gd" id="9_00tvn"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="12_65ndq"]
 [ext_resource type="Script" uid="uid://n7iy2lr1dvkr" path="res://instruments.gd" id="12_ucien"]
 [ext_resource type="PackedScene" uid="uid://b7dvkr5ss01as" path="res://sequencer.tscn" id="17_s2ckv"]
 [ext_resource type="Script" uid="uid://bs8nmn7mjqaek" path="res://examples/bge/start_passthrough.gd" id="30_b66op"]
@@ -83,32 +84,32 @@ bus = &"Record"
 [node name="sequencer" parent="instruments" unique_id=19113346 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -0.93380964, 0.8463087, 1.059513)
 
-[node name="sequencer" parent="instruments/sequencer/PickableObject" parent_id_path=PackedInt32Array(19113346, 1719777704) index="1" unique_id=631711506]
+[node name="sequencer" parent="instruments/sequencer/pickable" parent_id_path=PackedInt32Array(19113346, 1719777704) index="1" unique_id=631711506]
 instrument = 20
 root_note = 48
 
-[node name="MultiMeshInstance3D" parent="instruments/sequencer/PickableObject/sequencer" index="4" unique_id=1824471230]
+[node name="MultiMeshInstance3D" parent="instruments/sequencer/pickable/sequencer" index="4" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_s2ckv")
 
 [node name="sequencer2" parent="instruments" unique_id=1630129912 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.042931557, 0.8446685, -0.58785135)
 
-[node name="sequencer" parent="instruments/sequencer2/PickableObject" parent_id_path=PackedInt32Array(1630129912, 1719777704) index="1" unique_id=631711506]
+[node name="sequencer" parent="instruments/sequencer2/pickable" parent_id_path=PackedInt32Array(1630129912, 1719777704) index="1" unique_id=631711506]
 instrument = 90
 midi_channel = 3
 root_note = 48
 
-[node name="MultiMeshInstance3D" parent="instruments/sequencer2/PickableObject/sequencer" index="4" unique_id=1824471230]
+[node name="MultiMeshInstance3D" parent="instruments/sequencer2/pickable/sequencer" index="4" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_65ndq")
 
 [node name="sequencer3" parent="instruments" unique_id=600002492 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, 0.62453747, 0.8446685, 2.0784426)
 
-[node name="sequencer" parent="instruments/sequencer3/PickableObject" parent_id_path=PackedInt32Array(600002492, 1719777704) index="1" unique_id=631711506]
+[node name="sequencer" parent="instruments/sequencer3/pickable" parent_id_path=PackedInt32Array(600002492, 1719777704) index="1" unique_id=631711506]
 midi_channel = 3
 root_note = 48
 
-[node name="MultiMeshInstance3D" parent="instruments/sequencer3/PickableObject/sequencer" index="4" unique_id=1824471230]
+[node name="MultiMeshInstance3D" parent="instruments/sequencer3/pickable/sequencer" index="4" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_2c0tl")
 
 [node name="controls" parent="instruments" unique_id=1187298749 instance=ExtResource("5_65ndq")]
@@ -154,6 +155,11 @@ bone_idx = 9
 
 [node name="right_hand" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D/tip5" index="0" unique_id=1362912656]
 transform = Transform3D(1, 0, -3.7252903e-09, 0, 1.0000002, -2.9802322e-08, 0, -2.9802322e-08, 1.0000005, 0.0037370138, -0.0004246682, 0.00012084842)
+
+[node name="XRController3D" type="XRController3D" parent="XROrigin3D/left" unique_id=771045124]
+tracker = &"left_hand"
+
+[node name="FunctionPickup" parent="XROrigin3D/left/XRController3D" unique_id=220614084 instance=ExtResource("12_65ndq")]
 
 [node name="right" type="XRNode3D" parent="XROrigin3D" unique_id=1332199885]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.382, 0, 0)
@@ -235,17 +241,17 @@ light_energy = 16.0
 [connection signal="pose_started" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_started"]
 
 [editable path="instruments/sequencer"]
-[editable path="instruments/sequencer/PickableObject"]
-[editable path="instruments/sequencer/PickableObject/sequencer/controls/gate"]
-[editable path="instruments/sequencer/PickableObject/sequencer/controls/vel"]
+[editable path="instruments/sequencer/pickable"]
+[editable path="instruments/sequencer/pickable/sequencer/controls/gate"]
+[editable path="instruments/sequencer/pickable/sequencer/controls/vel"]
 [editable path="instruments/sequencer2"]
-[editable path="instruments/sequencer2/PickableObject"]
-[editable path="instruments/sequencer2/PickableObject/sequencer/controls/gate"]
-[editable path="instruments/sequencer2/PickableObject/sequencer/controls/vel"]
+[editable path="instruments/sequencer2/pickable"]
+[editable path="instruments/sequencer2/pickable/sequencer/controls/gate"]
+[editable path="instruments/sequencer2/pickable/sequencer/controls/vel"]
 [editable path="instruments/sequencer3"]
-[editable path="instruments/sequencer3/PickableObject"]
-[editable path="instruments/sequencer3/PickableObject/sequencer/controls/gate"]
-[editable path="instruments/sequencer3/PickableObject/sequencer/controls/vel"]
+[editable path="instruments/sequencer3/pickable"]
+[editable path="instruments/sequencer3/pickable/sequencer/controls/gate"]
+[editable path="instruments/sequencer3/pickable/sequencer/controls/vel"]
 [editable path="instruments/controls"]
 [editable path="instruments/controls/vol"]
 [editable path="instruments/controls/tempo"]

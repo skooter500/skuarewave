@@ -35,13 +35,13 @@ mesh = SubResource("BoxMesh_byv7j")
 
 [node name="pickable_sequencer" type="Marker3D" unique_id=450981641]
 
-[node name="PickableObject" parent="." unique_id=1719777704 instance=ExtResource("1_qjhr7")]
+[node name="pickable" parent="." unique_id=1719777704 instance=ExtResource("1_qjhr7")]
 
-[node name="CollisionShape3D" parent="PickableObject" index="0"]
+[node name="CollisionShape3D" parent="pickable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.560628, 0.6879742, 0.14151001)
 shape = SubResource("BoxShape3D_g1h6b")
 
-[node name="sequencer" type="Marker3D" parent="PickableObject" unique_id=631711506]
+[node name="sequencer" type="Marker3D" parent="pickable" unique_id=631711506]
 script = ExtResource("1_twh6a")
 font = SubResource("Resource_byv7j")
 pad_scene = ExtResource("2_1yhx7")
@@ -52,185 +52,185 @@ instrument = 9
 midi_channel = 2
 label_scene = ExtResource("4_1yhx7")
 
-[node name="MidiPlayer" parent="PickableObject/sequencer" unique_id=1005795330 instance=ExtResource("5_g1h6b")]
+[node name="MidiPlayer" parent="pickable/sequencer" unique_id=1005795330 instance=ExtResource("5_g1h6b")]
 volume_db = -10.0
 soundfont = "res://assets/Aspirin-Stereo.sf2"
 
-[node name="controls" type="Marker3D" parent="PickableObject/sequencer" unique_id=73690061]
+[node name="controls" type="Marker3D" parent="pickable/sequencer" unique_id=73690061]
 transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.10090655, -0.26539487, 0.044889063)
 
-[node name="up_semi" parent="PickableObject/sequencer/controls" unique_id=2138419497 instance=ExtResource("3_qjhr7")]
+[node name="up_semi" parent="pickable/sequencer/controls" unique_id=2138419497 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5023537, 0.8422569, -0.04448858)
 
-[node name="down_semi" parent="PickableObject/sequencer/controls" unique_id=1018370246 instance=ExtResource("3_qjhr7")]
+[node name="down_semi" parent="pickable/sequencer/controls" unique_id=1018370246 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3890648, 0.8440504, -0.045494214)
 
-[node name="stop_start" parent="PickableObject/sequencer/controls" unique_id=2141351437 instance=ExtResource("3_qjhr7")]
+[node name="stop_start" parent="pickable/sequencer/controls" unique_id=2141351437 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38945073, 1.1667024, -0.045584388)
 
-[node name="forwards" parent="PickableObject/sequencer/controls" unique_id=1935275129 instance=ExtResource("3_qjhr7")]
+[node name="forwards" parent="pickable/sequencer/controls" unique_id=1935275129 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56099385, 1.2866337, -0.04558437)
 
-[node name="backwards" parent="PickableObject/sequencer/controls" unique_id=879559165 instance=ExtResource("3_qjhr7")]
+[node name="backwards" parent="pickable/sequencer/controls" unique_id=879559165 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4546005, 1.2866337, -0.045584384)
 
-[node name="ping_pong" parent="PickableObject/sequencer/controls" unique_id=881514405 instance=ExtResource("3_qjhr7")]
+[node name="ping_pong" parent="pickable/sequencer/controls" unique_id=881514405 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33954233, 1.291291, -0.045584388)
 
-[node name="clear" parent="PickableObject/sequencer/controls" unique_id=1584419201 instance=ExtResource("3_qjhr7")]
+[node name="clear" parent="pickable/sequencer/controls" unique_id=1584419201 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5050405, 1.1628531, -0.045584388)
 
-[node name="up" parent="PickableObject/sequencer/controls" unique_id=731043316 instance=ExtResource("3_qjhr7")]
+[node name="up" parent="pickable/sequencer/controls" unique_id=731043316 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5037154, 0.9519278, -0.045584388)
 
-[node name="down" parent="PickableObject/sequencer/controls" unique_id=547150324 instance=ExtResource("3_qjhr7")]
+[node name="down" parent="pickable/sequencer/controls" unique_id=547150324 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3873617, 0.9511898, -0.045584388)
 
-[node name="inst_up" parent="PickableObject/sequencer/controls" unique_id=1285216855 instance=ExtResource("3_qjhr7")]
+[node name="inst_up" parent="pickable/sequencer/controls" unique_id=1285216855 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5037154, 1.03878, -0.045584388)
 
-[node name="inst_down" parent="PickableObject/sequencer/controls" unique_id=349627763 instance=ExtResource("3_qjhr7")]
+[node name="inst_down" parent="pickable/sequencer/controls" unique_id=349627763 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3873617, 1.0380421, -0.045584388)
 
-[node name="scale_up" parent="PickableObject/sequencer/controls" unique_id=1503189843 instance=ExtResource("3_qjhr7")]
+[node name="scale_up" parent="pickable/sequencer/controls" unique_id=1503189843 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50294286, 0.7474096, -0.045584388)
 
-[node name="scale_down" parent="PickableObject/sequencer/controls" unique_id=437597239 instance=ExtResource("3_qjhr7")]
+[node name="scale_down" parent="pickable/sequencer/controls" unique_id=437597239 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39113772, 0.7464541, -0.043849096)
 
-[node name="mode" parent="PickableObject/sequencer/controls" unique_id=488361937 instance=ExtResource("4_1yhx7")]
+[node name="mode" parent="pickable/sequencer/controls" unique_id=488361937 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 0.7585491, -0.039757475)
 horizontal_alignment = 2
 
-[node name="instrument" parent="PickableObject/sequencer/controls" unique_id=170103231 instance=ExtResource("4_1yhx7")]
+[node name="instrument" parent="pickable/sequencer/controls" unique_id=170103231 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 1.0413444, -0.039757475)
 horizontal_alignment = 2
 
-[node name="clear2" parent="PickableObject/sequencer/controls" unique_id=85306595 instance=ExtResource("4_1yhx7")]
+[node name="clear2" parent="pickable/sequencer/controls" unique_id=85306595 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 1.1608107, -0.039757475)
 text = "Clear"
 horizontal_alignment = 2
 
-[node name="mute" parent="PickableObject/sequencer/controls" unique_id=612615996 instance=ExtResource("4_1yhx7")]
+[node name="mute" parent="pickable/sequencer/controls" unique_id=612615996 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3222619, 1.1670837, -0.03975747)
 text = "MUTE"
 
-[node name="direction" parent="PickableObject/sequencer/controls" unique_id=687586001 instance=ExtResource("4_1yhx7")]
+[node name="direction" parent="pickable/sequencer/controls" unique_id=687586001 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6230666, 1.2836528, -0.03975742)
 text = "DIRECTION"
 horizontal_alignment = 2
 
-[node name="mute3" parent="PickableObject/sequencer/controls" unique_id=1218249019 instance=ExtResource("4_1yhx7")]
+[node name="mute3" parent="pickable/sequencer/controls" unique_id=1218249019 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 0.94752383, -0.039757475)
 text = "+/- 12"
 
-[node name="mute5" parent="PickableObject/sequencer/controls" unique_id=1187675703 instance=ExtResource("4_1yhx7")]
+[node name="mute5" parent="pickable/sequencer/controls" unique_id=1187675703 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 1.0377669, -0.039757475)
 text = "+/- INST"
 
-[node name="mute7" parent="PickableObject/sequencer/controls" unique_id=1461974304 instance=ExtResource("4_1yhx7")]
+[node name="mute7" parent="pickable/sequencer/controls" unique_id=1461974304 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 1.1021926, -0.03975747)
 text = "+"
 horizontal_alignment = 1
 
-[node name="mute11" parent="PickableObject/sequencer/controls" unique_id=1917705396 instance=ExtResource("4_1yhx7")]
+[node name="mute11" parent="pickable/sequencer/controls" unique_id=1917705396 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5648352, 1.2306114, -0.039757464)
 text = "F"
 horizontal_alignment = 1
 
-[node name="mute12" parent="PickableObject/sequencer/controls" unique_id=1691737374 instance=ExtResource("4_1yhx7")]
+[node name="mute12" parent="pickable/sequencer/controls" unique_id=1691737374 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45255744, 1.2306114, -0.03975747)
 text = "R"
 horizontal_alignment = 1
 
-[node name="mute13" parent="PickableObject/sequencer/controls" unique_id=1866575689 instance=ExtResource("4_1yhx7")]
+[node name="mute13" parent="pickable/sequencer/controls" unique_id=1866575689 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33860397, 1.2306114, -0.03975747)
 text = "P"
 horizontal_alignment = 1
 
-[node name="mute9" parent="PickableObject/sequencer/controls" unique_id=1203840972 instance=ExtResource("4_1yhx7")]
+[node name="mute9" parent="pickable/sequencer/controls" unique_id=1203840972 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 0.69330055, -0.03975747)
 text = "+"
 horizontal_alignment = 1
 
-[node name="mute8" parent="PickableObject/sequencer/controls" unique_id=2029846493 instance=ExtResource("4_1yhx7")]
+[node name="mute8" parent="pickable/sequencer/controls" unique_id=2029846493 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38927794, 1.1021926, -0.039757475)
 text = "-"
 horizontal_alignment = 1
 
-[node name="mute10" parent="PickableObject/sequencer/controls" unique_id=438680737 instance=ExtResource("4_1yhx7")]
+[node name="mute10" parent="pickable/sequencer/controls" unique_id=438680737 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38927794, 0.6832458, -0.039757475)
 text = "-"
 horizontal_alignment = 1
 
-[node name="dir" parent="PickableObject/sequencer/controls" unique_id=2032595283 instance=ExtResource("4_1yhx7")]
+[node name="dir" parent="pickable/sequencer/controls" unique_id=2032595283 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3136267, 1.4458938, -0.039757475)
 modulate = Color(0, 6.436, 4.693, 0.792)
 text = ""
 
-[node name="mute6" parent="PickableObject/sequencer/controls" unique_id=866690688 instance=ExtResource("4_1yhx7")]
+[node name="mute6" parent="pickable/sequencer/controls" unique_id=866690688 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 0.7442564, -0.039757475)
 text = "+/- MODE"
 
-[node name="mute4" parent="PickableObject/sequencer/controls" unique_id=1010640520 instance=ExtResource("4_1yhx7")]
+[node name="mute4" parent="pickable/sequencer/controls" unique_id=1010640520 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 0.83990633, -0.039757475)
 text = "+/- 1"
 
-[node name="root" parent="PickableObject/sequencer/controls" unique_id=61118654 instance=ExtResource("4_1yhx7")]
+[node name="root" parent="pickable/sequencer/controls" unique_id=61118654 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 0.9552486, -0.039757475)
 horizontal_alignment = 2
 
-[node name="root2" parent="PickableObject/sequencer/controls" unique_id=2055426953 instance=ExtResource("4_1yhx7")]
+[node name="root2" parent="pickable/sequencer/controls" unique_id=2055426953 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 0.84563017, -0.039757475)
 horizontal_alignment = 2
 
-[node name="gate" parent="PickableObject/sequencer/controls" unique_id=754814461 instance=ExtResource("5_1yhx7")]
+[node name="gate" parent="pickable/sequencer/controls" unique_id=754814461 instance=ExtResource("5_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9026357, 0.7538852, -0.039678335)
 
-[node name="grab" parent="PickableObject/sequencer/controls/gate" index="0"]
+[node name="grab" parent="pickable/sequencer/controls/gate" index="0"]
 value = 0.2
 
-[node name="title" parent="PickableObject/sequencer/controls/gate" index="1"]
+[node name="title" parent="pickable/sequencer/controls/gate" index="1"]
 text = "Gate"
 
-[node name="vel" parent="PickableObject/sequencer/controls" unique_id=321154315 instance=ExtResource("5_1yhx7")]
+[node name="vel" parent="pickable/sequencer/controls" unique_id=321154315 instance=ExtResource("5_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.022186, 0.7538852, -0.039678335)
 
-[node name="grab" parent="PickableObject/sequencer/controls/vel" index="0"]
+[node name="grab" parent="pickable/sequencer/controls/vel" index="0"]
 value = 100.0
 max = 100.0
 
-[node name="title" parent="PickableObject/sequencer/controls/vel" index="1"]
+[node name="title" parent="pickable/sequencer/controls/vel" index="1"]
 text = "VELOcity"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PickableObject/sequencer/controls/vel" unique_id=1260993603]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="pickable/sequencer/controls/vel" unique_id=1260993603]
 
-[node name="Timer" type="Timer" parent="PickableObject/sequencer" unique_id=941768318]
+[node name="Timer" type="Timer" parent="pickable/sequencer" unique_id=941768318]
 wait_time = 0.2
 
-[node name="timer_ball" type="MeshInstance3D" parent="PickableObject/sequencer" unique_id=639837728]
+[node name="timer_ball" type="MeshInstance3D" parent="pickable/sequencer" unique_id=639837728]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0782841, 0)
 mesh = SubResource("BoxMesh_twh6a")
 surface_material_override/0 = SubResource("StandardMaterial3D_twh6a")
 
-[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="PickableObject/sequencer" unique_id=1824471230]
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="pickable/sequencer" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_twh6a")
 
-[connection signal="area_entered" from="PickableObject/sequencer/controls/up_semi" to="PickableObject/sequencer" method="_on_up_semi_area_entered"]
-[connection signal="area_entered" from="PickableObject/sequencer/controls/down_semi" to="PickableObject/sequencer" method="_on_down_semi_area_entered"]
-[connection signal="area_entered" from="PickableObject/sequencer/controls/stop_start" to="PickableObject/sequencer" method="_on_start_stop_area_entered"]
-[connection signal="area_entered" from="PickableObject/sequencer/controls/forwards" to="PickableObject/sequencer" method="_on_forwards_area_entered"]
-[connection signal="area_entered" from="PickableObject/sequencer/controls/backwards" to="PickableObject/sequencer" method="_on_backwards_area_entered"]
-[connection signal="area_entered" from="PickableObject/sequencer/controls/ping_pong" to="PickableObject/sequencer" method="_on_ping_pong_area_entered"]
-[connection signal="area_entered" from="PickableObject/sequencer/controls/clear" to="PickableObject/sequencer" method="_on_clear_area_entered"]
-[connection signal="area_entered" from="PickableObject/sequencer/controls/up" to="PickableObject/sequencer" method="_on_up_area_entered"]
-[connection signal="area_entered" from="PickableObject/sequencer/controls/down" to="PickableObject/sequencer" method="_on_down_area_entered"]
-[connection signal="area_entered" from="PickableObject/sequencer/controls/inst_up" to="PickableObject/sequencer" method="_on_inst_up_area_entered"]
-[connection signal="area_entered" from="PickableObject/sequencer/controls/inst_down" to="PickableObject/sequencer" method="_on_inst_down_area_entered"]
-[connection signal="area_entered" from="PickableObject/sequencer/controls/scale_up" to="PickableObject/sequencer" method="_on_scale_area_entered"]
-[connection signal="area_entered" from="PickableObject/sequencer/controls/scale_down" to="PickableObject/sequencer" method="_on_scale_down_area_entered"]
-[connection signal="timeout" from="PickableObject/sequencer/Timer" to="PickableObject/sequencer" method="_on_timer_timeout"]
+[connection signal="area_entered" from="pickable/sequencer/controls/up_semi" to="pickable/sequencer" method="_on_up_semi_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/down_semi" to="pickable/sequencer" method="_on_down_semi_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/stop_start" to="pickable/sequencer" method="_on_start_stop_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/forwards" to="pickable/sequencer" method="_on_forwards_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/backwards" to="pickable/sequencer" method="_on_backwards_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/ping_pong" to="pickable/sequencer" method="_on_ping_pong_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/clear" to="pickable/sequencer" method="_on_clear_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/up" to="pickable/sequencer" method="_on_up_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/down" to="pickable/sequencer" method="_on_down_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/inst_up" to="pickable/sequencer" method="_on_inst_up_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/inst_down" to="pickable/sequencer" method="_on_inst_down_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/scale_up" to="pickable/sequencer" method="_on_scale_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/scale_down" to="pickable/sequencer" method="_on_scale_down_area_entered"]
+[connection signal="timeout" from="pickable/sequencer/Timer" to="pickable/sequencer" method="_on_timer_timeout"]
 
-[editable path="PickableObject"]
-[editable path="PickableObject/sequencer/controls/gate"]
-[editable path="PickableObject/sequencer/controls/vel"]
+[editable path="pickable"]
+[editable path="pickable/sequencer/controls/gate"]
+[editable path="pickable/sequencer/controls/vel"]

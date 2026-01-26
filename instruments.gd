@@ -1,10 +1,10 @@
 extends Node3D
 
 func _ready() -> void:
-	sequencers.push_back($drums)
-	sequencers.push_back($sequencer)
-	sequencers.push_back($sequencer2)
-	sequencers.push_back($sequencer3)
+	sequencers.push_back($drums/pickable/sequencer)
+	sequencers.push_back($sequencer/pickable/sequencer)
+	sequencers.push_back($sequencer2/pickable/sequencer)
+	sequencers.push_back($sequencer3/pickable/sequencer)
 
 	
 
