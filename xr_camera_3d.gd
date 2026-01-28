@@ -1,6 +1,6 @@
 extends XRCamera3D
 
-var distance_in_front = -1
+var distance_in_front = - 2.5
 
 
 @export var spawn_in_front:Node3D 

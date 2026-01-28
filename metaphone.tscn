@@ -79,7 +79,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 script = ExtResource("1_byv7j")
 
 [node name="instruments" type="Node3D" parent="." unique_id=1822275068]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35210705, 0, -0.88351357)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52361655, -0.13080412, -2.4875844)
 script = ExtResource("12_ucien")
 
 [node name="Timer" type="Timer" parent="instruments" unique_id=658303578]
@@ -89,7 +89,8 @@ wait_time = 0.2
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.918, -0.31362104)
 
 [node name="sequencer" parent="instruments/drums/pickable" parent_id_path=PackedInt32Array(684359294, 1719777704) index="1" unique_id=631711506]
-midi_channel = 11
+midi_channel = 9
+root_note = 36
 mucical_scale = 16
 
 [node name="record" type="Node" parent="instruments" unique_id=1406815149]
@@ -140,13 +141,37 @@ midi_channel = 3
 multimesh = SubResource("MultiMesh_2c0tl")
 
 [node name="controls" parent="instruments" unique_id=1187298749 instance=ExtResource("5_65ndq")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.4024005, 0, 0.0948267)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3021846, 0, 1.3074335)
+
+[node name="start_stop" parent="instruments/controls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41783154, 1.6082792, 0.4805628)
+
+[node name="vol" parent="instruments/controls" index="1"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6857811, 1.3463478, 0.47963643)
+
+[node name="title" parent="instruments/controls/vol" index="1" unique_id=387676606]
+text = "VOL"
+
+[node name="mode2" parent="instruments/controls" index="3"]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.45076632, 1.5506735, 0.479756)
 
 [node name="mode3" parent="instruments/controls" index="4"]
 text = "SKUAREWAVE
 Created By: Bryan Duggan
 @skooter500
 bryanduggan.org"
+
+[node name="reverb_mix2" parent="instruments/controls" index="5"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.90460646, 1.3463478, 0.47963655)
+
+[node name="grab" parent="instruments/controls/reverb_mix2" index="0" unique_id=848395477]
+value = 0.2
+
+[node name="delay_mix" parent="instruments/controls" index="6"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.018364, 1.3463478, 0.47963667)
+
+[node name="mic_vol" parent="instruments/controls" index="7"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7893927, 1.3463478, 0.47963655)
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=811185315]
 
