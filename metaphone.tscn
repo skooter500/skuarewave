@@ -44,6 +44,11 @@ transform_format = 1
 use_colors = true
 mesh = SubResource("BoxMesh_65ndq")
 
+[sub_resource type="MultiMesh" id="MultiMesh_wccfp"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_65ndq")
+
 [sub_resource type="MultiMesh" id="MultiMesh_2c0tl"]
 transform_format = 1
 use_colors = true
@@ -98,7 +103,7 @@ script = ExtResource("12_ucien")
 wait_time = 0.2
 
 [node name="drums" parent="instruments" unique_id=684359294 instance=ExtResource("17_s2ckv")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.918, -0.31362104)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.918, -0.9384866)
 
 [node name="sequencer" parent="instruments/drums/pickable" parent_id_path=PackedInt32Array(684359294, 1719777704) index="1" unique_id=631711506]
 midi_channel = 9
@@ -138,6 +143,20 @@ instrument = 1
 
 [node name="MultiMeshInstance3D" parent="instruments/sequencer2/pickable/sequencer" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_65ndq")
+
+[node name="sequencer4" parent="instruments" unique_id=450981641 instance=ExtResource("17_s2ckv")]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.845, -0.2783935)
+
+[node name="sequencer" parent="instruments/sequencer4/pickable" parent_id_path=PackedInt32Array(450981641, 1719777704) index="1" unique_id=631711506]
+font = null
+out_color = Color(0, 0, 0, 1)
+in_color = Color(0, 0, 0, 1)
+instrument = 1
+midi_channel = 5
+mucical_scale = 1
+
+[node name="MultiMeshInstance3D" parent="instruments/sequencer4/pickable/sequencer" index="3" unique_id=1824471230]
+multimesh = SubResource("MultiMesh_wccfp")
 
 [node name="sequencer3" parent="instruments" unique_id=600002492 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.845, 1.8137949)
@@ -380,6 +399,10 @@ light_energy = 16.0
 [editable path="instruments/sequencer2/pickable"]
 [editable path="instruments/sequencer2/pickable/sequencer/controls/gate"]
 [editable path="instruments/sequencer2/pickable/sequencer/controls/vel"]
+[editable path="instruments/sequencer4"]
+[editable path="instruments/sequencer4/pickable"]
+[editable path="instruments/sequencer4/pickable/sequencer/controls/gate"]
+[editable path="instruments/sequencer4/pickable/sequencer/controls/vel"]
 [editable path="instruments/sequencer3"]
 [editable path="instruments/sequencer3/pickable"]
 [editable path="instruments/sequencer3/pickable/sequencer/controls/gate"]

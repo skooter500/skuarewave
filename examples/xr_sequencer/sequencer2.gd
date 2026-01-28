@@ -393,7 +393,16 @@ func set_column_color(col:int, is_current:bool):
 	for row in range(notes):
 		var index = (col * notes) + row
 		var color
-		
+
+		# Check if this cell is currently being held by a finger
+		var note = notes_in_cell[row][col]
+		var is_being_held = false
+		if note != -1 and active_cells.has(note):
+			for cell in active_cells[note]:
+				if cell[0] == row and cell[1] == col:
+					is_being_held = true
+					break
+
 		if is_current:
 			# For current step: show hit_color for ON notes, step_color for OFF notes
 			if sequence[row][col] == Step.ON:
@@ -401,19 +410,23 @@ func set_column_color(col:int, is_current:bool):
 			else:
 				color = step_color
 		else:
-			# For non-current steps: normal colors
-			match sequence[row][col]:
-				Step.OFF:
-					color = out_color
-				Step.ON:
-					color = in_color
-				Step.HIT_ON:
-					color = hit_color
-					sequence[row][col] = Step.ON
-				Step.HIT_OFF:
-					color = hit_color
-					sequence[row][col] = Step.OFF
-		
+			# If being held, keep hit_color
+			if is_being_held:
+				color = hit_color
+			else:
+				# For non-current steps: normal colors
+				match sequence[row][col]:
+					Step.OFF:
+						color = out_color
+					Step.ON:
+						color = in_color
+					Step.HIT_ON:
+						color = hit_color
+						sequence[row][col] = Step.ON
+					Step.HIT_OFF:
+						color = hit_color
+						sequence[row][col] = Step.OFF
+
 		mm.multimesh.set_instance_color(index, color)
 
 func play_step(col):
