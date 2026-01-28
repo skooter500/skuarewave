@@ -228,8 +228,6 @@ class GodotMIDIPlayerChannelStatusRPN:
 @export var load_all_voices_from_soundfont:bool = true
 ## サウンドフォント
 @export_file ("*.sf2") var soundfont:String = "" : set = set_soundfont
-## 合成
-@export var mix_target:AudioStreamPlayer.MixTarget = AudioStreamPlayer.MIX_TARGET_STEREO
 ## 出力先
 @export var bus:StringName = &"Master"
 
@@ -601,7 +599,6 @@ func set_max_polyphony( mp:int ) -> void:
 	self.audio_stream_players = []
 	for i in range( max_polyphony ):
 		var audio_stream_player:AudioStreamPlayerADSR = ADSR.instantiate( )
-		audio_stream_player.mix_target = self.mix_target
 		audio_stream_player.bus = self.bus
 		self.add_child( audio_stream_player )
 		self.audio_stream_players.append( audio_stream_player )

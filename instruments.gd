@@ -13,10 +13,10 @@ func _on_start_stop_area_entered(area: Area3D) -> void:
 		return
 	if $Timer.is_stopped():
 		$"Timer".start()
-		$controls/mode2.text = "stop"
+		$pickable/controls/mode2.text = "stop"
 	else:
 		$"Timer".stop()
-		$controls/mode2.text = "Start"
+		$pickable/controls/mode2.text = "Start"
 	pass # Replace with function body.
 
 var sequencers = []

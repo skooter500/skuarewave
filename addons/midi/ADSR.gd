@@ -6,7 +6,7 @@
 
 class_name AudioStreamPlayerADSR
 
-extends AudioStreamPlayer
+extends AudioStreamPlayer3D
 
 ## 先頭空白秒数
 const gap_second:float = 1024.0 / 44100.0
@@ -48,7 +48,7 @@ var timer:float = 0.0
 ## 使用時間
 var using_timer:float = 0.0
 ## リンク先の音色
-@onready var linked:AudioStreamPlayer = $Linked
+@onready var linked:AudioStreamPlayer3D = $Linked
 ## リンク先ベースピッチ
 var linked_base_pitch:float = 0.0
 
