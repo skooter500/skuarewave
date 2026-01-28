@@ -21,13 +21,6 @@ albedo_color = Color(0.8666667, 1, 0, 0.5529412)
 [sub_resource type="Resource" id="Resource_byv7j"]
 metadata/__load_path__ = "res://fonts/Hyperspace.otf"
 
-[sub_resource type="BoxMesh" id="BoxMesh_twh6a"]
-size = Vector3(0.06, 0.06, 0.06)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_twh6a"]
-transparency = 1
-albedo_color = Color(0.35000038, 0, 1, 0.47843137)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byv7j"]
 transparency = 1
 vertex_color_use_as_albedo = true
@@ -75,6 +68,7 @@ out_color = Color(0.029999971, 1, 0.11083323, 0.3882353)
 in_color = Color(0.33901316, 0.6156455, 0.6028598, 0.52156866)
 instrument = 9
 midi_channel = 2
+root_note = 48
 label_scene = ExtResource("4_1yhx7")
 
 [node name="MidiPlayer" parent="pickable/sequencer" unique_id=1005795330 instance=ExtResource("5_g1h6b")]
@@ -238,12 +232,8 @@ text = "VELOcity"
 [node name="Timer" type="Timer" parent="pickable/sequencer" unique_id=941768318]
 wait_time = 0.2
 
-[node name="timer_ball" type="MeshInstance3D" parent="pickable/sequencer" unique_id=639837728]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0782841, 0)
-mesh = SubResource("BoxMesh_twh6a")
-surface_material_override/0 = SubResource("StandardMaterial3D_twh6a")
-
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="pickable/sequencer" unique_id=1824471230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009119511, 0, 0)
 multimesh = SubResource("MultiMesh_twh6a")
 
 [connection signal="area_entered" from="pickable/sequencer/controls/up_semi" to="pickable/sequencer" method="_on_up_semi_area_entered"]

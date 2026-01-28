@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm1qa5btl0821"]
+[gd_scene format=3 uid="uid://dm1qa5btl0821"]
 
 [ext_resource type="Script" uid="uid://bx5nkhfxgudww" path="res://examples/xr_sequencer/pad_a.gd" id="1_nyep7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hg2j"]
-size = Vector3(0.05, 0.05, 0.05)
+size = Vector3(0.05, 0.05, 0.08)
 
-[node name="Pad" type="Area3D"]
+[node name="Pad" type="Area3D" unique_id=2044953554]
 script = ExtResource("1_nyep7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=874051893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009645343, 0, 0)
 shape = SubResource("BoxShape3D_0hg2j")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
