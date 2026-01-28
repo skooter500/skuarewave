@@ -85,15 +85,20 @@ func change_instrument(channel: int, program: int):
 func _ready():
 	initialise_sequence(notes, steps)
 	make_sequencer()
-	
+
+	# Position MidiPlayer at the center of the sequencer grid for 3D audio
+	var center_x = s * (steps - 1) * spacer / 2.0
+	var center_y = s * (notes - 1) * spacer / 2.0
+	midi_player.position = Vector3(center_x, center_y, 0)
+
 	in_color = Color.from_hsv(randf(), 1, 1, 0.5)
 	out_color = Color.from_hsv(fmod(in_color.h + 0.3, 1.0), 1, 1, 0.5)
 	hit_color = Color.from_hsv(fmod(out_color.h + 0.3, 1.0), 1, 1, 0.5)
 	step_color = Color.from_hsv(fmod(hit_color.h + 0.3, 1.0), 1, 1, 0.5)
-	
+
 	assign_colors()
 	create_labels()
-	midi_notes = get_scale_notes(root_note, mucical_scale)	
+	midi_notes = get_scale_notes(root_note, mucical_scale)
 	instrument = randi_range(0, 128)
 	change_instrument(midi_channel, instrument)
 	

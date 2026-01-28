@@ -7,7 +7,7 @@
 @icon("icon.png")
 class_name MidiPlayer
 
-extends Node
+extends Node3D
 
 # -----------------------------------------------------------------------------
 # Import
@@ -245,9 +245,9 @@ var seconds_to_timebase:float = 2.3
 ## タイムベース -> 秒変換係数
 var timebase_to_seconds:float = 1.0 / seconds_to_timebase
 ## 位置
-var position:float = 0.0
+var playback_position:float = 0.0
 ## 最終位置
-var last_position:int = 0
+var last_playback_position:int = 0
 ## チャンネルステータス
 var channel_status:Array[GodotMIDIPlayerChannelStatus]
 ## サウンドフォントを再生用に加工したもの
@@ -476,7 +476,7 @@ func _init_track( ) -> void:
 					next_time = e_time
 			time = next_time
 
-	self.last_position = track_status_events[len(track_status_events)-1].time
+	self.last_playback_position = track_status_events[len(track_status_events)-1].time
 	self.track_status.events = track_status_events
 	self.track_status.event_pointer = 0
 
@@ -523,31 +523,31 @@ func _init_channel( ) -> void:
 		channel.initialize( )
 
 ## 再生
-## @param	from_position	再生位置
-func play( from_position:float = 0.0 ) -> void:
+## @param	from_playback_position	再生位置
+func play( from_playback_position:float = 0.0 ) -> void:
 	self._previous_time = 0.0
 	if not self._prepare_to_play( ):
 		self.playing = false
 		return
 	self.playing = true
-	if from_position == 0.0:
-		self.position = 0.0
+	if from_playback_position == 0.0:
+		self.playback_position = 0.0
 		self.track_status.event_pointer = 0
 	else:
-		self.seek( from_position )
+		self.seek( from_playback_position )
 
 ## シーク
-## @param	from_position	再生位置
-func seek( to_position:float ) -> void:
+## @param	from_playback_position	再生位置
+func seek( to_playback_position:float ) -> void:
 	self._previous_time = 0.0
 	self._stop_all_notes( )
-	self.position = to_position
+	self.playback_position = to_playback_position
 
 	var pointer:int = 0
-	var new_position:int = int( floor( self.position ) )
+	var new_playback_position:int = int( floor( self.playback_position ) )
 	var length:int = len( self.track_status.events )
 	for event_chunk in self.track_status.events:
-		if new_position <= event_chunk.time:
+		if new_playback_position <= event_chunk.time:
 			break
 
 		var channel:GodotMIDIPlayerChannelStatus = self.channel_status[event_chunk.channel_number]
@@ -659,7 +659,7 @@ func _stop_all_notes( ) -> void:
 func _process( delta:float ) -> void:
 	if self.smf_data != null:
 		if self.playing:
-			self.position += float( self.smf_data.timebase ) * delta * self.seconds_to_timebase * self.play_speed
+			self.playback_position += float( self.smf_data.timebase ) * delta * self.seconds_to_timebase * self.play_speed
 			self._process_track( )
 
 	for asp in self.audio_stream_players:
@@ -676,21 +676,21 @@ func _process_track( ) -> int:
 
 	if length <= track.event_pointer:
 		if self.loop:
-			var diff:float = self.position - track.events[len( track.events ) - 1].time
+			var diff:float = self.playback_position - track.events[len( track.events ) - 1].time
 			self.seek( self.loop_start )
 			self.emit_signal( "looped" )
-			self.position += diff
+			self.playback_position += diff
 		else:
 			self.playing = false
 			self.emit_signal( "finished" )
 			return 0
 
 	var execute_event_count:int = 0
-	var current_position:int = int( ceil( self.position ) )
+	var current_playback_position:int = int( ceil( self.playback_position ) )
 
 	while track.event_pointer < length:
 		var event_chunk:SMF.MIDIEventChunk = track.events[track.event_pointer]
-		if current_position <= event_chunk.time:
+		if current_playback_position <= event_chunk.time:
 			break
 		track.event_pointer += 1
 		execute_event_count += 1
