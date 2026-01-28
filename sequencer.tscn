@@ -9,7 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="5_g1h6b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g1h6b"]
-size = Vector3(1, 1, 0.12207031)
+size = Vector3(0.5, 0.054052733, 0.07138672)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g1h6b"]
+size = Vector3(0.4, 0.06, 0.06)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ngqb"]
+transparency = 1
+albedo_color = Color(0.8666667, 1, 0, 0.5529412)
 
 [sub_resource type="Resource" id="Resource_byv7j"]
 metadata/__load_path__ = "res://fonts/Hyperspace.otf"
@@ -40,8 +47,24 @@ linear_damp = 100.0
 angular_damp = 100.0
 
 [node name="CollisionShape3D" parent="pickable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.560628, 0.6879742, 0.14151001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3338964, 0.7413409, -0.0010825992)
 shape = SubResource("BoxShape3D_g1h6b")
+
+[node name="grapber" type="MeshInstance3D" parent="pickable/CollisionShape3D" index="0" unique_id=1923255670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018781424, -0.0019559562, -0.00037418306)
+mesh = SubResource("BoxMesh_g1h6b")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_7ngqb")
+
+[node name="title" parent="pickable/CollisionShape3D/grapber" unique_id=1219964922 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05290146, 0.0031681433)
+text = "↑ HOLD HERE ↑"
+horizontal_alignment = 1
+
+[node name="title2" parent="pickable/CollisionShape3D/grapber" unique_id=1486097578 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.057956323, 0.0031681433)
+text = "↓ HOLD HERE ↓"
+horizontal_alignment = 1
 
 [node name="sequencer" type="Marker3D" parent="pickable" unique_id=631711506]
 script = ExtResource("1_twh6a")
@@ -191,6 +214,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9026357, 0.7538852, -0.039
 
 [node name="grab" parent="pickable/sequencer/controls/gate" index="0"]
 value = 0.2
+min = null
+max = null
+whole = null
 
 [node name="title" parent="pickable/sequencer/controls/gate" index="1"]
 text = "Gate"
@@ -200,7 +226,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.022186, 0.7538852, -0.0396
 
 [node name="grab" parent="pickable/sequencer/controls/vel" index="0"]
 value = 100.0
+min = null
 max = 100.0
+whole = null
 
 [node name="title" parent="pickable/sequencer/controls/vel" index="1"]
 text = "VELOcity"

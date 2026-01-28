@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo3p0qs3gk7ji"]
+[gd_scene format=3 uid="uid://bo3p0qs3gk7ji"]
 
 [ext_resource type="Script" uid="uid://x8lqdu7ewv6h" path="res://analog.gd" id="1_wukub"]
 [ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://label.tscn" id="2_aigei"]
@@ -15,29 +15,29 @@ size = Vector3(0.05870056, 0.6190758, 0.05883789)
 [sub_resource type="BoxMesh" id="BoxMesh_wukub"]
 size = Vector3(0.01, 1, 0.01)
 
-[node name="analog" type="Marker3D"]
+[node name="analog" type="Marker3D" unique_id=161052755]
 
-[node name="grab" type="Area3D" parent="."]
+[node name="grab" type="Area3D" parent="." unique_id=848395477]
 script = ExtResource("1_wukub")
 
-[node name="label" parent="grab" instance=ExtResource("2_aigei")]
+[node name="label" parent="grab" unique_id=674880526 instance=ExtResource("2_aigei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058535695, 0)
 horizontal_alignment = 1
 
-[node name="mesh" type="MeshInstance3D" parent="grab"]
+[node name="mesh" type="MeshInstance3D" parent="grab" unique_id=1119555860]
 mesh = SubResource("BoxMesh_qjhr7")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_1yhx7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="grab"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="grab" unique_id=217118715]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0002822876, -0.0009059906, -0.0003662035)
 shape = SubResource("BoxShape3D_g1h6b")
 
-[node name="title" parent="." instance=ExtResource("2_aigei")]
+[node name="title" parent="." unique_id=387676606 instance=ExtResource("2_aigei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050591536, 0)
 horizontal_alignment = 1
 
-[node name="rod" type="MeshInstance3D" parent="."]
+[node name="rod" type="MeshInstance3D" parent="." unique_id=1146946851]
 mesh = SubResource("BoxMesh_wukub")
 
 [connection signal="area_entered" from="grab" to="grab" method="_on_grab_area_entered"]
