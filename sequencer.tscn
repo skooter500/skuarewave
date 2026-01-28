@@ -212,25 +212,25 @@ horizontal_alignment = 2
 [node name="gate" parent="pickable/sequencer/controls" unique_id=754814461 instance=ExtResource("5_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9026357, 0.7538852, -0.039678335)
 
-[node name="grab" parent="pickable/sequencer/controls/gate" index="0"]
+[node name="grab" parent="pickable/sequencer/controls/gate" index="0" unique_id=848395477]
 value = 0.2
 min = null
 max = null
 whole = null
 
-[node name="title" parent="pickable/sequencer/controls/gate" index="1"]
+[node name="title" parent="pickable/sequencer/controls/gate" index="1" unique_id=387676606]
 text = "Gate"
 
 [node name="vel" parent="pickable/sequencer/controls" unique_id=321154315 instance=ExtResource("5_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.022186, 0.7538852, -0.039678335)
 
-[node name="grab" parent="pickable/sequencer/controls/vel" index="0"]
+[node name="grab" parent="pickable/sequencer/controls/vel" index="0" unique_id=848395477]
 value = 100.0
 min = null
 max = 100.0
 whole = null
 
-[node name="title" parent="pickable/sequencer/controls/vel" index="1"]
+[node name="title" parent="pickable/sequencer/controls/vel" index="1" unique_id=387676606]
 text = "VELOcity"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="pickable/sequencer/controls/vel" unique_id=1260993603]

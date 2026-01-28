@@ -101,7 +101,11 @@ bus = &"Record"
 transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -0.93380964, 0.8463087, 1.059513)
 
 [node name="sequencer" parent="instruments/sequencer/pickable" parent_id_path=PackedInt32Array(19113346, 1719777704) index="1" unique_id=631711506]
-instrument = 20
+font = null
+out_color = Color(0, 0, 0, 1)
+in_color = Color(0, 0, 0, 1)
+instrument = 1
+midi_channel = 1
 root_note = 48
 
 [node name="MultiMeshInstance3D" parent="instruments/sequencer/pickable/sequencer" index="4" unique_id=1824471230]
@@ -111,8 +115,10 @@ multimesh = SubResource("MultiMesh_s2ckv")
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.042931557, 0.8446685, -0.58785135)
 
 [node name="sequencer" parent="instruments/sequencer2/pickable" parent_id_path=PackedInt32Array(1630129912, 1719777704) index="1" unique_id=631711506]
-instrument = 90
-midi_channel = 3
+font = null
+out_color = Color(0, 0, 0, 1)
+in_color = Color(0, 0, 0, 1)
+instrument = 1
 root_note = 48
 
 [node name="MultiMeshInstance3D" parent="instruments/sequencer2/pickable/sequencer" index="4" unique_id=1824471230]
@@ -122,6 +128,10 @@ multimesh = SubResource("MultiMesh_65ndq")
 transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, 0.62453747, 0.8446685, 2.0784426)
 
 [node name="sequencer" parent="instruments/sequencer3/pickable" parent_id_path=PackedInt32Array(600002492, 1719777704) index="1" unique_id=631711506]
+font = null
+out_color = Color(0, 0, 0, 1)
+in_color = Color(0, 0, 0, 1)
+instrument = 1
 midi_channel = 3
 root_note = 48
 
@@ -277,6 +287,10 @@ light_energy = 16.0
 [connection signal="pose_ended" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_ended"]
 [connection signal="pose_started" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_started"]
 
+[editable path="instruments/drums"]
+[editable path="instruments/drums/pickable"]
+[editable path="instruments/drums/pickable/sequencer/controls/gate"]
+[editable path="instruments/drums/pickable/sequencer/controls/vel"]
 [editable path="instruments/sequencer"]
 [editable path="instruments/sequencer/pickable"]
 [editable path="instruments/sequencer/pickable/sequencer/controls/gate"]
