@@ -50,10 +50,10 @@ use_colors = true
 mesh = SubResource("BoxMesh_65ndq")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2c0tl"]
-size = Vector3(0.69421387, 0.054052733, 0.07138672)
+size = Vector3(0.3999939, 0.054052733, 0.07138672)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wccfp"]
-size = Vector3(0.7, 0.06, 0.06)
+size = Vector3(0.4, 0.06, 0.06)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8e3v"]
 transparency = 1
@@ -154,10 +154,14 @@ multimesh = SubResource("MultiMesh_2c0tl")
 
 [node name="PickableObject" parent="instruments" unique_id=439534156 instance=ExtResource("4_2c0tl")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.0955443, 1.1454852, 0.83084154)
+linear_damp = 100.0
+angular_damp = 100.0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="instruments/PickableObject" unique_id=1794744319]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09710693, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08267999, 0, 0)
+visible = false
 shape = SubResource("BoxShape3D_2c0tl")
+disabled = true
 
 [node name="grapber" type="MeshInstance3D" parent="instruments/PickableObject/CollisionShape3D2" unique_id=1278897641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018781424, -0.0019559562, -0.00037418306)
