@@ -15,6 +15,8 @@ size = Vector3(0.05870056, 0.6190758, 0.05883789)
 [sub_resource type="BoxMesh" id="BoxMesh_wukub"]
 size = Vector3(0.01, 1, 0.01)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wukub"]
+
 [node name="analog" type="Marker3D" unique_id=161052755]
 
 [node name="grab" type="Area3D" parent="." unique_id=848395477]
@@ -39,6 +41,7 @@ horizontal_alignment = 1
 
 [node name="rod" type="MeshInstance3D" parent="." unique_id=1146946851]
 mesh = SubResource("BoxMesh_wukub")
+surface_material_override/0 = SubResource("StandardMaterial3D_wukub")
 
 [connection signal="area_entered" from="grab" to="grab" method="_on_grab_area_entered"]
 [connection signal="area_exited" from="grab" to="grab" method="_on_grab_area_exited"]
