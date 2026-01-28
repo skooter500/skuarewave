@@ -16,6 +16,7 @@ size = Vector3(0.05870056, 0.6190758, 0.05883789)
 size = Vector3(0.01, 1, 0.01)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wukub"]
+transparency = 1
 
 [node name="analog" type="Marker3D" unique_id=161052755]
 

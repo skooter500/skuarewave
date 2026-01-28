@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="5_g1h6b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g1h6b"]
-size = Vector3(0.5, 0.054052733, 0.07138672)
+size = Vector3(0.8857422, 0.054052733, 0.07138672)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g1h6b"]
-size = Vector3(0.4, 0.06, 0.06)
+size = Vector3(0.85, 0.06, 0.06)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ngqb"]
 transparency = 1
@@ -40,7 +40,7 @@ linear_damp = 100.0
 angular_damp = 100.0
 
 [node name="CollisionShape3D" parent="pickable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3338964, 0.7413409, -0.0010825992)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5395743, 0.23976481, -0.0010825992)
 shape = SubResource("BoxShape3D_g1h6b")
 
 [node name="grapber" type="MeshInstance3D" parent="pickable/CollisionShape3D" index="0" unique_id=1923255670]
@@ -55,7 +55,7 @@ text = "↑ HOLD HERE ↑"
 horizontal_alignment = 1
 
 [node name="title2" parent="pickable/CollisionShape3D/grapber" unique_id=1486097578 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.057956323, 0.0031681433)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.057956323, 0.0031681433)
 text = "↓ HOLD HERE ↓"
 horizontal_alignment = 1
 
