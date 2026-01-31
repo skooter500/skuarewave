@@ -26,6 +26,7 @@ enum Step {OFF, ON, HIT_ON, HIT_OFF}
 
 enum play_mode {CHORD, ARPEGIATE}
 
+@onready var button_scene = load("res://button.tscn")
 
 @export var instrument:int = 1
 @export var midi_channel:int = 1
@@ -84,10 +85,38 @@ func change_instrument(channel: int, program: int):
 	midi_event.message = MIDI_MESSAGE_PROGRAM_CHANGE
 	midi_event.instrument = program
 	midi_player.receive_raw_midi_message(midi_event)
+	
+func make_mode_row():
+	var in_color = Color.from_hsv(randf(), 1, 1, 0.5)
+	var out_color = Color.from_hsv(fmod(in_color.h + 0.5, 1.0), 1, 1, 0.5)
+	
+	for col in range(steps):
+		var button:HoloButton = button_scene.instantiate()
+		var p = Vector3(0.01 + s * col * spacer, -1 * s * spacer, 0)
+		button.position = p
+		button.btype = HoloButton.BType.TOGGLE
+		button.in_color = in_color
+		button.out_color = out_color
+		button.area_entered.connect(toggle_col.bind(col))
+		add_child(button)
+		
+func toggle_col(area, col):
+	if not area.is_in_group("finger_tip"):
+		return
+	if play_modes[col] == play_mode.CHORD:
+		play_modes[col] = play_mode.ARPEGIATE
+	else:
+		play_modes[col] = play_mode.CHORD
+	pass
 
 func _ready():
 	initialise_sequence(notes, steps)
+	
 	make_sequencer()
+	
+	
+	# Decided noyt to use this!
+	# make_mode_row()
 
 	# Position MidiPlayer at the center of the sequencer grid for 3D audio
 	var center_x = s * (steps - 1) * spacer / 2.0
@@ -459,14 +488,16 @@ func play_step(col):
 		for row in range(notes):
 			if sequence[row][col]:
 				note_count += 1	
+	
+	var wait_time = $"../../../Timer".wait_time
 	var delay:float = 0 if note_count == 0 else $"../../../Timer".wait_time / float(note_count)
 	
-		
 	for row in range(notes):
 		if sequence[row][col]:
 			var gate = $controls/gate/grab.value
 			play_sample_gate(0, row, col, gate)
 			if play_modes[col] == play_mode.ARPEGIATE:
+				delay = wait_time * 2
 				await get_tree().create_timer(delay).timeout
 			
 

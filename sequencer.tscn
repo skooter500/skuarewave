@@ -56,9 +56,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05290146, 0.0031681433)
 text = "↑ HOLD HERE ↑"
 horizontal_alignment = 1
 
-[node name="title2" parent="pickable/CollisionShape3D/grapber" unique_id=1486097578 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.057956323, 0.0031681433)
-text = "↓ HOLD HERE ↓"
+[node name="title" parent="pickable/CollisionShape3D/grapber/title" unique_id=891391325 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05290146, 0.0031681433)
+text = "↑ HOLD HERE ↑"
 horizontal_alignment = 1
 
 [node name="sequencer" type="Marker3D" parent="pickable" unique_id=631711506]
@@ -88,6 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3890648, 0.8440504, -0.045
 
 [node name="stop_start" parent="pickable/sequencer/controls" unique_id=2141351437 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38945073, 1.1667024, -0.045584388)
+btype = 1
 
 [node name="forwards" parent="pickable/sequencer/controls" unique_id=1935275129 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56099385, 1.2866337, -0.04558437)

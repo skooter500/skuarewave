@@ -1,3 +1,5 @@
+class_name HoloButton
+
 extends Area3D
 
 var in_color:Color
@@ -5,15 +7,15 @@ var out_color:Color
 
 enum BType {IN_OUT, TOGGLE}
 
-var btype:BType = BType.IN_OUT
+@export var btype:BType = BType.IN_OUT
 
 enum State {ON, OFF}
 
-var state = State.OFF
+@export var state = State.OFF
 
 func _ready() -> void:
 	in_color = Color.from_hsv(randf(), 1, 1, 0.5)
-	out_color = Color.from_hsv(fmod(in_color.h + 0.5, 1.0), 1, 1, 0.5)
+	out_color = Color.from_hsv(fmod(in_color.h + 0.5, 1.0), 1, 1, 0.5)	
 	var mat = $MeshInstance3D.get_surface_override_material(0)
 	mat = mat.duplicate()
 	mat.albedo_color = out_color

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://nxajcnxqcaey" path="res://timer.gd" id="1_byv7j"]
 [ext_resource type="Script" uid="uid://ox8smfnahvcm" path="res://xr_camera_3d.gd" id="2_8d825"]
+[ext_resource type="Script" uid="uid://cno07hlngmtdl" path="res://visualiser.gd" id="3_wccfp"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="4_2c0tl"]
 [ext_resource type="PackedScene" uid="uid://03pivv0mboix" path="res://controls.tscn" id="5_65ndq"]
 [ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://label.tscn" id="5_uo375"]
@@ -24,6 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://df5hynbooj1uj" path="res://addons/hand_pose_detector/hand_pose_detector.tscn" id="38_4ru4y"]
 [ext_resource type="PackedScene" uid="uid://b2447e5p6kwug" path="res://examples/room/scene_anchor.tscn" id="39_5wcqy"]
 [ext_resource type="PackedScene" uid="uid://cukl4cie1tact" path="res://examples/room/scene_global_mesh.tscn" id="40_c1vpu"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_c8e3v"]
+use_colors = true
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_wjjwd"]
 
@@ -99,11 +103,21 @@ script = ExtResource("1_byv7j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52361655, -0.13080412, -2.4875844)
 script = ExtResource("12_ucien")
 
+[node name="visualiser" type="Node3D" parent="instruments" unique_id=1405377368]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.5465446, 1.0544617, 2.593195)
+script = ExtResource("3_wccfp")
+bar_width = 0.01
+bar_spacing = 0.015
+scale_factor = 1.0
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="instruments/visualiser" unique_id=1721839408]
+multimesh = SubResource("MultiMesh_c8e3v")
+
 [node name="Timer" type="Timer" parent="instruments" unique_id=658303578]
 wait_time = 0.2
 
 [node name="drums" parent="instruments" unique_id=684359294 instance=ExtResource("17_s2ckv")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.918, -0.9384866)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.846, -0.938)
 
 [node name="sequencer" parent="instruments/drums/pickable" parent_id_path=PackedInt32Array(684359294, 1719777704) index="1" unique_id=631711506]
 midi_channel = 9
@@ -171,79 +185,89 @@ midi_channel = 3
 [node name="MultiMeshInstance3D" parent="instruments/sequencer3/pickable/sequencer" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_2c0tl")
 
-[node name="pickable" parent="instruments" unique_id=439534156 instance=ExtResource("4_2c0tl")]
+[node name="control_panel" parent="instruments" unique_id=439534156 instance=ExtResource("4_2c0tl")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.533165, 1.1454852, 2.6273298)
 linear_damp = 100.0
 angular_damp = 100.0
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="instruments/pickable" unique_id=1794744319]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="instruments/control_panel" unique_id=1794744319]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08267999, 0, 0)
 visible = false
 shape = SubResource("BoxShape3D_2c0tl")
 disabled = true
 
-[node name="grapber" type="MeshInstance3D" parent="instruments/pickable/CollisionShape3D2" unique_id=1278897641]
+[node name="grapber" type="MeshInstance3D" parent="instruments/control_panel/CollisionShape3D2" unique_id=1278897641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018781424, -0.0019559562, -0.00037418306)
 mesh = SubResource("BoxMesh_wccfp")
 skeleton = NodePath("../../controls")
 surface_material_override/0 = SubResource("StandardMaterial3D_c8e3v")
 
-[node name="title" parent="instruments/pickable/CollisionShape3D2/grapber" unique_id=511523128 instance=ExtResource("5_uo375")]
+[node name="title" parent="instruments/control_panel/CollisionShape3D2/grapber" unique_id=511523128 instance=ExtResource("5_uo375")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.05290146, 0.0031681433)
 text = "↑ HOLD HERE ↑"
 horizontal_alignment = 1
 
-[node name="title2" parent="instruments/pickable/CollisionShape3D2/grapber" unique_id=117281029 instance=ExtResource("5_uo375")]
+[node name="title2" parent="instruments/control_panel/CollisionShape3D2/grapber" unique_id=117281029 instance=ExtResource("5_uo375")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.057956323, 0.0031681433)
 text = "↓ HOLD HERE ↓"
 horizontal_alignment = 1
 
-[node name="controls" parent="instruments/pickable" unique_id=1187298749 instance=ExtResource("5_65ndq")]
+[node name="controls" parent="instruments/control_panel" unique_id=1187298749 instance=ExtResource("5_65ndq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79335976, -1.1454852, -0.47659194)
 
-[node name="start_stop" parent="instruments/pickable/controls" index="0"]
+[node name="start_stop" parent="instruments/control_panel/controls" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38908345, 1.6082792, 0.4805628)
 
-[node name="vol" parent="instruments/pickable/controls" index="1"]
+[node name="vol" parent="instruments/control_panel/controls" index="1"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6857811, 1.3463478, 0.47963643)
 
-[node name="mesh" parent="instruments/pickable/controls/vol/grab" index="1" unique_id=1119555860]
+[node name="mesh" parent="instruments/control_panel/controls/vol/grab" index="1" unique_id=1119555860]
 skeleton = NodePath("../../../../..")
 
-[node name="title" parent="instruments/pickable/controls/vol" index="1" unique_id=387676606]
+[node name="title" parent="instruments/control_panel/controls/vol" index="1" unique_id=387676606]
 text = "VOL"
 
-[node name="mesh" parent="instruments/pickable/controls/tempo/grab" index="1" unique_id=1119555860]
+[node name="mesh" parent="instruments/control_panel/controls/tempo/grab" index="1" unique_id=1119555860]
 skeleton = NodePath("../../../../..")
 
-[node name="mode2" parent="instruments/pickable/controls" index="3"]
+[node name="mode2" parent="instruments/control_panel/controls" index="3"]
 transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.42533535, 1.5506735, 0.479756)
 
-[node name="mode3" parent="instruments/pickable/controls" index="4"]
-text = "SKUAREWAVE
+[node name="mode3" parent="instruments/control_panel/controls" index="4"]
+transform = Transform3D(-0.99999934, 0, -8.940689e-08, 0, 1, 0, 8.940689e-08, 0, -0.99999934, -0.33629268, 2.1336532, 0.47975552)
+text = "SKUAREWAVE - Play music with holograms!
+Play by waving your hands inside the skuares
+The last one is a drum
+Change the instrument, octave, root note 
+and mode with the controls on trhe right
+Pinch in a skuare to program the note in the step
+Hit start
+Change the direction with the controls on the right
 Created By: Bryan Duggan
 @skooter500
 bryanduggan.org"
 
-[node name="reverb_mix2" parent="instruments/pickable/controls" index="5"]
+[node name="reverb_mix2" parent="instruments/control_panel/controls" index="5"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.90460646, 1.3463478, 0.47963655)
+effect_index = 1
 
-[node name="grab" parent="instruments/pickable/controls/reverb_mix2" index="0" unique_id=848395477]
+[node name="grab" parent="instruments/control_panel/controls/reverb_mix2" index="0" unique_id=848395477]
 value = 0.2
 
-[node name="mesh" parent="instruments/pickable/controls/reverb_mix2/grab" index="1" unique_id=1119555860]
+[node name="mesh" parent="instruments/control_panel/controls/reverb_mix2/grab" index="1" unique_id=1119555860]
 skeleton = NodePath("../../../../..")
 
-[node name="delay_mix" parent="instruments/pickable/controls" index="6"]
+[node name="delay_mix" parent="instruments/control_panel/controls" index="6"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.018364, 1.3463478, 0.47963667)
+effect_index = 2
 
-[node name="mesh" parent="instruments/pickable/controls/delay_mix/grab" index="1" unique_id=1119555860]
+[node name="mesh" parent="instruments/control_panel/controls/delay_mix/grab" index="1" unique_id=1119555860]
 skeleton = NodePath("../../../../..")
 
-[node name="mic_vol" parent="instruments/pickable/controls" index="7"]
+[node name="mic_vol" parent="instruments/control_panel/controls" index="7"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7893927, 1.3463478, 0.47963655)
 
-[node name="mesh" parent="instruments/pickable/controls/mic_vol/grab" index="1" unique_id=1119555860]
+[node name="mesh" parent="instruments/control_panel/controls/mic_vol/grab" index="1" unique_id=1119555860]
 skeleton = NodePath("../../../../..")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=811185315]
@@ -381,7 +405,7 @@ light_energy = 16.0
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
 [connection signal="timeout" from="instruments/Timer" to="instruments" method="_on_timer_timeout"]
-[connection signal="area_entered" from="instruments/pickable/controls/start_stop" to="instruments" method="_on_start_stop_area_entered"]
+[connection signal="area_entered" from="instruments/control_panel/controls/start_stop" to="instruments" method="_on_start_stop_area_entered"]
 [connection signal="pose_ended" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_ended"]
 [connection signal="pose_started" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_started"]
 [connection signal="pose_ended" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_ended"]
@@ -407,14 +431,14 @@ light_energy = 16.0
 [editable path="instruments/sequencer3/pickable"]
 [editable path="instruments/sequencer3/pickable/sequencer/controls/gate"]
 [editable path="instruments/sequencer3/pickable/sequencer/controls/vel"]
-[editable path="instruments/pickable/controls"]
-[editable path="instruments/pickable/controls/vol"]
-[editable path="instruments/pickable/controls/tempo"]
-[editable path="instruments/pickable/controls/mode2"]
-[editable path="instruments/pickable/controls/mode3"]
-[editable path="instruments/pickable/controls/reverb_mix2"]
-[editable path="instruments/pickable/controls/delay_mix"]
-[editable path="instruments/pickable/controls/mic_vol"]
+[editable path="instruments/control_panel/controls"]
+[editable path="instruments/control_panel/controls/vol"]
+[editable path="instruments/control_panel/controls/tempo"]
+[editable path="instruments/control_panel/controls/mode2"]
+[editable path="instruments/control_panel/controls/mode3"]
+[editable path="instruments/control_panel/controls/reverb_mix2"]
+[editable path="instruments/control_panel/controls/delay_mix"]
+[editable path="instruments/control_panel/controls/mic_vol"]
 [editable path="XROrigin3D/left/LeftHandHumanoid2"]
 [editable path="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D/tip5"]
 [editable path="XROrigin3D/right/RightHandHumanoid2"]

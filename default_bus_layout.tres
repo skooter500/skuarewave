@@ -1,5 +1,9 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://5u6eb38bx5ob"]
 
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_j3pel"]
+resource_name = "SpectrumAnalyzer"
+fft_size = 0
+
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g28q7"]
 resource_name = "Reverb"
 predelay_feedback = 0.71
@@ -15,10 +19,12 @@ tap1_delay_ms = 500.0
 tap2_delay_ms = 750.0
 
 [resource]
-bus/0/effect/0/effect = SubResource("AudioEffectReverb_g28q7")
+bus/0/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_j3pel")
 bus/0/effect/0/enabled = true
-bus/0/effect/1/effect = SubResource("AudioEffectDelay_j3pel")
+bus/0/effect/1/effect = SubResource("AudioEffectReverb_g28q7")
 bus/0/effect/1/enabled = true
+bus/0/effect/2/effect = SubResource("AudioEffectDelay_j3pel")
+bus/0/effect/2/enabled = true
 bus/1/name = &"Record"
 bus/1/solo = false
 bus/1/mute = false
