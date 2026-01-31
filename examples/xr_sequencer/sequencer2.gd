@@ -5,6 +5,7 @@ extends Marker3D
 var sequence = []
 var notes_in_cell = []
 var file_names = []
+var play_modes = []
 
 @export var pad_scene:PackedScene
 
@@ -22,6 +23,8 @@ signal stop
 @export var step_color:Color
 
 enum Step {OFF, ON, HIT_ON, HIT_OFF}
+
+enum play_mode {CHORD, ARPEGIATE}
 
 
 @export var instrument:int = 1
@@ -205,6 +208,11 @@ func test_sequence():
 	sequence[2][6] = Step.ON
 
 func initialise_sequence(rows, cols):
+	
+	# initialise the play_mode settings
+	for i in range(cols):
+		play_modes.append(play_mode.CHORD)
+	
 	for i in range(rows):
 		var row = []
 		var row1 = []
@@ -446,10 +454,21 @@ func play_step(col):
 	if stopped:
 		return
 		
+	var note_count = 0
+	if play_modes[col] == play_mode.ARPEGIATE:
+		for row in range(notes):
+			if sequence[row][col]:
+				note_count += 1	
+	var delay:float = 0 if note_count == 0 else $"../../../Timer".wait_time / float(note_count)
+	
+		
 	for row in range(notes):
 		if sequence[row][col]:
 			var gate = $controls/gate/grab.value
 			play_sample_gate(0, row, col, gate)
+			if play_modes[col] == play_mode.ARPEGIATE:
+				await get_tree().create_timer(delay).timeout
+			
 
 var step_index:int = 0
 
