@@ -131,7 +131,7 @@ func _ready():
 	assign_colors()
 	create_labels()
 	midi_notes = get_scale_notes(root_note, mucical_scale)
-	instrument = randi_range(0, 128)
+	# instrument = randi_range(0, 128)
 	change_instrument(midi_channel, instrument)
 	
 var labels = []
