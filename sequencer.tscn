@@ -23,6 +23,7 @@ metadata/__load_path__ = "res://fonts/Hyperspace.otf"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byv7j"]
 transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_byv7j"]

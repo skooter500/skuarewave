@@ -6,9 +6,8 @@ extends Node3D
 @export var max_height: float = 5.0
 @export var smoothing: float = 0.2
 @export var scale_factor: float = 50.0
-@export var min_height: float = 0.001  # Much smaller minimum
+@export var min_height: float = 0.001
 
-@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var mm: MultiMeshInstance3D = $MultiMeshInstance3D
 
 var spectrum: AudioEffectSpectrumAnalyzerInstance
@@ -27,11 +26,16 @@ func _ready():
 		AudioServer.add_bus_effect(idx, spectrum_effect)
 		spectrum = AudioServer.get_bus_effect_instance(idx, 0)
 	
-	# Initialize multimesh - double the bars for mirroring
-	mm.multimesh = MultiMesh.new()
-	mm.multimesh.transform_format = MultiMesh.TRANSFORM_3D
-	mm.multimesh.instance_count = num_bars * 2  # Top and bottom
-	mm.multimesh.mesh = BoxMesh.new()
+	# Initialize multimesh - single instance per column
+	mm.multimesh.instance_count = num_bars
+	
+	var material = StandardMaterial3D.new()
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	var box_mesh = BoxMesh.new()
+	material.vertex_color_use_as_albedo = true
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	box_mesh.material = material
+	mm.multimesh.mesh = box_mesh
 	
 	# Initialize height arrays with minimum height
 	for i in range(num_bars):
@@ -49,19 +53,12 @@ func create_bars():
 		var hue = float(i) / float(num_bars)
 		var rainbow_color = Color.from_hsv(hue, 1, 1, 0.5)
 		
-		# Top bar
-		var t_top = Transform3D()
-		t_top = t_top.scaled(Vector3(bar_width, min_height, bar_width))
-		t_top.origin = Vector3(start_x + (i * bar_spacing), min_height / 2.0, 0)
-		mm.multimesh.set_instance_transform(i, t_top)
+		# Single bar centered at y=0, extends both up and down
+		var t = Transform3D()
+		t = t.scaled(Vector3(bar_width, min_height, bar_width))
+		t.origin = Vector3(start_x + (i * bar_spacing), 0, 0)
+		mm.multimesh.set_instance_transform(i, t)
 		mm.multimesh.set_instance_color(i, rainbow_color)
-		
-		# Bottom bar (mirrored)
-		var t_bottom = Transform3D()
-		t_bottom = t_bottom.scaled(Vector3(bar_width, min_height, bar_width))
-		t_bottom.origin = Vector3(start_x + (i * bar_spacing), -min_height / 2.0, 0)
-		mm.multimesh.set_instance_transform(i + num_bars, t_bottom)
-		mm.multimesh.set_instance_color(i + num_bars, rainbow_color)
 
 func _process(delta: float) -> void:
 	if not spectrum:
@@ -80,7 +77,7 @@ func _process(delta: float) -> void:
 		var height = magnitude * scale_factor
 		if height > max_height:
 			height = max_height
-		height = max(height, min_height)  # Use configurable minimum
+		height = max(height, min_height)
 		
 		target_heights[i] = height
 		
@@ -93,18 +90,11 @@ func _process(delta: float) -> void:
 		
 		# Rainbow color
 		var hue = float(i) / float(num_bars)
-		var rainbow_color = Color.from_hsv(hue, 1, 1, 0.7)
+		var rainbow_color = Color.from_hsv(hue, 1, 1, 0.4)
 		
-		# Top bar (grows upward)
-		var t_top = Transform3D()
-		t_top = t_top.scaled(Vector3(bar_width, bar_heights[i], bar_width))
-		t_top.origin = Vector3(x_pos, bar_heights[i] / 2.0, 0)
-		mm.multimesh.set_instance_transform(i, t_top)
+		# Single bar centered at y=0, extends both up and down
+		var t = Transform3D()
+		t = t.scaled(Vector3(bar_width, bar_heights[i], bar_width))
+		t.origin = Vector3(x_pos, 0, 0)  # Centered at 0
+		mm.multimesh.set_instance_transform(i, t)
 		mm.multimesh.set_instance_color(i, rainbow_color)
-		
-		# Bottom bar (grows downward - mirrored)
-		var t_bottom = Transform3D()
-		t_bottom = t_bottom.scaled(Vector3(bar_width, bar_heights[i], bar_width))
-		t_bottom.origin = Vector3(x_pos, -bar_heights[i] / 2.0, 0)
-		mm.multimesh.set_instance_transform(i + num_bars, t_bottom)
-		mm.multimesh.set_instance_color(i + num_bars, rainbow_color)
