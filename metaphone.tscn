@@ -70,17 +70,12 @@ vertex_color_use_as_albedo = true
 [sub_resource type="BoxMesh" id="BoxMesh_65ndq"]
 material = SubResource("StandardMaterial3D_iaghn")
 
-[sub_resource type="MultiMesh" id="MultiMesh_s2ckv"]
-transform_format = 1
-use_colors = true
-mesh = SubResource("BoxMesh_65ndq")
-
-[sub_resource type="MultiMesh" id="MultiMesh_65ndq"]
-transform_format = 1
-use_colors = true
-mesh = SubResource("BoxMesh_65ndq")
-
 [sub_resource type="MultiMesh" id="MultiMesh_wccfp"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_65ndq")
+
+[sub_resource type="MultiMesh" id="MultiMesh_s2ckv"]
 transform_format = 1
 use_colors = true
 mesh = SubResource("BoxMesh_65ndq")
@@ -151,7 +146,7 @@ multimesh = SubResource("MultiMesh_c8e3v")
 wait_time = 0.2
 
 [node name="drums" type="Marker3D" parent="instruments" unique_id=684359294]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.846, -0.938)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.846, -0.15164018)
 
 [node name="pickable" parent="instruments/drums" unique_id=1719777704 instance=ExtResource("4_2c0tl")]
 linear_damp = 100.0
@@ -341,6 +336,12 @@ text = "VELOcity"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="instruments/drums/pickable/sequencer/controls/vel" unique_id=1260993603]
 
+[node name="instrument" parent="instruments/drums/pickable/sequencer/controls" unique_id=1201690315 instance=ExtResource("5_uo375")]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.42533535, 1.5506735, 0.479756)
+visible = false
+text = "START"
+horizontal_alignment = 2
+
 [node name="Timer" type="Timer" parent="instruments/drums/pickable/sequencer" unique_id=941768318]
 wait_time = 0.2
 
@@ -357,6 +358,20 @@ bus = &"Record"
 
 [node name="analyzer" type="Node" parent="instruments" unique_id=1160703387]
 
+[node name="sequencer4" parent="instruments" unique_id=450981641 instance=ExtResource("17_s2ckv")]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.845, 0.41232777)
+
+[node name="sequencer" parent="instruments/sequencer4/pickable" parent_id_path=PackedInt32Array(450981641, 1719777704) index="1" unique_id=631711506]
+font = null
+out_color = Color(0, 0, 0, 1)
+in_color = Color(0, 0, 0, 1)
+instrument = 53
+midi_channel = 5
+mucical_scale = 1
+
+[node name="MultiMeshInstance3D" parent="instruments/sequencer4/pickable/sequencer" index="3" unique_id=1824471230]
+multimesh = SubResource("MultiMesh_wccfp")
+
 [node name="sequencer" parent="instruments" unique_id=19113346 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.846, 1.0964419)
 
@@ -364,37 +379,13 @@ transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.846, 1.0
 font = null
 out_color = Color(0, 0, 0, 1)
 in_color = Color(0, 0, 0, 1)
-instrument = 72
+instrument = 33
 midi_channel = 1
+root_note = 24
+mucical_scale = 1
 
 [node name="MultiMeshInstance3D" parent="instruments/sequencer/pickable/sequencer" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_s2ckv")
-
-[node name="sequencer2" parent="instruments" unique_id=1630129912 instance=ExtResource("17_s2ckv")]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.845, 0.3777153)
-
-[node name="sequencer" parent="instruments/sequencer2/pickable" parent_id_path=PackedInt32Array(1630129912, 1719777704) index="1" unique_id=631711506]
-font = null
-out_color = Color(0, 0, 0, 1)
-in_color = Color(0, 0, 0, 1)
-instrument = 16
-
-[node name="MultiMeshInstance3D" parent="instruments/sequencer2/pickable/sequencer" index="3" unique_id=1824471230]
-multimesh = SubResource("MultiMesh_65ndq")
-
-[node name="sequencer4" parent="instruments" unique_id=450981641 instance=ExtResource("17_s2ckv")]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.845, -0.2783935)
-
-[node name="sequencer" parent="instruments/sequencer4/pickable" parent_id_path=PackedInt32Array(450981641, 1719777704) index="1" unique_id=631711506]
-font = null
-out_color = Color(0, 0, 0, 1)
-in_color = Color(0, 0, 0, 1)
-instrument = 66
-midi_channel = 5
-mucical_scale = 1
-
-[node name="MultiMeshInstance3D" parent="instruments/sequencer4/pickable/sequencer" index="3" unique_id=1824471230]
-multimesh = SubResource("MultiMesh_wccfp")
 
 [node name="sequencer3" parent="instruments" unique_id=600002492 instance=ExtResource("17_s2ckv")]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.845, 1.8137949)
@@ -403,7 +394,7 @@ transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.845, 1.8
 font = null
 out_color = Color(0, 0, 0, 1)
 in_color = Color(0, 0, 0, 1)
-instrument = 81
+instrument = 80
 midi_channel = 3
 
 [node name="MultiMeshInstance3D" parent="instruments/sequencer3/pickable/sequencer" index="3" unique_id=1824471230]
@@ -464,6 +455,7 @@ transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.4
 [node name="mode3" parent="instruments/pickable/controls" index="4"]
 transform = Transform3D(-0.99999934, 0, -8.940689e-08, 0, 1, 0, 8.940689e-08, 0, -0.99999934, -0.33629268, 2.1336532, 0.47975552)
 text = "SKUAREWAVE - Play music with holograms!
+--------------------------------------------------
 Play by waving your hands inside the skuares
 The last one is a drum
 Change the instrument octave root-note 
@@ -471,6 +463,7 @@ and mode with the controls on the LEFT
 Pinch in a skuare to program the note in the step
 Hit start!
 Change the direction with the controls on the LEFT
+--------------------------------------------------
 Created By: Bryan Duggan
 @skooter500
 bryanduggan.org"
@@ -651,18 +644,15 @@ light_energy = 16.0
 [editable path="instruments/drums/pickable"]
 [editable path="instruments/drums/pickable/sequencer/controls/gate"]
 [editable path="instruments/drums/pickable/sequencer/controls/vel"]
-[editable path="instruments/sequencer"]
-[editable path="instruments/sequencer/pickable"]
-[editable path="instruments/sequencer/pickable/sequencer/controls/gate"]
-[editable path="instruments/sequencer/pickable/sequencer/controls/vel"]
-[editable path="instruments/sequencer2"]
-[editable path="instruments/sequencer2/pickable"]
-[editable path="instruments/sequencer2/pickable/sequencer/controls/gate"]
-[editable path="instruments/sequencer2/pickable/sequencer/controls/vel"]
+[editable path="instruments/drums/pickable/sequencer/controls/instrument"]
 [editable path="instruments/sequencer4"]
 [editable path="instruments/sequencer4/pickable"]
 [editable path="instruments/sequencer4/pickable/sequencer/controls/gate"]
 [editable path="instruments/sequencer4/pickable/sequencer/controls/vel"]
+[editable path="instruments/sequencer"]
+[editable path="instruments/sequencer/pickable"]
+[editable path="instruments/sequencer/pickable/sequencer/controls/gate"]
+[editable path="instruments/sequencer/pickable/sequencer/controls/vel"]
 [editable path="instruments/sequencer3"]
 [editable path="instruments/sequencer3/pickable"]
 [editable path="instruments/sequencer3/pickable/sequencer/controls/gate"]

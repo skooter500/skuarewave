@@ -51,7 +51,7 @@ func create_bars():
 	for i in range(num_bars):
 		# Rainbow colors - map index to hue
 		var hue = float(i) / float(num_bars)
-		var rainbow_color = Color.from_hsv(hue, 1, 1, 0.5)
+		var rainbow_color = Color.from_hsv(hue, 1, 1, 0.7)
 		
 		# Single bar centered at y=0, extends both up and down
 		var t = Transform3D()

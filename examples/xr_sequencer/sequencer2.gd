@@ -296,7 +296,7 @@ func update_labels():
 		$controls/direction.modulate = blink_off
 
 var blink_off = Color(0.0, 6.436, 4.693, 0.792)
-var blink_on = Color(5.049, 1.406, 6.271, 0.792)
+var blink_on = Color(6.272, 0.0, 0.341, 0.71)
 
 func assign_colors():
 	var i = 0
