@@ -393,6 +393,9 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.31
 linear_damp = 100.0
 angular_damp = 100.0
 
+[node name="sound_source" type="Node3D" parent="instruments/pickable" unique_id=812605790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7656878, 0)
+
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="instruments/pickable" unique_id=1794744319]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08267999, 0, 0)
 visible = false
