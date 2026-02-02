@@ -243,11 +243,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44623077, 1.210784, -0.039
 text = "DRUM RACK"
 horizontal_alignment = 1
 
-[node name="mute7" parent="instruments/drums/pickable/sequencer/controls" unique_id=1461974304 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 1.2752097, -0.03975749)
-text = "+"
-horizontal_alignment = 1
-
 [node name="mute11" parent="instruments/drums/pickable/sequencer/controls" unique_id=1917705396 instance=ExtResource("5_uo375")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5648352, 1.4036286, -0.03975749)
 text = "F"
@@ -266,11 +261,6 @@ horizontal_alignment = 1
 [node name="mute9" parent="instruments/drums/pickable/sequencer/controls" unique_id=1203840972 instance=ExtResource("5_uo375")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 0.8663176, -0.03975749)
 text = "+"
-horizontal_alignment = 1
-
-[node name="mute8" parent="instruments/drums/pickable/sequencer/controls" unique_id=2029846493 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38927794, 1.2752097, -0.03975749)
-text = "-"
 horizontal_alignment = 1
 
 [node name="mute10" parent="instruments/drums/pickable/sequencer/controls" unique_id=438680737 instance=ExtResource("5_uo375")]

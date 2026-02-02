@@ -48,7 +48,7 @@ var timer:float = 0.0
 ## 使用時間
 var using_timer:float = 0.0
 ## リンク先の音色
-@onready var linked:AudioStreamPlayer3D = $Linked
+@onready var linked:AudioStreamPlayer = $Linked
 ## リンク先ベースピッチ
 var linked_base_pitch:float = 0.0
 
