@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://jal5apb0a11v" path="res://addons/midi/ADSR.gd" id="1"]
 
 [node name="ADSR" type="AudioStreamPlayer3D" unique_id=2033100777]
-attenuation_model = 2
+attenuation_model = 3
 volume_db = 6.0
 unit_size = 3.0
 max_distance = 30.0

@@ -6,7 +6,7 @@
 
 class_name AudioStreamPlayerADSR
 
-extends AudioStreamPlayer3D
+extends AudioStreamPlayer
 
 ## 先頭空白秒数
 const gap_second:float = 1024.0 / 44100.0

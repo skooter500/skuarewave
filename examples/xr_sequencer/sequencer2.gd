@@ -119,12 +119,12 @@ func _ready():
 	# make_mode_row()
 
 	# Position MidiPlayer at the center of the sequencer grid for 3D audio
-	# var center_x = s * (steps - 1) * spacer / 2.0
-	# var center_y = s * (notes - 1) * spacer / 2.0
-	var ss = $"../../../pickable/sound_source"
-	
-	midi_player.global_position = ss.global_position
+	var center_x = s * (steps - 1) * spacer / 2.0
+	var center_y = s * (notes - 1) * spacer / 2.0
+	midi_player.position = Vector3(center_x, center_y, 0)
 
+	# var ss = $"../../../pickable/sound_source"
+	
 	in_color = Color.from_hsv(randf(), 1, 1, 0.5)
 	out_color = Color.from_hsv(fmod(in_color.h + 0.3, 1.0), 1, 1, 0.5)
 	hit_color = Color.from_hsv(fmod(out_color.h + 0.3, 1.0), 1, 1, 0.5)
