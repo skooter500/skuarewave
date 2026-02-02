@@ -256,6 +256,20 @@ func initialise_sequence(rows, cols):
 func _process(delta: float) -> void:
 	update_labels()
 	
+	for cell_key in finger_in_cell:
+		var hand = finger_in_cell[cell_key]
+		var is_pinching = (hand.gesture == "Index Pinch")
+		var was_pinching = last_pinch_state.get(hand, false)
+		
+		if is_pinching and not was_pinching:
+			var coords = cell_key.split(",")
+			var row = int(coords[0])
+			var col = int(coords[1])
+			sequence[row][col] = Step.ON if sequence[row][col] == Step.OFF else Step.OFF
+			mm.multimesh.set_instance_color((col * notes) + row, in_color if sequence[row][col] == Step.ON else out_color)
+		
+		last_pinch_state[hand] = is_pinching
+	
 	for note in exit_queue:
 		note_off(note)
 	exit_queue.clear()
@@ -340,10 +354,19 @@ var enter_queue = []
 	
 var active_cells = {}
 
+# Just add these two variables
+var finger_in_cell = {}  # Maps "row,col" -> hand reference
+var last_pinch_state = {}  # Maps hand reference -> bool
+
+# Modify hand_entered (only add tracking at the end):
 func hand_entered(area, row, col):
 	if not area.is_in_group("finger_tip"):
 		return
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
+	
+	# Store which hand is in this cell
+	finger_in_cell["%d,%d" % [row, col]] = hand
+	
 	if hand.gesture == "Index Pinch":
 		sequence[row][col] = Step.ON if sequence[row][col] == Step.OFF else Step.OFF 
 		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
@@ -359,10 +382,15 @@ func hand_entered(area, row, col):
 	active_cells[hit_note].append([row, col])
 	notes_in_cell[row][col] = hit_note
 
+# Modify hand_exited (only add cleanup at the end):
 func hand_exited(area, row, col):
 	if not area.is_in_group("finger_tip"):
 		return
-	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()	
+	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
+	
+	# Remove tracking
+	finger_in_cell.erase("%d,%d" % [row, col])
+	
 	if sequence[row][col] != Step.ON:
 		mm.multimesh.set_instance_color((col * notes) + row, out_color)	
 	else:
@@ -374,6 +402,9 @@ func hand_exited(area, row, col):
 	
 	if active_cells[hit_note].is_empty():
 		exit_queue.append(hit_note)
+
+
+
 	
 func note_on(note):
 	change_instrument(midi_channel, instrument)
