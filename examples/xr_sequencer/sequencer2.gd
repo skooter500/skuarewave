@@ -525,22 +525,30 @@ func _on_down_area_entered(area: Area3D) -> void:
 		midi_notes = get_scale_notes(root_note, mucical_scale)
 
 func _on_scale_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	mucical_scale = (mucical_scale + 1) % Scale.size()
 	print("Scale: " + str(mucical_scale))
 	midi_notes = get_scale_notes(root_note, mucical_scale)
 
 func _on_up_semi_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	if root_note < 127:
 		root_note += 1
 		midi_notes = get_scale_notes(root_note, mucical_scale)	
 
 func _on_down_semi_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	if root_note > 0:
 		root_note = root_note - 1
 		midi_notes = get_scale_notes(root_note, mucical_scale)
 	print("Root note: " + str(root_note))
 
 func _on_scale_down_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	mucical_scale = mucical_scale - 1
 	if mucical_scale < 0:
 		mucical_scale = Scale.size() -1
@@ -548,15 +556,21 @@ func _on_scale_down_area_entered(area: Area3D) -> void:
 	midi_notes = get_scale_notes(root_note, mucical_scale)
 
 func _on_inst_up_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	instrument = (instrument + 1) % 127
 	print(instrument)
 
 func _on_inst_down_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	instrument = (instrument - 1)
 	if instrument < 0:
 		instrument = 127
 
 func _on_clear_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	for row in notes:
 		for col in steps:
 			sequence[row][col] = Step.OFF

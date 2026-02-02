@@ -1,35 +1,39 @@
-[gd_scene format=3 uid="uid://c8tx40me7j55t"]
+[gd_scene format=3 uid="uid://wcmapexvp6jh"]
 
-[ext_resource type="Script" uid="uid://nxajcnxqcaey" path="res://timer.gd" id="1_byv7j"]
-[ext_resource type="Script" uid="uid://ox8smfnahvcm" path="res://xr_camera_3d.gd" id="2_8d825"]
-[ext_resource type="Script" uid="uid://cno07hlngmtdl" path="res://visualiser.gd" id="3_wccfp"]
-[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="4_2c0tl"]
-[ext_resource type="PackedScene" uid="uid://03pivv0mboix" path="res://controls.tscn" id="5_65ndq"]
-[ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://label.tscn" id="5_uo375"]
-[ext_resource type="Script" uid="uid://crm1vgeaih5wn" path="res://examples/xr_sequencer/sequencer2.gd" id="6_kbi0h"]
-[ext_resource type="PackedScene" uid="uid://dm1qa5btl0821" path="res://examples/xr_sequencer/pad_a.tscn" id="7_2e0eg"]
-[ext_resource type="PackedScene" uid="uid://cend6ikv2su2t" path="res://tip.tscn" id="7_65ndq"]
-[ext_resource type="Script" uid="uid://8qemx50ogm7m" path="res://addons/hand_pose_detector/hand_pose_controller.gd" id="7_ymxam"]
-[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="8_icbhf"]
-[ext_resource type="Script" uid="uid://by434t17106ou" path="res://addons/hand_pose_detector/hand_pose_action.gd" id="8_uo375"]
-[ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://hand.gd" id="9_00tvn"]
-[ext_resource type="Resource" uid="uid://dhbqusuodrl3r" path="res://addons/hand_pose_detector/poses/fist.tres" id="9_2c0tl"]
-[ext_resource type="PackedScene" uid="uid://2i1nqhynnlm0" path="res://button.tscn" id="9_a51t4"]
-[ext_resource type="PackedScene" uid="uid://bo3p0qs3gk7ji" path="res://analog.tscn" id="10_5psv3"]
-[ext_resource type="Script" uid="uid://cmyxeshkakwd8" path="res://addons/hand_pose_detector/hand_pose_action_map.gd" id="10_wccfp"]
-[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="12_65ndq"]
-[ext_resource type="Script" uid="uid://n7iy2lr1dvkr" path="res://instruments.gd" id="12_ucien"]
-[ext_resource type="PackedScene" uid="uid://b7dvkr5ss01as" path="res://sequencer.tscn" id="17_s2ckv"]
-[ext_resource type="Script" uid="uid://bs8nmn7mjqaek" path="res://examples/bge/start_passthrough.gd" id="30_b66op"]
-[ext_resource type="Material" uid="uid://dvo75cymypytd" path="res://examples/tank_game_3d/green.tres" id="31_11imp"]
-[ext_resource type="Script" uid="uid://muj58x3jqroj" path="res://addons/hand_pose_detector/hand_pose_detector.gd" id="33_g5gje"]
-[ext_resource type="Resource" uid="uid://ckjd0xa2a240p" path="res://addons/hand_pose_detector/poses/standard_pose_set.tres" id="34_63uls"]
-[ext_resource type="PackedScene" uid="uid://cjcehqrfoxav3" path="res://addons/hand_pose_detector/hands/LeftHandHumanoid.gltf" id="35_lbacc"]
-[ext_resource type="Material" uid="uid://r4hqqldkh2wy" path="res://examples/bge/trans.tres" id="36_4cadk"]
-[ext_resource type="PackedScene" uid="uid://dabmoo0spa6vg" path="res://addons/hand_pose_detector/hands/RightHandHumanoid.gltf" id="37_qy652"]
-[ext_resource type="PackedScene" uid="uid://df5hynbooj1uj" path="res://addons/hand_pose_detector/hand_pose_detector.tscn" id="38_4ru4y"]
-[ext_resource type="PackedScene" uid="uid://b2447e5p6kwug" path="res://examples/room/scene_anchor.tscn" id="39_5wcqy"]
-[ext_resource type="PackedScene" uid="uid://cukl4cie1tact" path="res://examples/room/scene_global_mesh.tscn" id="40_c1vpu"]
+[ext_resource type="Script" uid="uid://nxajcnxqcaey" path="res://timer.gd" id="1_44nf3"]
+[ext_resource type="Script" uid="uid://n7iy2lr1dvkr" path="res://instruments.gd" id="2_auctn"]
+[ext_resource type="Script" uid="uid://cno07hlngmtdl" path="res://visualiser.gd" id="3_n57f6"]
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="4_y5rq7"]
+[ext_resource type="PackedScene" uid="uid://cf4fvq6d5wdue" path="res://label.tscn" id="5_tbh1f"]
+[ext_resource type="Script" uid="uid://crm1vgeaih5wn" path="res://examples/xr_sequencer/sequencer2.gd" id="6_3l1x5"]
+[ext_resource type="PackedScene" uid="uid://dm1qa5btl0821" path="res://examples/xr_sequencer/pad_a.tscn" id="7_h4m68"]
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="8_0bet7"]
+[ext_resource type="PackedScene" uid="uid://2i1nqhynnlm0" path="res://button.tscn" id="9_7k2hk"]
+[ext_resource type="PackedScene" uid="uid://bo3p0qs3gk7ji" path="res://analog.tscn" id="10_4u0jl"]
+[ext_resource type="PackedScene" uid="uid://b7dvkr5ss01as" path="res://sequencer.tscn" id="11_ioy28"]
+[ext_resource type="PackedScene" uid="uid://03pivv0mboix" path="res://controls.tscn" id="12_2h2g8"]
+[ext_resource type="Script" uid="uid://ox8smfnahvcm" path="res://xr_camera_3d.gd" id="13_1jtpj"]
+[ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://hand.gd" id="14_vpmrs"]
+[ext_resource type="Script" uid="uid://muj58x3jqroj" path="res://addons/hand_pose_detector/hand_pose_detector.gd" id="15_ccifg"]
+[ext_resource type="Resource" uid="uid://ckjd0xa2a240p" path="res://addons/hand_pose_detector/poses/standard_pose_set.tres" id="16_20v67"]
+[ext_resource type="Script" uid="uid://8qemx50ogm7m" path="res://addons/hand_pose_detector/hand_pose_controller.gd" id="17_s84dr"]
+[ext_resource type="Script" uid="uid://by434t17106ou" path="res://addons/hand_pose_detector/hand_pose_action.gd" id="18_5agk6"]
+[ext_resource type="Resource" uid="uid://dhbqusuodrl3r" path="res://addons/hand_pose_detector/poses/fist.tres" id="19_vpg8i"]
+[ext_resource type="Script" uid="uid://cmyxeshkakwd8" path="res://addons/hand_pose_detector/hand_pose_action_map.gd" id="20_5n60j"]
+[ext_resource type="PackedScene" uid="uid://cjcehqrfoxav3" path="res://addons/hand_pose_detector/hands/LeftHandHumanoid.gltf" id="21_6jkll"]
+[ext_resource type="Material" uid="uid://r4hqqldkh2wy" path="res://examples/bge/trans.tres" id="22_pqway"]
+[ext_resource type="PackedScene" uid="uid://cend6ikv2su2t" path="res://tip.tscn" id="23_s5a1g"]
+[ext_resource type="PackedScene" uid="uid://dabmoo0spa6vg" path="res://addons/hand_pose_detector/hands/RightHandHumanoid.gltf" id="24_qn73j"]
+[ext_resource type="PackedScene" uid="uid://df5hynbooj1uj" path="res://addons/hand_pose_detector/hand_pose_detector.tscn" id="25_6pe58"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="26_6q503"]
+[ext_resource type="PackedScene" uid="uid://b2447e5p6kwug" path="res://examples/room/scene_anchor.tscn" id="27_un3d5"]
+[ext_resource type="PackedScene" uid="uid://cukl4cie1tact" path="res://examples/room/scene_global_mesh.tscn" id="28_6hp4t"]
+[ext_resource type="Script" uid="uid://bs8nmn7mjqaek" path="res://examples/bge/start_passthrough.gd" id="29_ib7xe"]
+[ext_resource type="Material" uid="uid://dvo75cymypytd" path="res://examples/tank_game_3d/green.tres" id="30_3ixyi"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_c8e3v"]
+transform_format = 1
+use_colors = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g1h6b"]
 size = Vector3(0.39416504, 0.054052733, 0.07138672)
@@ -91,20 +95,16 @@ size = Vector3(0.4, 0.06, 0.06)
 transparency = 1
 albedo_color = Color(0.8666667, 1, 0, 0.5529412)
 
-[sub_resource type="MultiMesh" id="MultiMesh_c8e3v"]
-transform_format = 1
-use_colors = true
-
 [sub_resource type="Resource" id="Resource_c8e3v"]
-script = ExtResource("8_uo375")
-pose = ExtResource("9_2c0tl")
+script = ExtResource("18_5agk6")
+pose = ExtResource("19_vpg8i")
 action_type = 1
 action_name = "grip"
 metadata/_custom_type_script = "uid://by434t17106ou"
 
 [sub_resource type="Resource" id="Resource_ex01c"]
-script = ExtResource("10_wccfp")
-actions = Array[ExtResource("8_uo375")]([SubResource("Resource_c8e3v")])
+script = ExtResource("20_5n60j")
+actions = Array[ExtResource("18_5agk6")]([SubResource("Resource_c8e3v")])
 metadata/_custom_type_script = "uid://cmyxeshkakwd8"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ieg28"]
@@ -124,19 +124,31 @@ ambient_light_color = Color(1, 1, 1, 1)
 [node name="root" type="Node3D" unique_id=1496378130]
 
 [node name="Timer" type="Timer" parent="." unique_id=1660296313]
-script = ExtResource("1_byv7j")
+script = ExtResource("1_44nf3")
 
 [node name="instruments" type="Node3D" parent="." unique_id=1822275068]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52361655, -0.13080412, -2.4875844)
-script = ExtResource("12_ucien")
+script = ExtResource("2_auctn")
+
+[node name="visualiser" type="Node3D" parent="instruments" unique_id=1405377368]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.5465446, 1.0544617, 2.593195)
+script = ExtResource("3_n57f6")
+num_bars = 32
+bar_width = 0.02
+bar_spacing = 0.03
+scale_factor = 1.0
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="instruments/visualiser" unique_id=1262645336]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+multimesh = SubResource("MultiMesh_c8e3v")
 
 [node name="Timer" type="Timer" parent="instruments" unique_id=658303578]
 wait_time = 0.2
 
 [node name="drums" type="Marker3D" parent="instruments" unique_id=684359294]
-transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -0.92263985, 0.846, 1.2814153)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.846, -0.15164018)
 
-[node name="pickable" parent="instruments/drums" unique_id=1719777704 instance=ExtResource("4_2c0tl")]
+[node name="pickable" parent="instruments/drums" unique_id=1719777704 instance=ExtResource("4_y5rq7")]
 linear_damp = 100.0
 angular_damp = 100.0
 
@@ -152,154 +164,154 @@ mesh = SubResource("BoxMesh_g1h6b")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_7ngqb")
 
-[node name="title" parent="instruments/drums/pickable/CollisionShape3D/grapber" unique_id=1219964922 instance=ExtResource("5_uo375")]
+[node name="title" parent="instruments/drums/pickable/CollisionShape3D/grapber" unique_id=1219964922 instance=ExtResource("5_tbh1f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05290146, 0.0031681433)
 text = "↑ HOLD HERE ↑"
 horizontal_alignment = 1
 
-[node name="title" parent="instruments/drums/pickable/CollisionShape3D/grapber/title" unique_id=891391325 instance=ExtResource("5_uo375")]
+[node name="title" parent="instruments/drums/pickable/CollisionShape3D/grapber/title" unique_id=891391325 instance=ExtResource("5_tbh1f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05290146, 0.0031681433)
 text = "↑ HOLD HERE ↑"
 horizontal_alignment = 1
 
 [node name="sequencer" type="Marker3D" parent="instruments/drums/pickable" unique_id=631711506]
-script = ExtResource("6_kbi0h")
+script = ExtResource("6_3l1x5")
 font = SubResource("Resource_byv7j")
-pad_scene = ExtResource("7_2e0eg")
+pad_scene = ExtResource("7_h4m68")
 steps = 16
 out_color = Color(0.029999971, 1, 0.11083323, 0.3882353)
 in_color = Color(0.33901316, 0.6156455, 0.6028598, 0.52156866)
 instrument = 9
 midi_channel = 9
 root_note = 36
-label_scene = ExtResource("5_uo375")
+label_scene = ExtResource("5_tbh1f")
 mucical_scale = 16
 
-[node name="MidiPlayer" parent="instruments/drums/pickable/sequencer" unique_id=1005795330 instance=ExtResource("8_icbhf")]
+[node name="MidiPlayer" parent="instruments/drums/pickable/sequencer" unique_id=1005795330 instance=ExtResource("8_0bet7")]
 volume_db = -10.0
 soundfont = "res://assets/Aspirin-Stereo.sf2"
 
 [node name="controls" type="Marker3D" parent="instruments/drums/pickable/sequencer" unique_id=73690061]
 transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.10090655, -0.26539487, 0.044889063)
 
-[node name="up_semi" parent="instruments/drums/pickable/sequencer/controls" unique_id=2138419497 instance=ExtResource("9_a51t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5023538, 1.015274, -0.04448855)
+[node name="up_semi" parent="instruments/drums/pickable/sequencer/controls" unique_id=2138419497 instance=ExtResource("9_7k2hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5023537, 0.8422569, -0.04448858)
 
-[node name="down_semi" parent="instruments/drums/pickable/sequencer/controls" unique_id=1018370246 instance=ExtResource("9_a51t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3890648, 1.0170674, -0.0454942)
+[node name="down_semi" parent="instruments/drums/pickable/sequencer/controls" unique_id=1018370246 instance=ExtResource("9_7k2hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3890648, 0.8440504, -0.045494214)
 
-[node name="stop_start" parent="instruments/drums/pickable/sequencer/controls" unique_id=2141351437 instance=ExtResource("9_a51t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38945067, 1.3397195, -0.04558444)
+[node name="stop_start" parent="instruments/drums/pickable/sequencer/controls" unique_id=2141351437 instance=ExtResource("9_7k2hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38945073, 1.1667024, -0.045584388)
 btype = 1
 
-[node name="forwards" parent="instruments/drums/pickable/sequencer/controls" unique_id=1935275129 instance=ExtResource("9_a51t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5609938, 1.4596508, -0.04558432)
+[node name="forwards" parent="instruments/drums/pickable/sequencer/controls" unique_id=1935275129 instance=ExtResource("9_7k2hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56099385, 1.2866337, -0.04558437)
 
-[node name="backwards" parent="instruments/drums/pickable/sequencer/controls" unique_id=879559165 instance=ExtResource("9_a51t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45460045, 1.4596508, -0.04558432)
+[node name="backwards" parent="instruments/drums/pickable/sequencer/controls" unique_id=879559165 instance=ExtResource("9_7k2hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4546005, 1.2866337, -0.045584384)
 
-[node name="ping_pong" parent="instruments/drums/pickable/sequencer/controls" unique_id=881514405 instance=ExtResource("9_a51t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33954227, 1.464308, -0.04558444)
+[node name="ping_pong" parent="instruments/drums/pickable/sequencer/controls" unique_id=881514405 instance=ExtResource("9_7k2hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33954233, 1.291291, -0.045584388)
 
-[node name="clear" parent="instruments/drums/pickable/sequencer/controls" unique_id=1584419201 instance=ExtResource("9_a51t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5050405, 1.3358703, -0.04558432)
+[node name="clear" parent="instruments/drums/pickable/sequencer/controls" unique_id=1584419201 instance=ExtResource("9_7k2hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5050405, 1.1628531, -0.045584388)
 
-[node name="up" parent="instruments/drums/pickable/sequencer/controls" unique_id=731043316 instance=ExtResource("9_a51t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5037154, 1.1249449, -0.04558432)
+[node name="up" parent="instruments/drums/pickable/sequencer/controls" unique_id=731043316 instance=ExtResource("9_7k2hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5037154, 0.9519278, -0.045584388)
 
-[node name="down" parent="instruments/drums/pickable/sequencer/controls" unique_id=547150324 instance=ExtResource("9_a51t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38736165, 1.1242068, -0.04558444)
+[node name="down" parent="instruments/drums/pickable/sequencer/controls" unique_id=547150324 instance=ExtResource("9_7k2hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3873617, 0.9511898, -0.045584388)
 
-[node name="scale_up" parent="instruments/drums/pickable/sequencer/controls" unique_id=1503189843 instance=ExtResource("9_a51t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5029429, 0.92042655, -0.04558432)
+[node name="scale_up" parent="instruments/drums/pickable/sequencer/controls" unique_id=1503189843 instance=ExtResource("9_7k2hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50294286, 0.7474096, -0.045584388)
 
-[node name="scale_down" parent="instruments/drums/pickable/sequencer/controls" unique_id=437597239 instance=ExtResource("9_a51t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39113772, 0.9194712, -0.04384911)
+[node name="scale_down" parent="instruments/drums/pickable/sequencer/controls" unique_id=437597239 instance=ExtResource("9_7k2hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39113772, 0.7464541, -0.043849096)
 
-[node name="mode" parent="instruments/drums/pickable/sequencer/controls" unique_id=488361937 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5709964, 0.9315662, -0.03975749)
+[node name="mode" parent="instruments/drums/pickable/sequencer/controls" unique_id=488361937 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 0.7585491, -0.039757475)
 horizontal_alignment = 2
 
-[node name="clear2" parent="instruments/drums/pickable/sequencer/controls" unique_id=85306595 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5709964, 1.3338277, -0.03975749)
+[node name="clear2" parent="instruments/drums/pickable/sequencer/controls" unique_id=85306595 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 1.1608107, -0.039757475)
 text = "Clear"
 horizontal_alignment = 2
 
-[node name="mute" parent="instruments/drums/pickable/sequencer/controls" unique_id=612615996 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32226193, 1.3401008, -0.03975749)
+[node name="mute" parent="instruments/drums/pickable/sequencer/controls" unique_id=612615996 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3222619, 1.1670837, -0.03975747)
 text = "MUTE"
 
-[node name="direction" parent="instruments/drums/pickable/sequencer/controls" unique_id=687586001 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62306654, 1.4566698, -0.03975737)
+[node name="direction" parent="instruments/drums/pickable/sequencer/controls" unique_id=687586001 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6230666, 1.2836528, -0.03975742)
 text = "DIRECTION"
 horizontal_alignment = 2
 
-[node name="mute3" parent="instruments/drums/pickable/sequencer/controls" unique_id=1218249019 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32097113, 1.1205409, -0.03975749)
+[node name="mute3" parent="instruments/drums/pickable/sequencer/controls" unique_id=1218249019 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 0.94752383, -0.039757475)
 text = "+/- 12"
 
-[node name="mute5" parent="instruments/drums/pickable/sequencer/controls" unique_id=1187675703 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4900955, 1.210784, -0.03975749)
+[node name="mute5" parent="instruments/drums/pickable/sequencer/controls" unique_id=1187675703 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49009553, 1.0377669, -0.03975749)
 text = "DRUMS"
 
-[node name="mute7" parent="instruments/drums/pickable/sequencer/controls" unique_id=1461974304 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 1.2752097, -0.03975749)
+[node name="mute7" parent="instruments/drums/pickable/sequencer/controls" unique_id=1461974304 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 1.1021926, -0.03975747)
 text = "+"
 horizontal_alignment = 1
 
-[node name="mute11" parent="instruments/drums/pickable/sequencer/controls" unique_id=1917705396 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5648352, 1.4036286, -0.03975749)
+[node name="mute11" parent="instruments/drums/pickable/sequencer/controls" unique_id=1917705396 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5648352, 1.2306114, -0.039757464)
 text = "F"
 horizontal_alignment = 1
 
-[node name="mute12" parent="instruments/drums/pickable/sequencer/controls" unique_id=1691737374 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45255744, 1.4036286, -0.03975749)
+[node name="mute12" parent="instruments/drums/pickable/sequencer/controls" unique_id=1691737374 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45255744, 1.2306114, -0.03975747)
 text = "R"
 horizontal_alignment = 1
 
-[node name="mute13" parent="instruments/drums/pickable/sequencer/controls" unique_id=1866575689 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33860397, 1.4036286, -0.03975749)
+[node name="mute13" parent="instruments/drums/pickable/sequencer/controls" unique_id=1866575689 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33860397, 1.2306114, -0.03975747)
 text = "P"
 horizontal_alignment = 1
 
-[node name="mute9" parent="instruments/drums/pickable/sequencer/controls" unique_id=1203840972 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 0.8663176, -0.03975749)
+[node name="mute9" parent="instruments/drums/pickable/sequencer/controls" unique_id=1203840972 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 0.69330055, -0.03975747)
 text = "+"
 horizontal_alignment = 1
 
-[node name="mute8" parent="instruments/drums/pickable/sequencer/controls" unique_id=2029846493 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38927794, 1.2752097, -0.03975749)
+[node name="mute8" parent="instruments/drums/pickable/sequencer/controls" unique_id=2029846493 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38927794, 1.1021926, -0.039757475)
 text = "-"
 horizontal_alignment = 1
 
-[node name="mute10" parent="instruments/drums/pickable/sequencer/controls" unique_id=438680737 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38927794, 0.85626286, -0.03975749)
+[node name="mute10" parent="instruments/drums/pickable/sequencer/controls" unique_id=438680737 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38927794, 0.6832458, -0.039757475)
 text = "-"
 horizontal_alignment = 1
 
-[node name="dir" parent="instruments/drums/pickable/sequencer/controls" unique_id=2032595283 instance=ExtResource("5_uo375")]
+[node name="dir" parent="instruments/drums/pickable/sequencer/controls" unique_id=2032595283 instance=ExtResource("5_tbh1f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3136267, 1.4458938, -0.039757475)
 modulate = Color(0, 6.436, 4.693, 0.792)
 text = ""
 
-[node name="mute6" parent="instruments/drums/pickable/sequencer/controls" unique_id=866690688 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32097113, 0.91727346, -0.03975749)
+[node name="mute6" parent="instruments/drums/pickable/sequencer/controls" unique_id=866690688 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 0.7442564, -0.039757475)
 text = "+/- MODE"
 
-[node name="mute4" parent="instruments/drums/pickable/sequencer/controls" unique_id=1010640520 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32097113, 1.0129235, -0.03975749)
+[node name="mute4" parent="instruments/drums/pickable/sequencer/controls" unique_id=1010640520 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 0.83990633, -0.039757475)
 text = "+/- 1"
 
-[node name="root" parent="instruments/drums/pickable/sequencer/controls" unique_id=61118654 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5709964, 1.1282656, -0.03975749)
+[node name="root" parent="instruments/drums/pickable/sequencer/controls" unique_id=61118654 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 0.9552486, -0.039757475)
 horizontal_alignment = 2
 
-[node name="root2" parent="instruments/drums/pickable/sequencer/controls" unique_id=2055426953 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5709964, 1.0186472, -0.03975749)
+[node name="root2" parent="instruments/drums/pickable/sequencer/controls" unique_id=2055426953 instance=ExtResource("5_tbh1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 0.84563017, -0.039757475)
 horizontal_alignment = 2
 
-[node name="gate" parent="instruments/drums/pickable/sequencer/controls" unique_id=754814461 instance=ExtResource("10_5psv3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39624393, 0.2812528, -0.039678335)
+[node name="gate" parent="instruments/drums/pickable/sequencer/controls" unique_id=754814461 instance=ExtResource("10_4u0jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9026357, 0.7538852, -0.039678335)
 
 [node name="grab" parent="instruments/drums/pickable/sequencer/controls/gate" index="0" unique_id=848395477]
 value = 0.2
@@ -310,8 +322,8 @@ whole = null
 [node name="title" parent="instruments/drums/pickable/sequencer/controls/gate" index="1" unique_id=387676606]
 text = "Gate"
 
-[node name="vel" parent="instruments/drums/pickable/sequencer/controls" unique_id=321154315 instance=ExtResource("10_5psv3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5157943, 0.2812528, -0.039678335)
+[node name="vel" parent="instruments/drums/pickable/sequencer/controls" unique_id=321154315 instance=ExtResource("10_4u0jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.022186, 0.7538852, -0.039678335)
 
 [node name="grab" parent="instruments/drums/pickable/sequencer/controls/vel" index="0" unique_id=848395477]
 value = 100.0
@@ -324,7 +336,7 @@ text = "VELOcity"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="instruments/drums/pickable/sequencer/controls/vel" unique_id=1260993603]
 
-[node name="instrument" parent="instruments/drums/pickable/sequencer/controls" unique_id=1201690315 instance=ExtResource("5_uo375")]
+[node name="instrument" parent="instruments/drums/pickable/sequencer/controls" unique_id=1201690315 instance=ExtResource("5_tbh1f")]
 transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.42533535, 1.5506735, 0.479756)
 visible = false
 text = "START"
@@ -346,8 +358,8 @@ bus = &"Record"
 
 [node name="analyzer" type="Node" parent="instruments" unique_id=1160703387]
 
-[node name="sequencer4" parent="instruments" unique_id=450981641 instance=ExtResource("17_s2ckv")]
-transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.3711385e-08, 1.4187598, 0.845, 0.41232777)
+[node name="sequencer4" parent="instruments" unique_id=450981641 instance=ExtResource("11_ioy28")]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.845, 0.41232777)
 
 [node name="sequencer" parent="instruments/sequencer4/pickable" parent_id_path=PackedInt32Array(450981641, 1719777704) index="1" unique_id=631711506]
 font = null
@@ -360,8 +372,8 @@ mucical_scale = 1
 [node name="MultiMeshInstance3D" parent="instruments/sequencer4/pickable/sequencer" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_wccfp")
 
-[node name="sequencer" parent="instruments" unique_id=19113346 instance=ExtResource("17_s2ckv")]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.08049202, 0.846, -0.278167)
+[node name="sequencer" parent="instruments" unique_id=19113346 instance=ExtResource("11_ioy28")]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.846, 1.0964419)
 
 [node name="sequencer" parent="instruments/sequencer/pickable" parent_id_path=PackedInt32Array(19113346, 1719777704) index="1" unique_id=631711506]
 font = null
@@ -375,21 +387,21 @@ mucical_scale = 1
 [node name="MultiMeshInstance3D" parent="instruments/sequencer/pickable/sequencer" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_s2ckv")
 
-[node name="sequencer3" parent="instruments" unique_id=600002492 instance=ExtResource("17_s2ckv")]
-transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, 0.57831097, 0.845, 1.9253473)
+[node name="sequencer3" parent="instruments" unique_id=600002492 instance=ExtResource("11_ioy28")]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0.845, 1.8137949)
 
 [node name="sequencer" parent="instruments/sequencer3/pickable" parent_id_path=PackedInt32Array(600002492, 1719777704) index="1" unique_id=631711506]
 font = null
 out_color = Color(0, 0, 0, 1)
 in_color = Color(0, 0, 0, 1)
-instrument = 81
+instrument = 80
 midi_channel = 3
 
 [node name="MultiMeshInstance3D" parent="instruments/sequencer3/pickable/sequencer" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_2c0tl")
 
-[node name="pickable" parent="instruments" unique_id=439534156 instance=ExtResource("4_2c0tl")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.31981945, 1.1454852, 0.76574326)
+[node name="pickable" parent="instruments" unique_id=439534156 instance=ExtResource("4_y5rq7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.533165, 1.1454852, 2.6273298)
 linear_damp = 100.0
 angular_damp = 100.0
 
@@ -405,17 +417,17 @@ mesh = SubResource("BoxMesh_wccfp")
 skeleton = NodePath("../../controls")
 surface_material_override/0 = SubResource("StandardMaterial3D_c8e3v")
 
-[node name="title" parent="instruments/pickable/CollisionShape3D2/grapber" unique_id=511523128 instance=ExtResource("5_uo375")]
+[node name="title" parent="instruments/pickable/CollisionShape3D2/grapber" unique_id=511523128 instance=ExtResource("5_tbh1f")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.05290146, 0.0031681433)
 text = "↑ HOLD HERE ↑"
 horizontal_alignment = 1
 
-[node name="title2" parent="instruments/pickable/CollisionShape3D2/grapber" unique_id=117281029 instance=ExtResource("5_uo375")]
+[node name="title2" parent="instruments/pickable/CollisionShape3D2/grapber" unique_id=117281029 instance=ExtResource("5_tbh1f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.057956323, 0.0031681433)
 text = "↓ HOLD HERE ↓"
 horizontal_alignment = 1
 
-[node name="controls" parent="instruments/pickable" unique_id=1187298749 instance=ExtResource("5_65ndq")]
+[node name="controls" parent="instruments/pickable" unique_id=1187298749 instance=ExtResource("12_2h2g8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79335976, -1.1454852, -0.47659194)
 
 [node name="start_stop" parent="instruments/pickable/controls" index="0"]
@@ -426,7 +438,7 @@ btype = 1
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6857811, 1.3463478, 0.47963643)
 
 [node name="grab" parent="instruments/pickable/controls/vol" index="0" unique_id=848395477]
-value = 7.5
+value = 5.0
 
 [node name="mesh" parent="instruments/pickable/controls/vol/grab" index="1" unique_id=1119555860]
 skeleton = NodePath("../../../../..")
@@ -444,11 +456,13 @@ transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.4
 transform = Transform3D(-0.99999934, 0, -8.940689e-08, 0, 1, 0, 8.940689e-08, 0, -0.99999934, -0.33629268, 2.1336532, 0.47975552)
 text = "SKUAREWAVE - Play music with holograms!
 --------------------------------------------------
-- Play by waving your hands inside the skuares
-- Experiment with instrument octave root-note and mode
-- Pinch in a skuare to program the note in the step
-- Hit start to activate the sequencers
-- Change the direction with the controls on the top
+Play by waving your hands inside the skuares
+The last one is a drum
+Change the instrument octave root-note 
+and mode with the controls on the LEFT
+Pinch in a skuare to program the note in the step
+Hit start!
+Change the direction with the controls on the LEFT
 --------------------------------------------------
 Created By: Bryan Duggan
 @skooter500
@@ -474,23 +488,12 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7
 [node name="mesh" parent="instruments/pickable/controls/mic_vol/grab" index="1" unique_id=1119555860]
 skeleton = NodePath("../../../../..")
 
-[node name="visualiser" type="Node3D" parent="instruments/pickable" unique_id=1405377368]
-script = ExtResource("3_wccfp")
-num_bars = 32
-bar_width = 0.02
-bar_spacing = 0.03
-scale_factor = 1.0
-
-[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="instruments/pickable/visualiser" unique_id=1262645336]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-multimesh = SubResource("MultiMesh_c8e3v")
-
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=811185315]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=1130441161 node_paths=PackedStringArray("spawn_in_front")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10548, 0)
 near = 0.001
-script = ExtResource("2_8d825")
+script = ExtResource("13_1jtpj")
 spawn_in_front = NodePath("../../instruments")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="XROrigin3D/XRCamera3D" unique_id=2071563029]
@@ -500,27 +503,27 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28372958, -0.08487674, 0)
 tracker = &"/user/hand_tracker/left"
 show_when_tracked = true
-script = ExtResource("9_00tvn")
+script = ExtResource("14_vpmrs")
 
 [node name="HandPoseDetector" type="Node" parent="XROrigin3D/left" unique_id=1832235387]
-script = ExtResource("33_g5gje")
-hand_pose_set = ExtResource("34_63uls")
+script = ExtResource("15_ccifg")
+hand_pose_set = ExtResource("16_20v67")
 
 [node name="HandPoseController" type="Node" parent="XROrigin3D/left" unique_id=145814951]
-script = ExtResource("7_ymxam")
+script = ExtResource("17_s84dr")
 controller_pose_type = 2
 controller_action_map = SubResource("Resource_ex01c")
-hand_pose_set = ExtResource("34_63uls")
+hand_pose_set = ExtResource("16_20v67")
 metadata/_custom_type_script = "uid://8qemx50ogm7m"
 
-[node name="LeftHandHumanoid2" parent="XROrigin3D/left" unique_id=1738900531 instance=ExtResource("35_lbacc")]
+[node name="LeftHandHumanoid2" parent="XROrigin3D/left" unique_id=1738900531 instance=ExtResource("21_6jkll")]
 
 [node name="LeftHandHumanoidMesh" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="0"]
-surface_material_override/0 = ExtResource("36_4cadk")
+surface_material_override/0 = ExtResource("22_pqway")
 
 [node name="XRHandModifier3D" type="XRHandModifier3D" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="1" unique_id=269424477]
 
-[node name="tip5" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="2" unique_id=740102888 instance=ExtResource("7_65ndq")]
+[node name="tip5" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="2" unique_id=740102888 instance=ExtResource("23_s5a1g")]
 transform = Transform3D(0.01489234, 0.39270008, 0.919546, -0.9930924, 0.11285266, -0.03211129, -0.11638325, -0.91271573, 0.39166808, -0.01110013, 0.04294307, -0.17161417)
 bone_name = "LeftIndexTip"
 bone_idx = 9
@@ -532,18 +535,18 @@ transform = Transform3D(1, 0, -3.7252903e-09, 0, 1.0000002, -2.9802322e-08, 0, -
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.382, 0, 0)
 tracker = &"/user/hand_tracker/right"
 show_when_tracked = true
-script = ExtResource("9_00tvn")
+script = ExtResource("14_vpmrs")
 
 [node name="HandPoseController" type="Node" parent="XROrigin3D/right" unique_id=155169688]
-script = ExtResource("7_ymxam")
+script = ExtResource("17_s84dr")
 controller_tracker_name = "/user/hand_pose_controller/right"
 controller_pose_type = 2
 controller_action_map = SubResource("Resource_ex01c")
 hand_tracker_name = "/user/hand_tracker/right"
-hand_pose_set = ExtResource("34_63uls")
+hand_pose_set = ExtResource("16_20v67")
 metadata/_custom_type_script = "uid://8qemx50ogm7m"
 
-[node name="RightHandHumanoid2" parent="XROrigin3D/right" unique_id=1270115842 instance=ExtResource("37_qy652")]
+[node name="RightHandHumanoid2" parent="XROrigin3D/right" unique_id=1270115842 instance=ExtResource("24_qn73j")]
 
 [node name="Skeleton3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid" index="0"]
 bones/0/position = Vector3(-0.009999533, 0.020026566, 3.5932288e-05)
@@ -560,7 +563,7 @@ bones/13/scale = Vector3(1, 1.0000002, 1.0000001)
 hand_tracker = &"/user/hand_tracker/right"
 
 [node name="RightHandHumanoidMesh" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="1"]
-surface_material_override/0 = ExtResource("36_4cadk")
+surface_material_override/0 = ExtResource("22_pqway")
 
 [node name="tip5" type="BoneAttachment3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="2" unique_id=732703088]
 transform = Transform3D(0.9999999, 4.4703484e-07, 1.4901161e-07, -1.1920929e-07, 0.9999999, 2.682209e-07, -1.3411045e-07, -1.4901161e-08, 1.0000002, 0, 0, 1.4901161e-08)
@@ -574,28 +577,28 @@ transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0)
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.018, 0)
 shape = SubResource("CapsuleShape3D_ieg28")
 
-[node name="HandPoseDetector" parent="XROrigin3D/right" unique_id=1275132854 instance=ExtResource("38_4ru4y")]
+[node name="HandPoseDetector" parent="XROrigin3D/right" unique_id=1275132854 instance=ExtResource("25_6pe58")]
 hand_tracker_name = "/user/hand_tracker/right"
-hand_pose_set = ExtResource("34_63uls")
+hand_pose_set = ExtResource("16_20v67")
 
 [node name="left_controller" type="XRController3D" parent="XROrigin3D" unique_id=302286056]
 tracker = &"/user/hand_pose_controller/left"
 
-[node name="FunctionPickup" parent="XROrigin3D/left_controller" unique_id=1883924380 instance=ExtResource("12_65ndq")]
+[node name="FunctionPickup" parent="XROrigin3D/left_controller" unique_id=1883924380 instance=ExtResource("26_6q503")]
 
 [node name="right_controller" type="XRController3D" parent="XROrigin3D" unique_id=1657215502]
 tracker = &"/user/hand_pose_controller/right"
 
-[node name="FunctionPickup" parent="XROrigin3D/right_controller" unique_id=704862470 instance=ExtResource("12_65ndq")]
+[node name="FunctionPickup" parent="XROrigin3D/right_controller" unique_id=704862470 instance=ExtResource("26_6q503")]
 
 [node name="OpenXRFbSceneManager" type="OpenXRFbSceneManager" parent="XROrigin3D" unique_id=908634191]
-default_scene = ExtResource("39_5wcqy")
+default_scene = ExtResource("27_un3d5")
 auto_create = false
 visible = false
-scenes/global_mesh = ExtResource("40_c1vpu")
+scenes/global_mesh = ExtResource("28_6hp4t")
 
 [node name="start_passthrough" type="Node" parent="." unique_id=394152677]
-script = ExtResource("30_b66op")
+script = ExtResource("29_ib7xe")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=954595673]
 transform = Transform3D(-0.486978, -0.857167, -0.16768, -0.325568, -1.4231e-08, 0.945518, -0.810468, 0.515038, -0.279066, 0, 0, 0)
@@ -604,7 +607,7 @@ transform = Transform3D(-0.486978, -0.857167, -0.16768, -0.325568, -1.4231e-08, 
 
 [node name="ground" type="MeshInstance3D" parent="StaticBody3D" unique_id=1497994064]
 visible = false
-material_override = ExtResource("31_11imp")
+material_override = ExtResource("30_3ixyi")
 mesh = SubResource("PlaneMesh_00q4b")
 skeleton = NodePath("../..")
 
