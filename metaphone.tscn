@@ -239,8 +239,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32097113, 1.1205409, -0.03
 text = "+/- 12"
 
 [node name="mute5" parent="instruments/drums/pickable/sequencer/controls" unique_id=1187675703 instance=ExtResource("5_uo375")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4900955, 1.210784, -0.03975749)
-text = "DRUMS"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44623077, 1.210784, -0.03975749)
+text = "DRUM RACK"
+horizontal_alignment = 1
 
 [node name="mute7" parent="instruments/drums/pickable/sequencer/controls" unique_id=1461974304 instance=ExtResource("5_uo375")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 1.2752097, -0.03975749)
@@ -370,7 +371,6 @@ in_color = Color(0, 0, 0, 1)
 instrument = 33
 midi_channel = 1
 root_note = 24
-mucical_scale = 1
 
 [node name="MultiMeshInstance3D" parent="instruments/sequencer/pickable/sequencer" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_s2ckv")
