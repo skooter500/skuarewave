@@ -359,6 +359,7 @@ var finger_in_cell = {}  # Maps "row,col" -> hand reference
 var last_pinch_state = {}  # Maps hand reference -> bool
 
 # Modify hand_entered (only add tracking at the end):
+
 func hand_entered(area, row, col):
 	if not area.is_in_group("finger_tip"):
 		return
@@ -367,7 +368,11 @@ func hand_entered(area, row, col):
 	# Store which hand is in this cell
 	finger_in_cell["%d,%d" % [row, col]] = hand
 	
-	if hand.gesture == "Index Pinch":
+	# Initialize pinch state to prevent double-toggle on first frame
+	var is_currently_pinching = (hand.gesture == "Index Pinch")
+	last_pinch_state[hand] = is_currently_pinching
+	
+	if is_currently_pinching:
 		sequence[row][col] = Step.ON if sequence[row][col] == Step.OFF else Step.OFF 
 		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
 	else:
@@ -381,6 +386,7 @@ func hand_entered(area, row, col):
 	enter_queue.append(hit_note)
 	active_cells[hit_note].append([row, col])
 	notes_in_cell[row][col] = hit_note
+
 
 # Modify hand_exited (only add cleanup at the end):
 func hand_exited(area, row, col):
