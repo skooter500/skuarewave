@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Skuarewave"
-run/main_scene="uid://c8tx40me7j55t"
+run/main_scene="uid://dsi8xe05wleyi"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="uid://bt625j5wmorne"
 
