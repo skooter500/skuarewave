@@ -5,6 +5,10 @@ extends Node
 var xr_interface: XRInterface
 @onready var environment:Environment = $"../WorldEnvironment".environment
 
+func recenter():
+	$"../XROrigin3D/XRCamera3D".center()
+	pass
+
 func enable_passthrough() -> bool:
 	if xr_interface and xr_interface.is_passthrough_supported():		
 		return xr_interface.start_passthrough()
@@ -20,6 +24,8 @@ func enable_passthrough() -> bool:
 	environment.background_mode = Environment.BG_CLEAR_COLOR
 	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	
+	
+	
 
 
 # Called when the node enters the scene tree for the first time.
@@ -34,6 +40,7 @@ func _ready() -> void:
 		# Change our main viewport to output to the HMD
 		get_viewport().use_xr = true
 		enable_passthrough()	
+		xr_interface.pose_recentered.connect(recenter)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
