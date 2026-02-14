@@ -1,0 +1,316 @@
+[gd_scene format=3 uid="uid://xsyh6ge34lgo"]
+
+[ext_resource type="Script" uid="uid://nxajcnxqcaey" path="res://timer.gd" id="1_cu50s"]
+[ext_resource type="Script" uid="uid://n7iy2lr1dvkr" path="res://instruments.gd" id="2_7oc6w"]
+[ext_resource type="PackedScene" uid="uid://b7dvkr5ss01as" path="res://sequencer.tscn" id="3_xatuh"]
+[ext_resource type="PackedScene" uid="uid://03pivv0mboix" path="res://controls.tscn" id="4_ve2fv"]
+[ext_resource type="Script" uid="uid://ox8smfnahvcm" path="res://xr_camera_3d.gd" id="5_6fhmu"]
+[ext_resource type="Script" uid="uid://e0tg3ajyvad4" path="res://hand.gd" id="6_13flb"]
+[ext_resource type="Script" uid="uid://muj58x3jqroj" path="res://addons/hand_pose_detector/hand_pose_detector.gd" id="7_j5xyo"]
+[ext_resource type="Resource" uid="uid://ckjd0xa2a240p" path="res://addons/hand_pose_detector/poses/standard_pose_set.tres" id="8_d8mrb"]
+[ext_resource type="Script" uid="uid://8qemx50ogm7m" path="res://addons/hand_pose_detector/hand_pose_controller.gd" id="9_4uckm"]
+[ext_resource type="Script" uid="uid://by434t17106ou" path="res://addons/hand_pose_detector/hand_pose_action.gd" id="10_4ogpu"]
+[ext_resource type="Resource" uid="uid://dhbqusuodrl3r" path="res://addons/hand_pose_detector/poses/fist.tres" id="11_dbw46"]
+[ext_resource type="Script" uid="uid://cmyxeshkakwd8" path="res://addons/hand_pose_detector/hand_pose_action_map.gd" id="12_7pyej"]
+[ext_resource type="PackedScene" uid="uid://cjcehqrfoxav3" path="res://addons/hand_pose_detector/hands/LeftHandHumanoid.gltf" id="13_vr0tp"]
+[ext_resource type="Material" uid="uid://r4hqqldkh2wy" path="res://examples/bge/trans.tres" id="14_yjikx"]
+[ext_resource type="PackedScene" uid="uid://cend6ikv2su2t" path="res://tip.tscn" id="15_urb66"]
+[ext_resource type="PackedScene" uid="uid://dabmoo0spa6vg" path="res://addons/hand_pose_detector/hands/RightHandHumanoid.gltf" id="16_7u85j"]
+[ext_resource type="PackedScene" uid="uid://df5hynbooj1uj" path="res://addons/hand_pose_detector/hand_pose_detector.tscn" id="17_l44pf"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="18_x8ubq"]
+[ext_resource type="PackedScene" uid="uid://b2447e5p6kwug" path="res://examples/room/scene_anchor.tscn" id="19_7kdkk"]
+[ext_resource type="PackedScene" uid="uid://cukl4cie1tact" path="res://examples/room/scene_global_mesh.tscn" id="20_ncwuc"]
+[ext_resource type="Script" uid="uid://bs8nmn7mjqaek" path="res://examples/bge/start_passthrough.gd" id="21_58a0d"]
+[ext_resource type="Material" uid="uid://dvo75cymypytd" path="res://examples/tank_game_3d/green.tres" id="22_eiyrl"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_wjjwd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byv7j"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_65ndq"]
+material = SubResource("StandardMaterial3D_byv7j")
+
+[sub_resource type="MultiMesh" id="MultiMesh_s2ckv"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_65ndq")
+
+[sub_resource type="MultiMesh" id="MultiMesh_65ndq"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_65ndq")
+
+[sub_resource type="MultiMesh" id="MultiMesh_2c0tl"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_65ndq")
+
+[sub_resource type="Resource" id="Resource_c8e3v"]
+script = ExtResource("10_4ogpu")
+pose = ExtResource("11_dbw46")
+action_type = 1
+action_name = "grip"
+metadata/_custom_type_script = "uid://by434t17106ou"
+
+[sub_resource type="Resource" id="Resource_ex01c"]
+script = ExtResource("12_7pyej")
+actions = Array[ExtResource("10_4ogpu")]([SubResource("Resource_c8e3v")])
+metadata/_custom_type_script = "uid://cmyxeshkakwd8"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ieg28"]
+radius = 0.02
+height = 0.04
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_00q4b"]
+size = Vector2(100, 100)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_307sh"]
+
+[sub_resource type="Environment" id="Environment_c4jos"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="root" type="Node3D" unique_id=1496378130]
+
+[node name="Timer" type="Timer" parent="." unique_id=1660296313]
+script = ExtResource("1_cu50s")
+
+[node name="instruments" type="Node3D" parent="." unique_id=1822275068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0900598, 0, -0.42798713)
+script = ExtResource("2_7oc6w")
+
+[node name="Timer" type="Timer" parent="instruments" unique_id=658303578]
+wait_time = 0.2
+
+[node name="drums" parent="instruments" unique_id=684359294 instance=ExtResource("3_xatuh")]
+transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 1.4953325, 0.918069, 0.3973448)
+
+[node name="record" type="Node" parent="instruments" unique_id=1406815149]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="instruments/record" unique_id=904922801]
+stream = SubResource("AudioStreamMicrophone_wjjwd")
+autoplay = true
+bus = &"Record"
+
+[node name="analyzer" type="Node" parent="instruments" unique_id=1160703387]
+
+[node name="sequencer" parent="instruments" unique_id=19113346 instance=ExtResource("3_xatuh")]
+transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, -0.93380964, 0.8463087, 1.059513)
+
+[node name="sequencer" parent="instruments/sequencer/pickable" parent_id_path=PackedInt32Array(19113346, 1719777704) index="1" unique_id=631711506]
+font = null
+out_color = Color(0, 0, 0, 1)
+in_color = Color(0, 0, 0, 1)
+instrument = 1
+midi_channel = 1
+root_note = 48
+
+[node name="MultiMeshInstance3D" parent="instruments/sequencer/pickable/sequencer" index="4" unique_id=1824471230]
+multimesh = SubResource("MultiMesh_s2ckv")
+
+[node name="sequencer2" parent="instruments" unique_id=1630129912 instance=ExtResource("3_xatuh")]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.042931557, 0.8446685, -0.58785135)
+
+[node name="sequencer" parent="instruments/sequencer2/pickable" parent_id_path=PackedInt32Array(1630129912, 1719777704) index="1" unique_id=631711506]
+font = null
+out_color = Color(0, 0, 0, 1)
+in_color = Color(0, 0, 0, 1)
+instrument = 1
+root_note = 48
+
+[node name="MultiMeshInstance3D" parent="instruments/sequencer2/pickable/sequencer" index="4" unique_id=1824471230]
+multimesh = SubResource("MultiMesh_65ndq")
+
+[node name="sequencer3" parent="instruments" unique_id=600002492 instance=ExtResource("3_xatuh")]
+transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, 0.62453747, 0.8446685, 2.0784426)
+
+[node name="sequencer" parent="instruments/sequencer3/pickable" parent_id_path=PackedInt32Array(600002492, 1719777704) index="1" unique_id=631711506]
+font = null
+out_color = Color(0, 0, 0, 1)
+in_color = Color(0, 0, 0, 1)
+instrument = 1
+midi_channel = 3
+root_note = 48
+
+[node name="MultiMeshInstance3D" parent="instruments/sequencer3/pickable/sequencer" index="4" unique_id=1824471230]
+multimesh = SubResource("MultiMesh_2c0tl")
+
+[node name="controls" parent="instruments" unique_id=1187298749 instance=ExtResource("4_ve2fv")]
+transform = Transform3D(0.71560735, 0, 0.69850254, 0, 1, 0, -0.69850254, 0, 0.71560735, 0.9924259, 0, 0.27703726)
+
+[node name="mode3" parent="instruments/controls" index="4"]
+text = "SKUAREWAVE
+Created By: Bryan Duggan
+@skooter500
+bryanduggan.org"
+
+[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=811185315]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=1130441161 node_paths=PackedStringArray("spawn_in_front")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10548, 0)
+near = 0.001
+script = ExtResource("5_6fhmu")
+spawn_in_front = NodePath("../../instruments")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="XROrigin3D/XRCamera3D" unique_id=2071563029]
+
+[node name="left" type="XRNode3D" parent="XROrigin3D" unique_id=857214756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28372958, -0.08487674, 0)
+tracker = &"/user/hand_tracker/left"
+show_when_tracked = true
+script = ExtResource("6_13flb")
+
+[node name="HandPoseDetector" type="Node" parent="XROrigin3D/left" unique_id=1832235387]
+script = ExtResource("7_j5xyo")
+hand_pose_set = ExtResource("8_d8mrb")
+
+[node name="HandPoseController" type="Node" parent="XROrigin3D/left" unique_id=145814951]
+script = ExtResource("9_4uckm")
+controller_pose_type = 2
+controller_action_map = SubResource("Resource_ex01c")
+hand_pose_set = ExtResource("8_d8mrb")
+metadata/_custom_type_script = "uid://8qemx50ogm7m"
+
+[node name="LeftHandHumanoid2" parent="XROrigin3D/left" unique_id=1738900531 instance=ExtResource("13_vr0tp")]
+
+[node name="LeftHandHumanoidMesh" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("14_yjikx")
+
+[node name="XRHandModifier3D" type="XRHandModifier3D" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="1" unique_id=269424477]
+
+[node name="tip5" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="2" unique_id=740102888 instance=ExtResource("15_urb66")]
+transform = Transform3D(0.01489234, 0.39270008, 0.919546, -0.9930924, 0.11285266, -0.03211129, -0.11638325, -0.91271573, 0.39166808, -0.01110013, 0.04294307, -0.17161417)
+bone_name = "LeftIndexTip"
+bone_idx = 9
+
+[node name="right_hand" parent="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D/tip5" index="0" unique_id=1362912656]
+transform = Transform3D(1, 0, -3.7252903e-09, 0, 1.0000002, -2.9802322e-08, 0, -2.9802322e-08, 1.0000005, 0.0037370138, -0.0004246682, 0.00012084842)
+
+[node name="right" type="XRNode3D" parent="XROrigin3D" unique_id=1332199885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.382, 0, 0)
+tracker = &"/user/hand_tracker/right"
+show_when_tracked = true
+script = ExtResource("6_13flb")
+
+[node name="HandPoseController" type="Node" parent="XROrigin3D/right" unique_id=155169688]
+script = ExtResource("9_4uckm")
+controller_tracker_name = "/user/hand_pose_controller/right"
+controller_pose_type = 2
+controller_action_map = SubResource("Resource_ex01c")
+hand_tracker_name = "/user/hand_tracker/right"
+hand_pose_set = ExtResource("8_d8mrb")
+metadata/_custom_type_script = "uid://8qemx50ogm7m"
+
+[node name="RightHandHumanoid2" parent="XROrigin3D/right" unique_id=1270115842 instance=ExtResource("16_7u85j")]
+
+[node name="Skeleton3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid" index="0"]
+bones/0/position = Vector3(-0.009999533, 0.020026566, 3.5932288e-05)
+bones/0/rotation = Quaternion(0.15032642, 0.82222533, -0.41320056, -0.36140388)
+bones/0/scale = Vector3(0.99999976, 0.9999999, 0.9999999)
+bones/9/position = Vector3(-0.0144017115, -0.18588886, 0.055714846)
+bones/9/rotation = Quaternion(0.029629126, 0.7843349, -0.44617033, 0.42996845)
+bones/9/scale = Vector3(1, 1.0000001, 1.0000002)
+bones/13/position = Vector3(-0.014042869, -0.15854816, 0.04854116)
+bones/13/rotation = Quaternion(0.12692279, 0.7842564, -0.48233, 0.36903968)
+bones/13/scale = Vector3(1, 1.0000002, 1.0000001)
+
+[node name="XRHandModifier3D" type="XRHandModifier3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="0" unique_id=514983887]
+hand_tracker = &"/user/hand_tracker/right"
+
+[node name="RightHandHumanoidMesh" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("14_yjikx")
+
+[node name="tip5" type="BoneAttachment3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="2" unique_id=732703088]
+transform = Transform3D(0.9999999, 4.4703484e-07, 1.4901161e-07, -1.1920929e-07, 0.9999999, 2.682209e-07, -1.3411045e-07, -1.4901161e-08, 1.0000002, 0, 0, 1.4901161e-08)
+bone_name = "RightIndexTip"
+bone_idx = 9
+
+[node name="right_hand" type="Area3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip5" unique_id=1248967195 groups=["finger_tip"]]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip5/right_hand" unique_id=734859244]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.018, 0)
+shape = SubResource("CapsuleShape3D_ieg28")
+
+[node name="HandPoseDetector" parent="XROrigin3D/right" unique_id=1275132854 instance=ExtResource("17_l44pf")]
+hand_tracker_name = "/user/hand_tracker/right"
+hand_pose_set = ExtResource("8_d8mrb")
+
+[node name="left_controller" type="XRController3D" parent="XROrigin3D" unique_id=302286056]
+tracker = &"/user/hand_pose_controller/left"
+
+[node name="FunctionPickup" parent="XROrigin3D/left_controller" unique_id=1883924380 instance=ExtResource("18_x8ubq")]
+
+[node name="right_controller" type="XRController3D" parent="XROrigin3D" unique_id=1657215502]
+tracker = &"/user/hand_pose_controller/right"
+
+[node name="FunctionPickup" parent="XROrigin3D/right_controller" unique_id=704862470 instance=ExtResource("18_x8ubq")]
+
+[node name="OpenXRFbSceneManager" type="OpenXRFbSceneManager" parent="XROrigin3D" unique_id=908634191]
+default_scene = ExtResource("19_7kdkk")
+auto_create = false
+visible = false
+scenes/global_mesh = ExtResource("20_ncwuc")
+
+[node name="start_passthrough" type="Node" parent="." unique_id=394152677]
+script = ExtResource("21_58a0d")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=954595673]
+transform = Transform3D(-0.486978, -0.857167, -0.16768, -0.325568, -1.4231e-08, 0.945518, -0.810468, 0.515038, -0.279066, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=195329942]
+
+[node name="ground" type="MeshInstance3D" parent="StaticBody3D" unique_id=1497994064]
+visible = false
+material_override = ExtResource("22_eiyrl")
+mesh = SubResource("PlaneMesh_00q4b")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2146540621]
+shape = SubResource("WorldBoundaryShape3D_307sh")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=625995929]
+environment = SubResource("Environment_c4jos")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1402405280]
+transform = Transform3D(-0.220772, -0.975312, -0.00516406, 0.254535, -0.0627264, 0.965027, -0.941526, 0.211737, 0.2621, -4.2177, 1.84116, -4.5774)
+light_energy = 16.0
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
+[connection signal="timeout" from="instruments/Timer" to="instruments" method="_on_timer_timeout"]
+[connection signal="area_entered" from="instruments/controls/start_stop" to="instruments" method="_on_start_stop_area_entered"]
+[connection signal="pose_ended" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_ended"]
+[connection signal="pose_started" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_started"]
+[connection signal="pose_ended" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_ended"]
+[connection signal="pose_started" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_started"]
+
+[editable path="instruments/drums"]
+[editable path="instruments/drums/pickable"]
+[editable path="instruments/drums/pickable/sequencer/controls/gate"]
+[editable path="instruments/drums/pickable/sequencer/controls/vel"]
+[editable path="instruments/sequencer"]
+[editable path="instruments/sequencer/pickable"]
+[editable path="instruments/sequencer/pickable/sequencer/controls/gate"]
+[editable path="instruments/sequencer/pickable/sequencer/controls/vel"]
+[editable path="instruments/sequencer2"]
+[editable path="instruments/sequencer2/pickable"]
+[editable path="instruments/sequencer2/pickable/sequencer/controls/gate"]
+[editable path="instruments/sequencer2/pickable/sequencer/controls/vel"]
+[editable path="instruments/sequencer3"]
+[editable path="instruments/sequencer3/pickable"]
+[editable path="instruments/sequencer3/pickable/sequencer/controls/gate"]
+[editable path="instruments/sequencer3/pickable/sequencer/controls/vel"]
+[editable path="instruments/controls"]
+[editable path="instruments/controls/vol"]
+[editable path="instruments/controls/tempo"]
+[editable path="instruments/controls/mode2"]
+[editable path="instruments/controls/mode3"]
+[editable path="instruments/controls/reverb_mix2"]
+[editable path="instruments/controls/delay_mix"]
+[editable path="instruments/controls/mic_vol"]
+[editable path="XROrigin3D/left/LeftHandHumanoid2"]
+[editable path="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D/tip5"]
+[editable path="XROrigin3D/right/RightHandHumanoid2"]

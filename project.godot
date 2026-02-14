@@ -14,23 +14,43 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="square|wave"
-run/main_scene="uid://c8tx40me7j55t"
-config/features=PackedStringArray("4.5", "Mobile")
-config/icon="uid://ck5yxjygyqchv"
+config/name="Skuarewave"
+run/main_scene="uid://dsi8xe05wleyi"
+config/features=PackedStringArray("4.6", "Mobile")
+config/icon="uid://bt625j5wmorne"
 
 [audio]
 
 buses/default_bus_layout="uid://5u6eb38bx5ob"
 driver/enable_input=true
 
+[autoload]
+
+XRToolsUserSettings="*uid://bqgb8i74tm0t"
+XRToolsRumbleManager="*uid://by853dk86g1qw"
+
 [debug_draw_3d]
 
 settings/addon_root_folder="res://addons/debug_draw_3d"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg", "res://addons/midi/plugin.cfg")
+
+[global_group]
+
+finger_tip=""
+
 [gui]
 
 theme/custom_font="uid://0jk2p2kfmllu"
+<<<<<<< HEAD
+=======
+
+[physics]
+
+3d/default_gravity=0.0
+>>>>>>> working_again
 
 [rendering]
 

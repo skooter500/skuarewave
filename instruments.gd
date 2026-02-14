@@ -1,21 +1,29 @@
 extends Node3D
 
+func _ready() -> void:
+	sequencers.push_back($drums/pickable/sequencer)
+	sequencers.push_back($sequencer/pickable/sequencer)
+	sequencers.push_back($sequencer3/pickable/sequencer)
+	sequencers.push_back($sequencer4/pickable/sequencer)
+
+	
 
 func _on_start_stop_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	if $Timer.is_stopped():
 		$"Timer".start()
-		$controls/mode2.text = "stop"
+		$pickable/controls/mode2.text = "stop"
 	else:
 		$"Timer".stop()
-		$controls/mode2.text = "Start"
+		$pickable/controls/mode2.text = "Start"
 	pass # Replace with function body.
 
+var sequencers = []
 
 func _on_timer_timeout() -> void:
-	$sequencer.next_step()
-	$sequencer2.next_step()
-	$sequencer3.next_step()
-	$drums.next_step()
+	for sequencer in sequencers:
+		sequencer.next_step()
 	pass # Replace with function body.
 
 

@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="1"]
 
-[node name="MidiPlayer" type="Node"]
+[node name="MidiPlayer" type="Node3D"]
 script = ExtResource("1")

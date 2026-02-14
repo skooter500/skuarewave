@@ -5,6 +5,7 @@ extends Marker3D
 var sequence = []
 var notes_in_cell = []
 var file_names = []
+var play_modes = []
 
 @export var pad_scene:PackedScene
 
@@ -19,29 +20,26 @@ signal stop
 @export var out_color:Color
 @export var in_color:Color
 @export var hit_color:Color
+@export var step_color:Color
 
 enum Step {OFF, ON, HIT_ON, HIT_OFF}
 
+enum play_mode {CHORD, ARPEGIATE}
+
+@onready var button_scene = load("res://button.tscn")
 
 @export var instrument:int = 1
 @export var midi_channel:int = 1
 @export var root_note:int = 68
 
-@onready var midi_player:MidiPlayer = $"../MidiPlayer"
+@onready var midi_player:MidiPlayer = $"MidiPlayer"
 
 @export var label_scene:PackedScene
 
 func midi_note_to_string(midi_num: int) -> String:
-	# List of note names in an octave
 	var notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
-	
-	# MIDI notes start at C-1 (which is 0). 
-	# To get the octave, we divide by 12 and subtract 1.
 	var octave = (midi_num / 12) - 1
-	
-	# To get the note name, we find the remainder when divided by 12.
 	var note_name = notes[midi_num % 12]
-	
 	return note_name + str(octave)
 	
 var instruments = [
@@ -81,31 +79,61 @@ var instruments = [
 		"Guitar Fret Noise", "Breath Noise", "Seashore", "Bird Tweet", "Telephone Ring", "Helicopter", "Applause", "Gunshot"
 	]
 
-# Example usage:
-# print(midi_note_to_string(60)) -> "C4"
-# print(midi_note_to_string(21)) -> "A0"
-# print(midi_note_to_string(70)) -> "A#4"
-
 func change_instrument(channel: int, program: int):
 	var midi_event = InputEventMIDI.new()
 	midi_event.channel = channel
 	midi_event.message = MIDI_MESSAGE_PROGRAM_CHANGE
 	midi_event.instrument = program
 	midi_player.receive_raw_midi_message(midi_event)
+	
+func make_mode_row():
+	var in_color = Color.from_hsv(randf(), 1, 1, 0.5)
+	var out_color = Color.from_hsv(fmod(in_color.h + 0.5, 1.0), 1, 1, 0.5)
+	
+	for col in range(steps):
+		var button:HoloButton = button_scene.instantiate()
+		var p = Vector3(0.01 + s * col * spacer, -1 * s * spacer, 0)
+		button.position = p
+		button.btype = HoloButton.BType.TOGGLE
+		button.in_color = in_color
+		button.out_color = out_color
+		button.area_entered.connect(toggle_col.bind(col))
+		add_child(button)
+		
+func toggle_col(area, col):
+	if not area.is_in_group("finger_tip"):
+		return
+	if play_modes[col] == play_mode.CHORD:
+		play_modes[col] = play_mode.ARPEGIATE
+	else:
+		play_modes[col] = play_mode.CHORD
+	pass
 
 func _ready():
-	# load_samples()
 	initialise_sequence(notes, steps)
 	
 	make_sequencer()
 	
+	
+	# Decided noyt to use this!
+	# make_mode_row()
+
+	# Position MidiPlayer at the center of the sequencer grid for 3D audio
+	var center_x = s * (steps - 1) * spacer / 2.0
+	var center_y = s * (notes - 1) * spacer / 2.0
+	midi_player.position = Vector3(center_x, center_y, 0)
+
+	# var ss = $"../../../pickable/sound_source"
+	
 	in_color = Color.from_hsv(randf(), 1, 1, 0.5)
 	out_color = Color.from_hsv(fmod(in_color.h + 0.3, 1.0), 1, 1, 0.5)
 	hit_color = Color.from_hsv(fmod(out_color.h + 0.3, 1.0), 1, 1, 0.5)
-	$timer_ball.get_surface_override_material(0).albedo_color = in_color
+	step_color = Color.from_hsv(fmod(hit_color.h + 0.3, 1.0), 1, 1, 0.5)
+
 	assign_colors()
 	create_labels()
-	midi_notes = get_scale_notes(root_note, mucical_scale)	
+	midi_notes = get_scale_notes(root_note, mucical_scale)
+	# instrument = randi_range(0, 128)
 	change_instrument(midi_channel, instrument)
 	
 var labels = []
@@ -126,12 +154,9 @@ func create_labels():
 		add_child(label)
 		labels.push_back(label)
 
-
-
 enum Scale {
 	MAJOR,
 	MINOR,
-	
 	HARMONIC_MINOR,
 	MELODIC_MINOR,
 	DORIAN,
@@ -147,18 +172,17 @@ enum Scale {
 	BEBOP_MAJOR,
 	WHOLE_TONE,
 	CHROMATIC,
-	JAPANESE,  # Hirajoshi
+	JAPANESE,
 	EGYPTIAN,
 	HUNGARIAN_MINOR,
-	IRISH,  # Hexatonic ` common in trad
+	IRISH,
 }
 
 @export var mucical_scale:Scale = Scale.PENTATONIC_MINOR
 
-# Define scale intervals (semitones from root)
 var scale_intervals = {
 	Scale.MAJOR: [0, 2, 4, 5, 7, 9, 11],
-	Scale.MINOR: [0, 2, 3, 5, 7, 8, 10],  # Natural minor
+	Scale.MINOR: [0, 2, 3, 5, 7, 8, 10],
 	Scale.HARMONIC_MINOR: [0, 2, 3, 5, 7, 8, 11],
 	Scale.MELODIC_MINOR: [0, 2, 3, 5, 7, 9, 11],
 	Scale.DORIAN: [0, 2, 3, 5, 7, 9, 10],
@@ -174,24 +198,13 @@ var scale_intervals = {
 	Scale.BEBOP_MAJOR: [0, 2, 4, 5, 7, 8, 9, 11],
 	Scale.WHOLE_TONE: [0, 2, 4, 6, 8, 10],
 	Scale.CHROMATIC: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
-	Scale.JAPANESE: [0, 2, 3, 7, 8],  # Hirajoshi
-	Scale.EGYPTIAN: [0, 2, 5, 7, 10],  # Suspended pentatonic
+	Scale.JAPANESE: [0, 2, 3, 7, 8],
+	Scale.EGYPTIAN: [0, 2, 5, 7, 10],
 	Scale.HUNGARIAN_MINOR: [0, 2, 3, 6, 7, 8, 11],
-	Scale.IRISH: [0, 2, 4, 5, 7, 9],  # Hexatonic, common in Irish trad
+	Scale.IRISH: [0, 2, 4, 5, 7, 9],
 }
 
 func get_scale_notes(start_midi: int, scale_type: Scale, num_notes: int = 16) -> Array:
-	"""
-	Generate a list of MIDI notes in a given scale.
-	
-	Args:
-		start_midi: Starting MIDI note number (e.g., 60 for middle C)
-		scale_type: Scale enum value
-		num_notes: How many notes to generate (default 16)
-	
-	Returns:
-		Array of MIDI note numbers
-	"""
 	var intervals = scale_intervals[scale_type]
 	var notes = []
 	
@@ -199,23 +212,17 @@ func get_scale_notes(start_midi: int, scale_type: Scale, num_notes: int = 16) ->
 	var scale_index = 0
 	
 	for i in range(num_notes):
-		# Calculate the MIDI note
 		var note = start_midi + intervals[scale_index] + (octave * 12)
 		notes.append(note)
 		labels[i*2].text = midi_note_to_string(note)
-		labels[i*2  + 1].text = midi_note_to_string(note)
-		# Move to next note in scale
-		scale_index += 1
+		labels[i*2 + 1].text = midi_note_to_string(note)
 		
-		# If we've gone through all intervals, go to next octave
+		scale_index += 1
 		if scale_index >= intervals.size():
 			scale_index = 0
 			octave += 1
 	
-	
-	
 	return notes
-
 
 var midi_notes = []
 
@@ -232,6 +239,11 @@ func test_sequence():
 	sequence[2][6] = Step.ON
 
 func initialise_sequence(rows, cols):
+	
+	# initialise the play_mode settings
+	for i in range(cols):
+		play_modes.append(play_mode.CHORD)
+	
 	for i in range(rows):
 		var row = []
 		var row1 = []
@@ -244,31 +256,63 @@ func initialise_sequence(rows, cols):
 func _process(delta: float) -> void:
 	update_labels()
 	
+	for cell_key in finger_in_cell:
+		var hand = finger_in_cell[cell_key]
+		var is_pinching = (hand.gesture == "Index Pinch")
+		var was_pinching = last_pinch_state.get(hand, false)
+		
+		if is_pinching and not was_pinching:
+			var coords = cell_key.split(",")
+			var row = int(coords[0])
+			var col = int(coords[1])
+			sequence[row][col] = Step.ON if sequence[row][col] == Step.OFF else Step.OFF
+			mm.multimesh.set_instance_color((col * notes) + row, in_color if sequence[row][col] == Step.ON else out_color)
+		
+		last_pinch_state[hand] = is_pinching
+	
 	for note in exit_queue:
 		note_off(note)
 	exit_queue.clear()
 	
-	# Then process enters (note-ons)
 	for note in enter_queue:
 		note_on(note)
 	enter_queue.clear()
-	pass
+	
+var is_blinking:bool = false
+
+func start_color_blink(label):
+	is_blinking = true
+	while is_blinking:
+		label.modulate = blink_on
+		await get_tree().create_timer(0.25).timeout
+		if not is_blinking:
+			break
+		label.modulate = blink_off
+		await get_tree().create_timer(0.25).timeout
 
 func get_midi_instrument_name(program_num: int) -> String:
-	# MIDI Program numbers are 0-127. 
-	# If your input is 1-128, subtract 1 from program_num first.
 	if program_num < 0 or program_num > 127:
 		return "Unknown Instrument"
-
-	
-
 	return instruments[program_num]
 
 func update_labels():
 	$controls/instrument.text = get_midi_instrument_name(instrument)
 	$controls/root.text = midi_note_to_string(root_note)
 	$controls/root2.text = midi_note_to_string(root_note)
-	$controls/mode.text = str(Scale.keys()[mucical_scale])
+	$controls/mode.text = str(Scale.keys()[mucical_scale]).replace("_", " ")
+	$controls/direction.text = str(Direction.keys()[playback_direction])
+	$controls/mute.text = "UNMUTE" if stopped else "MUTE"
+
+	if direction_change_requested and not is_blinking:
+		start_color_blink($controls/dir)
+		start_color_blink($controls/direction)
+	elif not direction_change_requested:
+		is_blinking = false
+		$controls/dir.modulate = blink_off
+		$controls/direction.modulate = blink_off
+
+var blink_off = Color(0.0, 6.436, 4.693, 0.792)
+var blink_on = Color(6.272, 0.0, 0.341, 0.71)
 
 func assign_colors():
 	var i = 0
@@ -289,8 +333,6 @@ func assign_colors():
 			mm.multimesh.set_instance_color(i, c)
 			i += 1
 
-
-
 var asp_index = 0
 
 func print_sequence():
@@ -304,21 +346,27 @@ func print_sequence():
 var hit_note:int = -1
 		
 func play_sample(e, row, col):
-	
-	# Potential race condition!!!!
-	# Great example
 	var note = midi_notes[row]	
 	note_on(note)
 				
-	
 var exit_queue = []
 var enter_queue = []
 	
-var active_cells = {}  # {note: [[row,col], [row,col], ...]}
+var active_cells = {}
 
+# Just add these two variables
+var finger_in_cell = {}  # Maps "row,col" -> hand reference
+var last_pinch_state = {}  # Maps hand reference -> bool
+
+# Modify hand_entered (only add tracking at the end):
 func hand_entered(area, row, col):
-	print("Hand Entered " + str(row) + " " + str(col))
+	if not area.is_in_group("finger_tip"):
+		return
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
+	
+	# Store which hand is in this cell
+	finger_in_cell["%d,%d" % [row, col]] = hand
+	
 	if hand.gesture == "Index Pinch":
 		sequence[row][col] = Step.ON if sequence[row][col] == Step.OFF else Step.OFF 
 		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
@@ -327,20 +375,22 @@ func hand_entered(area, row, col):
 	
 	hit_note = midi_notes[row]
 	
-	# Initialize if needed
 	if not active_cells.has(hit_note):
 		active_cells[hit_note] = []
 	
-	# Always queue note-on (retriggering)
 	enter_queue.append(hit_note)
-	
-	# Track this cell as active
 	active_cells[hit_note].append([row, col])
 	notes_in_cell[row][col] = hit_note
 
+# Modify hand_exited (only add cleanup at the end):
 func hand_exited(area, row, col):
-	print("Hand exited " + str(row) + " " + str(col))	
-	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()	
+	if not area.is_in_group("finger_tip"):
+		return
+	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
+	
+	# Remove tracking
+	finger_in_cell.erase("%d,%d" % [row, col])
+	
 	if sequence[row][col] != Step.ON:
 		mm.multimesh.set_instance_color((col * notes) + row, out_color)	
 	else:
@@ -348,12 +398,13 @@ func hand_exited(area, row, col):
 
 	hit_note = notes_in_cell[row][col]
 	
-	# Remove this cell from active list
 	active_cells[hit_note].erase([row, col])
 	
-	# Only queue note-off if NO cells are left
 	if active_cells[hit_note].is_empty():
 		exit_queue.append(hit_note)
+
+
+
 	
 func note_on(note):
 	change_instrument(midi_channel, instrument)
@@ -365,7 +416,6 @@ func note_on(note):
 	m.channel = midi_channel			
 	midi_player.receive_raw_midi_message(m)	
 	
-
 func note_off(note):
 	print("Note off: " + str(note))	
 	var m = InputEventMIDI.new()
@@ -375,15 +425,11 @@ func note_off(note):
 	m.instrument = instrument
 	m.channel = midi_channel
 	midi_player.receive_raw_midi_message(m)
-	
 
-
-	
 var s = 0.08
 var spacer = 1.1
 
 func make_sequencer():	
-	
 	mm.multimesh.instance_count = steps * notes
 	var i = 0 
 	for col in range(steps):				
@@ -392,16 +438,8 @@ func make_sequencer():
 			
 			var p = Vector3(s * col * spacer, s * row * spacer, 0)
 			pad.position = p		
-			# pad.rotation = rotation
-			#var tm = TextMesh.new()
-			#tm.font = font
-			#tm.font_size = 1
-			#tm.depth = 0.005
-			## tm.text = str(row) + "," + str(col)
-			#tm.text = file_names[row]
-			#pad.get_node("MeshInstance3D2").mesh = tm
-			var t = Transform3D()
 			
+			var t = Transform3D()
 			var s1 = 0.7
 			t = t.scaled(Vector3(s * s1, s * s1, s * s1))
 			t.origin = p
@@ -410,10 +448,6 @@ func make_sequencer():
 			pad.area_entered.connect(hand_entered.bind(row, col))
 			pad.area_exited.connect(hand_exited.bind(row, col))
 			add_child(pad)
-	timer_ball_top = $timer_ball.duplicate()
-	timer_ball_top.position = Vector3(0, s * (notes) * spacer, 0)
-	add_child(timer_ball_top)
-var timer_ball_top
 
 func play_sample_gate(e, row, col, duration):
 	var note = midi_notes[row]
@@ -422,120 +456,227 @@ func play_sample_gate(e, row, col, duration):
 	play_sample(e, row, col)	
 	await get_tree().create_timer(duration).timeout
 	
-	# Only turn off if no hands are holding this note
 	if not active_cells.has(note) or active_cells[note].is_empty():
 		print("Note off: " + str(note) + " Channel: " + str(midi_channel))
 		note_off(note)
 	else:
 		print("Skipping note off - hand is holding note: " + str(note))
 
+var current_step_col:int = -1
 
-func change_color_back(row, col):
-	await get_tree().create_timer(0.2).timeout
-	if sequence[row][col] == Step.ON:
-		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
-	else:
-		mm.multimesh.set_instance_color((col * notes) + row, out_color)	
-	
- 
+func set_column_color(col:int, is_current:bool):
+	for row in range(notes):
+		var index = (col * notes) + row
+		var color
+
+		# Check if this cell is currently being held by a finger
+		var note = notes_in_cell[row][col]
+		var is_being_held = false
+		if note != -1 and active_cells.has(note):
+			for cell in active_cells[note]:
+				if cell[0] == row and cell[1] == col:
+					is_being_held = true
+					break
+
+		if is_current:
+			# For current step: show hit_color for ON notes, step_color for OFF notes
+			if sequence[row][col] == Step.ON:
+				color = hit_color
+			else:
+				color = step_color
+		else:
+			# If being held, keep hit_color
+			if is_being_held:
+				color = hit_color
+			else:
+				# For non-current steps: normal colors
+				match sequence[row][col]:
+					Step.OFF:
+						color = out_color
+					Step.ON:
+						color = in_color
+					Step.HIT_ON:
+						color = hit_color
+						sequence[row][col] = Step.ON
+					Step.HIT_OFF:
+						color = hit_color
+						sequence[row][col] = Step.OFF
+
+		mm.multimesh.set_instance_color(index, color)
 
 func play_step(col):
-	var p = Vector3(s * col * spacer, s * -1 * spacer, 0)
-			
-	$timer_ball.position = p	
-	timer_ball_top.position = Vector3(s * col * spacer, s * (notes) * spacer, 0)
+	# Reset previous column to normal colors
+	if current_step_col >= 0:
+		set_column_color(current_step_col, false)
+	
+	# Highlight current column
+	set_column_color(col, true)
+	current_step_col = col
 	
 	if stopped:
 		return
+		
+	var note_count = 0
+	if play_modes[col] == play_mode.ARPEGIATE:
+		for row in range(notes):
+			if sequence[row][col]:
+				note_count += 1	
+	
+	var wait_time = $"../../../Timer".wait_time
+	var delay:float = 0 if note_count == 0 else $"../../../Timer".wait_time / float(note_count)
+	
 	for row in range(notes):
 		if sequence[row][col]:
-			print("On color")
-			mm.multimesh.set_instance_color((col * notes) + row, hit_color)	
 			var gate = $controls/gate/grab.value
-			play_sample_gate(0, row, col, gate)		
-			change_color_back(row, col)
-					
+			play_sample_gate(0, row, col, gate)
+			if play_modes[col] == play_mode.ARPEGIATE:
+				delay = wait_time * 2
+				await get_tree().create_timer(delay).timeout
+			
 
 var step_index:int = 0
-
-func next_step() -> void:
-	play_step(step_index)
-	step_index = (step_index + 1) % steps
-	pass # Replace with function body.
 
 var stopped = false
 
 func _on_start_stop_area_entered(area: Area3D) -> void:
-	# $"../sequencer/Timer".start()
+	if not area.is_in_group("finger_tip"):
+		return
 	stopped = ! stopped
-	pass # Replace with function body.
 
 func _on_up_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	if root_note + 12 < 128:
 		root_note = root_note + 12
 		midi_notes = get_scale_notes(root_note, mucical_scale)
 
-	pass # Replace with function body.
-
-
 func _on_down_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	if root_note - 12 >= 0:	
 		root_note = root_note - 12
 		midi_notes = get_scale_notes(root_note, mucical_scale)
-	pass # Replace with function body.
-	
-	
-	
-	
-
 
 func _on_scale_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	mucical_scale = (mucical_scale + 1) % Scale.size()
 	print("Scale: " + str(mucical_scale))
 	midi_notes = get_scale_notes(root_note, mucical_scale)
-	pass # Replace with function body.
-
 
 func _on_up_semi_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	if root_note < 127:
 		root_note += 1
 		midi_notes = get_scale_notes(root_note, mucical_scale)	
-	pass # Replace with function body.
-
 
 func _on_down_semi_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	if root_note > 0:
 		root_note = root_note - 1
 		midi_notes = get_scale_notes(root_note, mucical_scale)
 	print("Root note: " + str(root_note))
-	pass # Replace with function body.
-
 
 func _on_scale_down_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	mucical_scale = mucical_scale - 1
 	if mucical_scale < 0:
 		mucical_scale = Scale.size() -1
 	print("Scale: " + str(mucical_scale))
 	midi_notes = get_scale_notes(root_note, mucical_scale)
-	pass # Replace with function body.
-
 
 func _on_inst_up_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	instrument = (instrument + 1) % 127
 	print(instrument)
-	pass # Replace with function body.
-
 
 func _on_inst_down_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	instrument = (instrument - 1)
 	if instrument < 0:
 		instrument = 127
-	pass # Replace with function body.
-
 
 func _on_clear_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
 	for row in notes:
 		for col in steps:
 			sequence[row][col] = Step.OFF
 	assign_colors()
-	pass # Replace with function body.
+
+enum Direction {FORWARD, BACKWARD, PING_PONG}
+
+@export var playback_direction:Direction = Direction.FORWARD
+
+var ping_pong_forward:bool = true
+
+var direction_change_pending:Direction = Direction.FORWARD
+var direction_change_requested:bool = false
+
+func next_step() -> void:
+	play_step(step_index)
+	
+	if direction_change_requested:
+		if playback_direction == Direction.FORWARD and step_index == steps - 1:
+			apply_direction_change()
+		elif playback_direction == Direction.BACKWARD and step_index == 0:
+			apply_direction_change()
+		elif playback_direction == Direction.PING_PONG and (step_index == 0 or step_index == steps - 1):
+			apply_direction_change()
+	
+	match playback_direction:
+		Direction.FORWARD:
+			step_index = (step_index + 1) % steps
+			
+		Direction.BACKWARD:
+			step_index = step_index - 1
+			if step_index < 0:
+				step_index = steps - 1
+				
+		Direction.PING_PONG:
+			if ping_pong_forward:
+				if step_index == steps - 1:
+					ping_pong_forward = false
+				else:
+					step_index += 1
+			else:
+				if step_index == 0:
+					ping_pong_forward = true
+				else:
+					step_index -= 1
+
+func apply_direction_change():
+	var old_direction = playback_direction
+	playback_direction = direction_change_pending
+	direction_change_requested = false
+	
+	if old_direction == Direction.FORWARD and playback_direction == Direction.BACKWARD:
+		step_index = steps - 1 - step_index
+	elif old_direction == Direction.BACKWARD and playback_direction == Direction.FORWARD:
+		step_index = steps - 1 - step_index
+
+func _on_ping_pong_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
+	direction_change_pending = Direction.PING_PONG
+	direction_change_requested = true
+	print("Direction change queued: " + str(Direction.keys()[direction_change_pending]))
+
+func _on_forwards_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
+	direction_change_pending = Direction.FORWARD
+	direction_change_requested = true
+	print("Direction change queued: " + str(Direction.keys()[direction_change_pending]))
+
+func _on_backwards_area_entered(area: Area3D) -> void:
+	if not area.is_in_group("finger_tip"):
+		return
+	direction_change_pending = Direction.BACKWARD
+	direction_change_requested = true
+	print("Direction change queued: " + str(Direction.keys()[direction_change_pending]))
