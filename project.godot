@@ -44,13 +44,10 @@ finger_tip=""
 [gui]
 
 theme/custom_font="uid://0jk2p2kfmllu"
-<<<<<<< HEAD
-=======
 
 [physics]
 
 3d/default_gravity=0.0
->>>>>>> working_again
 
 [rendering]
 
