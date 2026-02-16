@@ -358,16 +358,17 @@ var active_cells = {}
 var finger_in_cell = {}  # Maps "row,col" -> hand reference
 var last_pinch_state = {}  # Maps hand reference -> bool
 
-# Modify hand_entered (only add tracking at the end):
 func hand_entered(area, row, col):
 	if not area.is_in_group("finger_tip"):
 		return
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
 	
-	# Store which hand is in this cell
 	finger_in_cell["%d,%d" % [row, col]] = hand
 	
-	if hand.gesture == "Index Pinch":
+	var is_currently_pinching = (hand.gesture == "Index Pinch")
+	last_pinch_state[hand] = is_currently_pinching  # ← THIS LINE is the fix
+	
+	if is_currently_pinching:
 		sequence[row][col] = Step.ON if sequence[row][col] == Step.OFF else Step.OFF 
 		mm.multimesh.set_instance_color((col * notes) + row, in_color)	
 	else:
