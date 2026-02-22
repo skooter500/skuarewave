@@ -30,5 +30,5 @@ bus/1/name = &"Record"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -0.72599316
+bus/1/volume_db = -11.4623785
 bus/1/send = &"Master"
