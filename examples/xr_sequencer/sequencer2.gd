@@ -298,7 +298,7 @@ func get_midi_instrument_name(program_num: int) -> String:
 func update_labels():
 	$controls/instrument.text = get_midi_instrument_name(instrument)
 	$controls/root.text = midi_note_to_string(root_note)
-	$controls/root2.text = midi_note_to_string(root_note)
+	#$controls/root2.text = midi_note_to_string(root_note)
 	$controls/mode.text = str(Scale.keys()[mucical_scale]).replace("_", " ")
 	$controls/direction.text = str(Direction.keys()[playback_direction])
 	$controls/mute.text = "UNMUTE" if stopped else "MUTE"

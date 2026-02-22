@@ -79,110 +79,111 @@ volume_db = -10.0
 soundfont = "res://assets/Aspirin-Stereo.sf2"
 
 [node name="controls" type="Marker3D" parent="pickable/sequencer" unique_id=73690061]
-transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 0.10090655, -0.26539487, 0.044889063)
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, -0.03393823, -0.26539487, 0.044889063)
 
 [node name="up_semi" parent="pickable/sequencer/controls" unique_id=2138419497 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5023537, 1.0159162, -0.04448858)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45170337, 1.0159162, -0.04448858)
 
 [node name="down_semi" parent="pickable/sequencer/controls" unique_id=1018370246 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3890648, 1.0177097, -0.045494214)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33841443, 1.0177097, -0.045494214)
 
 [node name="stop_start" parent="pickable/sequencer/controls" unique_id=2141351437 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38945073, 1.3403617, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33880037, 1.3360517, -0.045584388)
 btype = 1
 
 [node name="forwards" parent="pickable/sequencer/controls" unique_id=1935275129 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56099385, 1.460293, -0.04558437)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5103435, 1.460293, -0.04558437)
 
 [node name="backwards" parent="pickable/sequencer/controls" unique_id=879559165 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4546005, 1.460293, -0.045584384)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40395015, 1.460293, -0.045584384)
 
 [node name="ping_pong" parent="pickable/sequencer/controls" unique_id=881514405 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33954233, 1.4649503, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28889197, 1.4649503, -0.045584388)
 
 [node name="clear" parent="pickable/sequencer/controls" unique_id=1584419201 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5050405, 1.3365124, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45439017, 1.3365124, -0.045584388)
 
 [node name="up" parent="pickable/sequencer/controls" unique_id=731043316 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5037154, 1.1255871, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45306504, 1.1255871, -0.045584388)
 
 [node name="down" parent="pickable/sequencer/controls" unique_id=547150324 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3873617, 1.1248491, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33671135, 1.1248491, -0.045584388)
 
 [node name="inst_up" parent="pickable/sequencer/controls" unique_id=1285216855 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5037154, 1.2124393, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45306504, 1.2124393, -0.045584388)
 
 [node name="inst_down" parent="pickable/sequencer/controls" unique_id=349627763 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3873617, 1.2117014, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33671135, 1.2117014, -0.045584388)
 
 [node name="scale_up" parent="pickable/sequencer/controls" unique_id=1503189843 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50294286, 0.9210689, -0.045584388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4522925, 0.9210689, -0.045584388)
 
 [node name="scale_down" parent="pickable/sequencer/controls" unique_id=437597239 instance=ExtResource("3_qjhr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39113772, 0.92011344, -0.043849096)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33520722, 0.92011344, -0.043849096)
 
 [node name="mode" parent="pickable/sequencer/controls" unique_id=488361937 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 0.9322084, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5006174, 0.91923314, -0.039757475)
 horizontal_alignment = 2
 
 [node name="instrument" parent="pickable/sequencer/controls" unique_id=170103231 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 1.2150037, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5056498, 1.2150037, -0.039757475)
 horizontal_alignment = 2
 
 [node name="clear2" parent="pickable/sequencer/controls" unique_id=85306595 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 1.33447, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.520346, 1.33447, -0.039757475)
 text = "Clear"
 horizontal_alignment = 2
 
 [node name="mute" parent="pickable/sequencer/controls" unique_id=612615996 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3222619, 1.3407431, -0.03975747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22634351, 1.3407431, -0.039757486)
 text = "MUTE"
+horizontal_alignment = 2
 
 [node name="direction" parent="pickable/sequencer/controls" unique_id=687586001 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6230666, 1.4573121, -0.03975742)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57241625, 1.4573121, -0.03975742)
 text = "DIRECTION"
 horizontal_alignment = 2
 
 [node name="mute3" parent="pickable/sequencer/controls" unique_id=1218249019 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 1.1211832, -0.039757475)
-text = "+/- 12"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2865302, 1.1211832, -0.039757475)
+text = "OCTAVE"
 
 [node name="mute5" parent="pickable/sequencer/controls" unique_id=1187675703 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 1.2114263, -0.039757475)
-text = "+/- INST"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28226966, 1.2114263, -0.039757475)
+text = "INSTRUMENT"
 
 [node name="mute7" parent="pickable/sequencer/controls" unique_id=1461974304 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 1.275852, -0.03975747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45583582, 1.275852, -0.03975747)
 text = "+"
 horizontal_alignment = 1
 
 [node name="mute11" parent="pickable/sequencer/controls" unique_id=1917705396 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5648352, 1.4042708, -0.039757464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51418483, 1.4042708, -0.039757464)
 text = "F"
 horizontal_alignment = 1
 
 [node name="mute12" parent="pickable/sequencer/controls" unique_id=1691737374 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45255744, 1.4042708, -0.03975747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4019071, 1.4042708, -0.03975747)
 text = "R"
 horizontal_alignment = 1
 
 [node name="mute13" parent="pickable/sequencer/controls" unique_id=1866575689 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33860397, 1.4042708, -0.03975747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28795362, 1.4042708, -0.03975747)
 text = "P"
 horizontal_alignment = 1
 
 [node name="mute9" parent="pickable/sequencer/controls" unique_id=1203840972 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5064862, 0.86695987, -0.03975747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45583582, 0.86695987, -0.03975747)
 text = "+"
 horizontal_alignment = 1
 
 [node name="mute8" parent="pickable/sequencer/controls" unique_id=2029846493 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38927794, 1.275852, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33862758, 1.275852, -0.039757475)
 text = "-"
 horizontal_alignment = 1
 
 [node name="mute10" parent="pickable/sequencer/controls" unique_id=438680737 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38927794, 0.8569051, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33862758, 0.8569051, -0.039757475)
 text = "-"
 horizontal_alignment = 1
 
@@ -192,23 +193,25 @@ modulate = Color(0, 6.436, 4.693, 0.792)
 text = ""
 
 [node name="mute6" parent="pickable/sequencer/controls" unique_id=866690688 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 0.9179157, -0.039757475)
-text = "+/- MODE"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2824425, 0.9179157, -0.039757475)
+text = "MODE"
 
 [node name="mute4" parent="pickable/sequencer/controls" unique_id=1010640520 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3209712, 1.0135657, -0.039757475)
-text = "+/- 1"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28265315, 1.0169172, -0.039757475)
+text = "SEMITONE"
 
 [node name="root" parent="pickable/sequencer/controls" unique_id=61118654 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 1.1289079, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50907385, 1.0695094, -0.039757475)
+font_size = 100
 horizontal_alignment = 2
 
 [node name="root2" parent="pickable/sequencer/controls" unique_id=2055426953 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57099634, 1.0192895, -0.039757475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5056498, 1.0192895, -0.039757475)
+visible = false
 horizontal_alignment = 2
 
 [node name="gate" parent="pickable/sequencer/controls" unique_id=754814461 instance=ExtResource("5_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38165802, 0.26546866, -0.039678335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32916945, 0.26546866, -0.039678335)
 
 [node name="grab" parent="pickable/sequencer/controls/gate" index="0" unique_id=848395477]
 value = 0.2
@@ -216,17 +219,27 @@ min = null
 max = null
 whole = null
 
+[node name="label" parent="pickable/sequencer/controls/gate/grab" index="0" unique_id=674880526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.059, 0)
+
+[node name="CollisionShape3D" parent="pickable/sequencer/controls/gate/grab" index="2" unique_id=217118715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, 0)
+
 [node name="title" parent="pickable/sequencer/controls/gate" index="1" unique_id=387676606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.051, 0)
 text = "Gate"
 
 [node name="vel" parent="pickable/sequencer/controls" unique_id=321154315 instance=ExtResource("5_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50120836, 0.26546866, -0.039678335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4597506, 0.26546866, -0.039678335)
 
 [node name="grab" parent="pickable/sequencer/controls/vel" index="0" unique_id=848395477]
 value = 100.0
 min = null
 max = 100.0
 whole = null
+
+[node name="CollisionShape3D" parent="pickable/sequencer/controls/vel/grab" index="2" unique_id=217118715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="title" parent="pickable/sequencer/controls/vel" index="1" unique_id=387676606]
 text = "VELOcity"
@@ -237,7 +250,7 @@ text = "VELOcity"
 wait_time = 0.2
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="pickable/sequencer" unique_id=1824471230]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009119511, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009, 0, 0)
 multimesh = SubResource("MultiMesh_twh6a")
 
 [connection signal="area_entered" from="pickable/sequencer/controls/up_semi" to="pickable/sequencer" method="_on_up_semi_area_entered"]

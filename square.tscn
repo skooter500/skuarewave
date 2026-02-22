@@ -108,7 +108,7 @@ actions = Array[ExtResource("18_6c3wv")]([SubResource("Resource_c8e3v")])
 metadata/_custom_type_script = "uid://cmyxeshkakwd8"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ieg28"]
-radius = 0.02
+radius = 0.01
 height = 0.04
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_00q4b"]
@@ -134,7 +134,7 @@ script = ExtResource("2_3maw6")
 wait_time = 0.2
 
 [node name="drums" type="Marker3D" parent="instruments" unique_id=684359294]
-transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -0.92263985, -0.9388493, 1.2814153)
+transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -1.1209564, -0.8396911, 1.2814153)
 
 [node name="pickable" parent="instruments/drums" unique_id=1719777704 instance=ExtResource("3_ccrhb")]
 linear_damp = 100.0
@@ -236,7 +236,7 @@ horizontal_alignment = 2
 
 [node name="mute3" parent="instruments/drums/pickable/sequencer/controls" unique_id=1218249019 instance=ExtResource("4_bsoe3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32097113, 1.1205409, -0.03975749)
-text = "+/- 12"
+text = "OCTAVE"
 
 [node name="mute5" parent="instruments/drums/pickable/sequencer/controls" unique_id=1187675703 instance=ExtResource("4_bsoe3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44623077, 1.210784, -0.03975749)
@@ -275,18 +275,16 @@ text = ""
 
 [node name="mute6" parent="instruments/drums/pickable/sequencer/controls" unique_id=866690688 instance=ExtResource("4_bsoe3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32097113, 0.91727346, -0.03975749)
-text = "+/- MODE"
+text = "MODE"
 
 [node name="mute4" parent="instruments/drums/pickable/sequencer/controls" unique_id=1010640520 instance=ExtResource("4_bsoe3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32097113, 1.0129235, -0.03975749)
-text = "+/- 1"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32097113, 1.0163682, -0.03975749)
+text = "SEMITONE"
 
 [node name="root" parent="instruments/drums/pickable/sequencer/controls" unique_id=61118654 instance=ExtResource("4_bsoe3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5709964, 1.1282656, -0.03975749)
-horizontal_alignment = 2
-
-[node name="root2" parent="instruments/drums/pickable/sequencer/controls" unique_id=2055426953 instance=ExtResource("4_bsoe3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5709964, 1.0186472, -0.03975749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5709964, 1.0616682, -0.03975749)
+text = "100"
+font_size = 100
 horizontal_alignment = 2
 
 [node name="gate" parent="instruments/drums/pickable/sequencer/controls" unique_id=754814461 instance=ExtResource("9_ngdb1")]
@@ -338,7 +336,7 @@ bus = &"Record"
 [node name="analyzer" type="Node" parent="instruments" unique_id=1160703387]
 
 [node name="sequencer4" parent="instruments" unique_id=450981641 instance=ExtResource("10_cxy7q")]
-transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.3711385e-08, 1.4187598, -0.93984944, 0.41232777)
+transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.3711385e-08, 1.2204432, -0.84069127, 0.41232777)
 
 [node name="sequencer" parent="instruments/sequencer4/pickable" parent_id_path=PackedInt32Array(450981641, 1719777704) index="1" unique_id=631711506]
 font = null
@@ -352,7 +350,7 @@ mucical_scale = 1
 multimesh = SubResource("MultiMesh_wccfp")
 
 [node name="sequencer" parent="instruments" unique_id=19113346 instance=ExtResource("10_cxy7q")]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.08049202, -0.9388493, -0.278167)
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.2788086, -0.8396911, -0.36732054)
 
 [node name="sequencer" parent="instruments/sequencer/pickable" parent_id_path=PackedInt32Array(19113346, 1719777704) index="1" unique_id=631711506]
 font = null
@@ -366,7 +364,7 @@ root_note = 24
 multimesh = SubResource("MultiMesh_s2ckv")
 
 [node name="sequencer3" parent="instruments" unique_id=600002492 instance=ExtResource("10_cxy7q")]
-transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, 0.57831097, -0.93984944, 1.9253473)
+transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, 0.3799944, -0.84069127, 1.9550653)
 
 [node name="sequencer" parent="instruments/sequencer3/pickable" parent_id_path=PackedInt32Array(600002492, 1719777704) index="1" unique_id=631711506]
 font = null
@@ -379,7 +377,7 @@ midi_channel = 3
 multimesh = SubResource("MultiMesh_2c0tl")
 
 [node name="pickable" parent="instruments" unique_id=439534156 instance=ExtResource("3_ccrhb")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.31981945, -0.6393642, 0.76574326)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.12150288, -0.540206, 0.76574326)
 linear_damp = 100.0
 angular_damp = 100.0
 
@@ -564,7 +562,7 @@ bone_idx = 9
 transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/right/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/tip5/right_hand" unique_id=734859244]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.018, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.015, 0)
 shape = SubResource("CapsuleShape3D_ieg28")
 
 [node name="HandPoseDetector" parent="XROrigin3D/right" unique_id=1275132854 instance=ExtResource("25_8pbja")]

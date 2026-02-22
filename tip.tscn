@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cend6ikv2su2t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ieg28"]
-radius = 0.02
+radius = 0.01
 height = 0.04
 
 [node name="tip5" type="BoneAttachment3D" unique_id=1868214663]
@@ -13,5 +13,5 @@ bone_idx = 24
 transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="right_hand" unique_id=710816926]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.01, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.015, 0)
 shape = SubResource("CapsuleShape3D_ieg28")
