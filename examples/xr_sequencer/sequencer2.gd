@@ -272,13 +272,14 @@ func _process(delta: float) -> void:
 		
 		last_pinch_state[hand] = is_pinching
 	
-	for note in exit_queue:
-		note_off(note)
-	exit_queue.clear()
-	
 	for note in enter_queue:
 		note_on(note)
 	enter_queue.clear()
+
+	for note in exit_queue:
+		if not active_cells.has(note) or active_cells[note].is_empty():
+			note_off(note)
+	exit_queue.clear()
 	
 var is_blinking:bool = false
 
@@ -363,6 +364,7 @@ var last_pinch_state = {}  # Maps hand reference -> bool
 func hand_entered(area, row, col):
 	if not area.is_in_group("finger_tip"):
 		return
+	print("Hand entered: " + str(row) + "  "+ str(col))
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
 	
 	finger_in_cell["%d,%d" % [row, col]] = hand
@@ -389,6 +391,8 @@ func hand_entered(area, row, col):
 func hand_exited(area, row, col):
 	if not area.is_in_group("finger_tip"):
 		return
+	print("Hand exited: " + str(row) + "  "+ str(col))
+	
 	var hand = area.get_parent().get_parent().get_parent().get_parent().get_parent()
 	
 	# Remove tracking
