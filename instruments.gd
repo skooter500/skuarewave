@@ -19,7 +19,7 @@ func _on_start_stop_area_entered(area: Area3D) -> void:
 		$pickable/controls/mode2.text = "Start"
 	pass # Replace with function body.
 
-var sequencers = []
+var sequencers = [Sequencer]
 
 func _on_timer_timeout() -> void:
 	for sequencer in sequencers:
@@ -63,4 +63,19 @@ func _remove_effect(bus_idx: int, effect_class) -> void:
 
 
 func _on_mic_area_entered(area: Area3D) -> void:
+	pass # Replace with function body.
+
+
+func _on_rand_inst_area_entered(area: Area3D) -> void:
+	for i in range(1, sequencers.size()):
+		sequencers[i].instrument = randi_range(0, 127)
+	pass # Replace with function body.
+
+
+func _on_rand_mode_area_entered(area: Area3D) -> void:
+	var s = randi_range(0, Sequencer.Scale.size())
+	for i in range(1, sequencers.size()):
+		sequencers[i].mucical_scale = s
+		
+		sequencers[i].make_scale()
 	pass # Replace with function body.

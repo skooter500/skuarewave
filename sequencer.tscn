@@ -223,7 +223,7 @@ whole = null
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.059, 0)
 
 [node name="CollisionShape3D" parent="pickable/sequencer/controls/gate/grab" index="2" unique_id=217118715]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="title" parent="pickable/sequencer/controls/gate" index="1" unique_id=387676606]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.051, 0)

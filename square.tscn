@@ -107,7 +107,7 @@ actions = Array[ExtResource("18_6c3wv")]([SubResource("Resource_c8e3v")])
 metadata/_custom_type_script = "uid://cmyxeshkakwd8"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ieg28"]
-radius = 0.01
+radius = 0.02
 height = 0.04
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_00q4b"]
@@ -356,7 +356,7 @@ transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.2788086, -
 font = null
 out_color = Color(0, 0, 0, 1)
 in_color = Color(0, 0, 0, 1)
-instrument = 33
+instrument = 0
 midi_channel = 1
 root_note = 24
 
@@ -410,7 +410,7 @@ horizontal_alignment = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79335976, -1.1454852, -0.47659194)
 
 [node name="start_stop" parent="instruments/pickable/controls" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38908345, 1.6082792, 0.4805628)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38908345, 1.7666059, 0.4805628)
 btype = 1
 
 [node name="vol" parent="instruments/pickable/controls" index="1"]
@@ -429,7 +429,7 @@ text = "VOL"
 skeleton = NodePath("../../../../..")
 
 [node name="mode2" parent="instruments/pickable/controls" index="3"]
-transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.42533535, 1.5506735, 0.479756)
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.42533535, 1.7090001, 0.479756)
 
 [node name="mode3" parent="instruments/pickable/controls" index="4"]
 transform = Transform3D(-0.99999934, 0, -8.940689e-08, 0, 1, 0, 8.940689e-08, 0, -0.99999934, -0.33629268, 2.1336532, 0.47975552)
@@ -464,6 +464,22 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7
 
 [node name="mesh" parent="instruments/pickable/controls/mic_vol/grab" index="1" unique_id=1119555860]
 skeleton = NodePath("../../../../..")
+
+[node name="rand_inst" parent="instruments/pickable/controls" unique_id=1119412009 instance=ExtResource("8_sovpu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38908345, 1.6063726, 0.4805628)
+
+[node name="rand_mode" parent="instruments/pickable/controls" unique_id=1574236347 instance=ExtResource("8_sovpu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38908345, 1.4422061, 0.4805628)
+
+[node name="mode4" parent="instruments/pickable/controls" unique_id=1682247470 instance=ExtResource("4_bsoe3")]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.39038193, 1.5353954, 0.479756)
+text = "RAND INST"
+horizontal_alignment = 1
+
+[node name="mode5" parent="instruments/pickable/controls" unique_id=1566825881 instance=ExtResource("4_bsoe3")]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.39038193, 1.3723829, 0.479756)
+text = "RAND MODE"
+horizontal_alignment = 1
 
 [node name="visualiser" type="Node3D" parent="instruments/pickable" unique_id=1405377368]
 script = ExtResource("12_0o8on")
@@ -624,6 +640,8 @@ light_energy = 16.0
 [connection signal="area_entered" from="instruments/drums/pickable/sequencer/controls/scale_down" to="instruments/drums/pickable/sequencer" method="_on_scale_down_area_entered"]
 [connection signal="timeout" from="instruments/drums/pickable/sequencer/Timer" to="instruments/drums/pickable/sequencer" method="_on_timer_timeout"]
 [connection signal="area_entered" from="instruments/pickable/controls/start_stop" to="instruments" method="_on_start_stop_area_entered"]
+[connection signal="area_entered" from="instruments/pickable/controls/rand_inst" to="instruments" method="_on_rand_inst_area_entered"]
+[connection signal="area_entered" from="instruments/pickable/controls/rand_mode" to="instruments" method="_on_rand_mode_area_entered"]
 [connection signal="pose_ended" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_ended"]
 [connection signal="pose_started" from="XROrigin3D/left/HandPoseDetector" to="XROrigin3D/left" method="_on_hand_pose_detector_pose_started"]
 [connection signal="pose_ended" from="XROrigin3D/right/HandPoseDetector" to="XROrigin3D/right" method="_on_hand_pose_detector_pose_ended"]
@@ -653,6 +671,8 @@ light_energy = 16.0
 [editable path="instruments/pickable/controls/reverb_mix2"]
 [editable path="instruments/pickable/controls/delay_mix"]
 [editable path="instruments/pickable/controls/mic_vol"]
+[editable path="instruments/pickable/controls/mode4"]
+[editable path="instruments/pickable/controls/mode5"]
 [editable path="XROrigin3D/left/LeftHandHumanoid2"]
 [editable path="XROrigin3D/left/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D/tip5"]
 [editable path="XROrigin3D/right/RightHandHumanoid2"]

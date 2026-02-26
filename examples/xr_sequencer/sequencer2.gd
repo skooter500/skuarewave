@@ -1,4 +1,6 @@
-extends Marker3D
+class_name Sequencer
+
+extends Node3D
 
 @export var font:Font 
 
@@ -579,6 +581,10 @@ func _on_down_semi_area_entered(area: Area3D) -> void:
 		root_note = root_note - 1
 		midi_notes = get_scale_notes(root_note, mucical_scale)
 	print("Root note: " + str(root_note))
+
+func make_scale():
+	midi_notes = get_scale_notes(root_note, mucical_scale)
+
 
 func _on_scale_down_area_entered(area: Area3D) -> void:
 	if not area.is_in_group("finger_tip"):
