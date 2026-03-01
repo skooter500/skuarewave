@@ -257,7 +257,6 @@ text = "VELOcity"
 wait_time = 0.2
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="pickable/sequencer" unique_id=1824471230]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009, 0, 0)
 multimesh = SubResource("MultiMesh_twh6a")
 
 [connection signal="area_entered" from="pickable/sequencer/controls/up_semi" to="pickable/sequencer" method="_on_up_semi_area_entered"]

@@ -134,12 +134,13 @@ func _ready():
 
 	assign_colors()
 	create_labels()
+	create_col_labels()
 	midi_notes = get_scale_notes(root_note, mucical_scale)
 	# instrument = randi_range(0, 128)
 	change_instrument(midi_channel, instrument)
 	
 var labels = []
-	
+
 func create_labels():
 	for row in range(notes):
 		var label:Label3D = label_scene.instantiate()		
@@ -155,6 +156,24 @@ func create_labels():
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		add_child(label)
 		labels.push_back(label)
+	
+func create_col_labels():
+	for col in range(steps):
+		var label:Label3D = label_scene.instantiate()		
+		var p = Vector3(col * spacer * s,- spacer * s,0)
+		label.position = p		
+		label.text = str(col)
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		add_child(label)
+		# labels.push_back(label)
+		
+		label = label_scene.instantiate()		
+		p = Vector3(col *  spacer * s, notes * s * spacer,0)
+		label.position = p
+		label.text = str(col)
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		add_child(label)
+		# labels.push_back(label)
 
 enum Scale {
 	MAJOR,
@@ -444,6 +463,7 @@ func make_sequencer():
 			var pad = pad_scene.instantiate()
 			
 			var p = Vector3(s * col * spacer, s * row * spacer, 0)
+			
 			pad.position = p		
 			
 			var t = Transform3D()
