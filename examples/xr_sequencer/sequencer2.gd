@@ -691,3 +691,8 @@ func _on_backwards_area_entered(area: Area3D) -> void:
 	direction_change_pending = Direction.BACKWARD
 	direction_change_requested = true
 	print("Direction change queued: " + str(Direction.keys()[direction_change_pending]))
+
+
+func _on_rand_instr_area_entered(area: Area3D) -> void:
+	instrument = randi_range(0, 127)
+	pass # Replace with function body.

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="7_2y1cm"]
 [ext_resource type="PackedScene" uid="uid://2i1nqhynnlm0" path="res://button.tscn" id="8_sovpu"]
 [ext_resource type="PackedScene" uid="uid://bo3p0qs3gk7ji" path="res://analog.tscn" id="9_ngdb1"]
-[ext_resource type="Script" path="res://claude_fix_audio_stream_player.gd" id="10_3maw6"]
+[ext_resource type="Script" uid="uid://cphdp7c5r6vxo" path="res://claude_fix_audio_stream_player.gd" id="10_3maw6"]
 [ext_resource type="PackedScene" uid="uid://b7dvkr5ss01as" path="res://sequencer.tscn" id="10_cxy7q"]
 [ext_resource type="PackedScene" uid="uid://03pivv0mboix" path="res://controls.tscn" id="11_y1tb7"]
 [ext_resource type="Script" uid="uid://cno07hlngmtdl" path="res://visualiser.gd" id="12_0o8on"]

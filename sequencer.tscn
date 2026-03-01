@@ -115,6 +115,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45306504, 1.2124393, -0.04
 [node name="inst_down" parent="pickable/sequencer/controls" unique_id=349627763 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33671135, 1.2117014, -0.045584388)
 
+[node name="rand_instr" parent="pickable/sequencer/controls" unique_id=812312464 instance=ExtResource("3_qjhr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22989684, 1.2123351, -0.04558439)
+
 [node name="scale_up" parent="pickable/sequencer/controls" unique_id=1503189843 instance=ExtResource("3_qjhr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4522925, 0.9210689, -0.045584388)
 
@@ -149,8 +152,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2865302, 1.1211832, -0.039
 text = "OCTAVE"
 
 [node name="mute5" parent="pickable/sequencer/controls" unique_id=1187675703 instance=ExtResource("4_1yhx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28226966, 1.2114263, -0.039757475)
-text = "INSTRUMENT"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15822703, 1.2114263, -0.03975748)
+text = "INST"
+
+[node name="mute14" parent="pickable/sequencer/controls" unique_id=1786455599 instance=ExtResource("4_1yhx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2573587, 1.2759619, -0.039757475)
+text = "RAND"
 
 [node name="mute7" parent="pickable/sequencer/controls" unique_id=1461974304 instance=ExtResource("4_1yhx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45583582, 1.275852, -0.03975747)
@@ -264,6 +271,7 @@ multimesh = SubResource("MultiMesh_twh6a")
 [connection signal="area_entered" from="pickable/sequencer/controls/down" to="pickable/sequencer" method="_on_down_area_entered"]
 [connection signal="area_entered" from="pickable/sequencer/controls/inst_up" to="pickable/sequencer" method="_on_inst_up_area_entered"]
 [connection signal="area_entered" from="pickable/sequencer/controls/inst_down" to="pickable/sequencer" method="_on_inst_down_area_entered"]
+[connection signal="area_entered" from="pickable/sequencer/controls/rand_instr" to="pickable/sequencer" method="_on_rand_instr_area_entered"]
 [connection signal="area_entered" from="pickable/sequencer/controls/scale_up" to="pickable/sequencer" method="_on_scale_area_entered"]
 [connection signal="area_entered" from="pickable/sequencer/controls/scale_down" to="pickable/sequencer" method="_on_scale_down_area_entered"]
 [connection signal="timeout" from="pickable/sequencer/Timer" to="pickable/sequencer" method="_on_timer_timeout"]
