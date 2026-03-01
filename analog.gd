@@ -14,9 +14,14 @@ var previous_value: float = 0
 
 signal value_changed(new_value: float)
 
+@onready var collision_shape = $CollisionShape3D
+
+var default_shape_size: Vector3
+
 func _ready() -> void:
 	# Set random color
 	var c = Color.from_hsv(randf(), 1, 1, 0.5)
+	default_shape_size = collision_shape.shape.size
 	if has_node("mesh"):
 		var mat = $mesh.get_surface_override_material(0)
 		if mat:
@@ -60,6 +65,10 @@ func set_value(new_value: float):
 func _on_grab_area_entered(area: Area3D) -> void:
 	if not area.is_in_group("finger_tip"):
 		return
+		
+	collision_shape.shape.size.y = default_shape_size.y * 5
+	collision_shape.shape.size.x = default_shape_size.x * 3
+	collision_shape.shape.size.z = default_shape_size.z * 3
 	
 	# Find hand controller
 	var node = area
@@ -77,6 +86,7 @@ func _on_grab_area_entered(area: Area3D) -> void:
 func _on_grab_area_exited(area: Area3D) -> void:
 	if not area.is_in_group("finger_tip"):
 		return
+	collision_shape.shape.size = default_shape_size
 	hand = null
 
 func _process(delta: float) -> void:

@@ -291,9 +291,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39624393, 0.2812528, -0.03
 
 [node name="grab" parent="instruments/drums/pickable/sequencer/controls/gate" index="0" unique_id=848395477]
 value = 0.2
-min = null
-max = null
-whole = null
 
 [node name="title" parent="instruments/drums/pickable/sequencer/controls/gate" index="1" unique_id=387676606]
 text = "Gate"
@@ -303,9 +300,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5157943, 0.2812528, -0.039
 
 [node name="grab" parent="instruments/drums/pickable/sequencer/controls/vel" index="0" unique_id=848395477]
 value = 100.0
-min = null
 max = 100.0
-whole = null
 
 [node name="title" parent="instruments/drums/pickable/sequencer/controls/vel" index="1" unique_id=387676606]
 text = "VELOcity"
@@ -346,6 +341,15 @@ instrument = 53
 midi_channel = 5
 mucical_scale = 1
 
+[node name="grab" parent="instruments/sequencer4/pickable/sequencer/controls/gate" parent_id_path=PackedInt32Array(450981641, 754814461) index="0" unique_id=848395477]
+min = 0.0
+max = 1.0
+whole = false
+
+[node name="grab" parent="instruments/sequencer4/pickable/sequencer/controls/vel" parent_id_path=PackedInt32Array(450981641, 321154315) index="0" unique_id=848395477]
+min = 0.0
+whole = false
+
 [node name="MultiMeshInstance3D" parent="instruments/sequencer4/pickable/sequencer" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_wccfp")
 
@@ -360,6 +364,15 @@ instrument = 0
 midi_channel = 1
 root_note = 24
 
+[node name="grab" parent="instruments/sequencer/pickable/sequencer/controls/gate" parent_id_path=PackedInt32Array(19113346, 754814461) index="0" unique_id=848395477]
+min = 0.0
+max = 1.0
+whole = false
+
+[node name="grab" parent="instruments/sequencer/pickable/sequencer/controls/vel" parent_id_path=PackedInt32Array(19113346, 321154315) index="0" unique_id=848395477]
+min = 0.0
+whole = false
+
 [node name="MultiMeshInstance3D" parent="instruments/sequencer/pickable/sequencer" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_s2ckv")
 
@@ -372,6 +385,15 @@ out_color = Color(0, 0, 0, 1)
 in_color = Color(0, 0, 0, 1)
 instrument = 81
 midi_channel = 3
+
+[node name="grab" parent="instruments/sequencer3/pickable/sequencer/controls/gate" parent_id_path=PackedInt32Array(600002492, 754814461) index="0" unique_id=848395477]
+min = 0.0
+max = 1.0
+whole = false
+
+[node name="grab" parent="instruments/sequencer3/pickable/sequencer/controls/vel" parent_id_path=PackedInt32Array(600002492, 321154315) index="0" unique_id=848395477]
+min = 0.0
+whole = false
 
 [node name="MultiMeshInstance3D" parent="instruments/sequencer3/pickable/sequencer" index="3" unique_id=1824471230]
 multimesh = SubResource("MultiMesh_2c0tl")
