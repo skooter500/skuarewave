@@ -151,7 +151,7 @@ func create_labels():
 		labels.push_back(label)
 		
 		label = label_scene.instantiate()		
-		p = Vector3(s * (steps + 0.1) * spacer, s * row * spacer, 0)
+		p = Vector3(s * steps * spacer -0.04, s * row * spacer, 0)
 		label.position = p		
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		add_child(label)
@@ -160,7 +160,7 @@ func create_labels():
 func create_col_labels():
 	for col in range(steps):
 		var label:Label3D = label_scene.instantiate()		
-		var p = Vector3(col * spacer * s,- spacer * s,0)
+		var p = Vector3(col * spacer * s,- spacer * s * 0.6,0)
 		label.position = p		
 		label.text = str(col)
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -168,7 +168,7 @@ func create_col_labels():
 		# labels.push_back(label)
 		
 		label = label_scene.instantiate()		
-		p = Vector3(col *  spacer * s, notes * s * spacer,0)
+		p = Vector3(col *  spacer * s, (notes - 0.3) * s * spacer,0)
 		label.position = p
 		label.text = str(col)
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

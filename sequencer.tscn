@@ -222,9 +222,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32916945, 0.26546866, -0.0
 
 [node name="grab" parent="pickable/sequencer/controls/gate" index="0" unique_id=848395477]
 value = 0.2
-min = null
-max = null
-whole = null
 
 [node name="label" parent="pickable/sequencer/controls/gate/grab" index="0" unique_id=674880526]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.059, 0)
@@ -241,9 +238,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4597506, 0.26546866, -0.03
 
 [node name="grab" parent="pickable/sequencer/controls/vel" index="0" unique_id=848395477]
 value = 100.0
-min = null
 max = 100.0
-whole = null
 
 [node name="CollisionShape3D" parent="pickable/sequencer/controls/vel/grab" index="2" unique_id=217118715]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

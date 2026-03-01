@@ -317,7 +317,6 @@ horizontal_alignment = 2
 wait_time = 0.2
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="instruments/drums/pickable/sequencer" unique_id=1824471230]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009119511, 0, 0)
 multimesh = SubResource("MultiMesh_twh6a")
 
 [node name="record" type="Node" parent="instruments" unique_id=1406815149]

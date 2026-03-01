@@ -67,8 +67,8 @@ func _on_grab_area_entered(area: Area3D) -> void:
 		return
 		
 	collision_shape.shape.size.y = default_shape_size.y * 5
-	collision_shape.shape.size.x = default_shape_size.x * 3
-	collision_shape.shape.size.z = default_shape_size.z * 3
+	collision_shape.shape.size.x = default_shape_size.x * 2
+	collision_shape.shape.size.z = default_shape_size.z * 2
 	
 	# Find hand controller
 	var node = area
